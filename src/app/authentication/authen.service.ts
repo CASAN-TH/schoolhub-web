@@ -11,6 +11,7 @@ export class AuthenService {
   jwt: JwtHelperService = new JwtHelperService();
   token: any;
   user: any;
+  school: any;
   onUserDataChanged: BehaviorSubject<any>;
 
   constructor(
@@ -21,6 +22,7 @@ export class AuthenService {
     this.token = window.localStorage.getItem(`token@${environment.appName}`);
     this.user = this.token ? this.jwt.decodeToken(this.token) : null;
     if (this.user && this.user != null) {
+      this.school = this.user && this.user.ref1 && this.user.ref1 !== '-'  ? this.jwt.decodeToken(this.user.ref1) : null;
       this.onUserDataChanged.next(this.user);
     }
 
@@ -34,6 +36,7 @@ export class AuthenService {
         window.localStorage.setItem(`token@${environment.appName}`, res.token);
         this.token = window.localStorage.getItem(`token@${environment.appName}`);
         this.user = this.token ? this.jwt.decodeToken(this.token) : null;
+        this.school = this.user && this.user.ref1 && this.user.ref1 !== '-'  ? this.jwt.decodeToken(this.user.ref1) : null;
         this.onUserDataChanged.next(this.user);
         resolve(this.user);
       }, reject);
@@ -48,6 +51,7 @@ export class AuthenService {
         window.localStorage.setItem(`token@${environment.appName}`, res.token);
         this.token = window.localStorage.getItem(`token@${environment.appName}`);
         this.user = this.token ? this.jwt.decodeToken(this.token) : null;
+        this.school = this.user && this.user.ref1 && this.user.ref1 !== '-'  ? this.jwt.decodeToken(this.user.ref1) : null;
         this.onUserDataChanged.next(this.user);
         resolve(this.user);
       }, reject);

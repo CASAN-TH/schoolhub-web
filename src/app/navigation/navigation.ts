@@ -12,7 +12,7 @@ export const navigation: FuseNavigation[] = [
                 title    : 'Sample',
                 translate: 'NAV.STUDENTS.TITLE',
                 type     : 'item',
-                icon     : 'contact_phone',
+                icon     : 'group',
                 url      : '/students',
                 badge    : {
                     title    : '25',
