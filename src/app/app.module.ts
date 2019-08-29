@@ -24,8 +24,16 @@ const appRoutes: Routes = [
         loadChildren: './authentication/authentication.module#AuthenticationModule'
     },
     {
+        path        : 'students',
+        loadChildren: './main/students/students.module#StudentsModule'
+    },
+    {
+        path        : 'couse',
+        loadChildren: './main/couse/couse.module#CouseModule'
+    },
+    {
         path      : '**',
-        redirectTo: 'sample'
+        redirectTo: 'students'
     }
 ];
 
