@@ -7,6 +7,7 @@ import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { CoursesService } from './courses.service';
 import { MatIconModule } from '@angular/material';
 import { CourseslistComponent } from './courseslist/courseslist.component';
+import { CourseComponent } from './courseslist/course/course.component';
 
 const routes = [
   {
@@ -30,7 +31,8 @@ const routes = [
 @NgModule({
   declarations: [
     CoursesComponent,
-    CourseslistComponent],
+    CourseslistComponent,
+    CourseComponent],
   imports: [
     RouterModule.forChild(routes),
     MatIconModule,

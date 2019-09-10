@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursesService } from '../courses.service';
 
 @Component({
   selector: 'app-courseslist',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courseslist.component.scss']
 })
 export class CourseslistComponent implements OnInit {
-
-  constructor() { }
+  courses: any;
+  constructor(
+    private CoursesService: CoursesService
+  ) { }
 
   ngOnInit() {
+    this.CoursesService.onCoursesChanged.subscribe((res :any) =>{
+      this.courses = res;
+    })
   }
 
 }

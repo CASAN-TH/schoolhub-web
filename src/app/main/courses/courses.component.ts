@@ -7,6 +7,7 @@ import { CoursesService } from './courses.service';
 import { takeUntil } from 'rxjs/operators';
 import { fuseAnimations } from '@fuse/animations';
 import { NavigationEnd, Router } from '@angular/router';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-courses',
@@ -17,7 +18,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class CoursesComponent implements OnInit {
   courses: any;
-
+  yearmax = 0;
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private CoursesService: CoursesService,
@@ -29,20 +30,23 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.CoursesService.onCoursesChanged.subscribe((res: any) => {
+      var result=_.chain(res).groupBy("year").map(function(v, i) {
+        return {
+          year: i,
+        }
+      }).value();
 
-      var groups = res.reduce(function (obj, item) {
-        obj[item.years] = obj[item.year] || [];
-        obj[item.years].push(item.year);
-        return obj;
-      }, {});
-      var myArray = Object.keys(groups).map(function (key) {
-        return { year: groups[key] };
+      result.forEach((item:any)=>{
+        if(item.year > this.yearmax){
+          this.yearmax =  parseInt(item.year);
+        }
       });
-      this.courses = myArray;
+      console.log(this.yearmax)
+      this.courses = result; 
     })
   }
 
   newCourse(Actiontype){
-    this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + '2563']);
+    this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
   }
 }
