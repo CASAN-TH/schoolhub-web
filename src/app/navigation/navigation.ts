@@ -26,7 +26,7 @@ export const navigation: FuseNavigation[] = [
                 title    : 'Courses',
                 translate: 'NAV.COURSES.TITLE',
                 type     : 'item',
-                icon     : 'group',
+                icon     : 'assessment',
                 url      : '/courses',
                 badge    : {
                     title    : '25',
