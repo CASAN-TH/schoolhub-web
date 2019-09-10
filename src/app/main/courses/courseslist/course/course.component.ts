@@ -24,12 +24,12 @@ export class CourseComponent implements OnInit {
     this.CoursesService.onCourseChanged
     .subscribe((res: any)=>{
       this.course = res;
-      console.log(this.course)
     })
     this.dataSource = this.list.structures;
+    console.log(this.list);
   }
 
-  addPerson(){
-    this.route.navigate(['courses/students/' + this.list.year + '/' + '1'])
+  addPerson(grade){
+    this.route.navigate(['courses/students/' + this.list.year + '/' + grade])
   }
 }

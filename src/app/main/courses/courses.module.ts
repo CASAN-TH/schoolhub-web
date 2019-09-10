@@ -5,11 +5,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { CoursesService } from './courses.service';
-import { MatIconModule, MatMenuModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatBadgeModule } from '@angular/material';
 import { CourseslistComponent } from './courseslist/courseslist.component';
 import { CourseComponent } from './courseslist/course/course.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatTableModule} from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
 import { OrderModule } from 'ngx-order-pipe';
 import { StudentsComponent } from './courseslist/students/students.component';
 
@@ -49,6 +50,8 @@ const routes = [
     MatTabsModule,
     MatTableModule,
     MatMenuModule,
+    MatButtonModule,
+    MatBadgeModule,
 
     OrderModule,
 
