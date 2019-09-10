@@ -26,7 +26,7 @@ export class StudentsService {
     this.routeParam = route.params;
     if (!this.routeParam.studentsId) {
       console.log("no");
-     return this.getstudentsDataList();
+      return this.getstudentsDataList();
     } else {
       console.log("yes");
     }
@@ -35,7 +35,7 @@ export class StudentsService {
   getstudentsDataList() {
     console.log("getstudentsDataList");
     return new Promise((resolve, reject) => {
-      this.httpclient.get("http://localhost:3000/api/students", { headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.httpclient.get(environment.apiUrl + "/api/students", { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.onDataChanged.next(response.data);
         resolve(response.data);
       }, reject);
