@@ -4,23 +4,49 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
+import { StudentsService } from './students.service';
+import { StudentsFormComponent } from './students-form/students-form.component';
+import { MatInputModule, MatIconModule, MatTableModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatDatepickerModule, MatCardModule } from '@angular/material';
+import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 
 const routes = [
   {
-      path     : '**',
+      path     : '',
       component: StudentsComponent,
-      canActivate: [AuthenGuardService]
+      canActivate: [AuthenGuardService],
+      resolve: {
+        students:StudentsService
+      }
+  },{
+    path     : ':studentsId',
+    component: StudentsFormComponent,
+    canActivate: [AuthenGuardService],
+    resolve: {
+      student:StudentsService
+    }
   }
 ];
 
 @NgModule({
-  declarations: [StudentsComponent],
+  declarations: [StudentsComponent, StudentsFormComponent],
   imports: [
     RouterModule.forChild(routes),
 
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatCardModule,
+
     TranslateModule,
 
-    FuseSharedModule
+    FuseSharedModule,
+    FuseConfirmDialogModule,
+    FuseSidebarModule
   ],
   exports: [
     StudentsComponent

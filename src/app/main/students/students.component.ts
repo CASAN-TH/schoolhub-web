@@ -3,6 +3,9 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 
 import { locale as english } from './i18n/en';
 import { locale as thai } from './i18n/th';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StudentsService } from './students.service';
 
 @Component({
   selector: 'app-students',
@@ -12,14 +15,32 @@ import { locale as thai } from './i18n/th';
 export class StudentsComponent implements OnInit {
 
   constructor(
-    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private studentsService: StudentsService,
+    private formBuilder: FormBuilder,
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
-
+  studentsForm: FormGroup;
+  students: any = [];
+  displayedColumns = ['prefix', 'firstname', 'studentid', 'phonenumber', 'buttons'];
 
   ngOnInit(): void {
+    this.studentsService.onDataChanged.subscribe((res: any) => {
+      this.students = res;
+      console.log(this.students);
+    });
+  }
+  onAdstudents() {
+    // console.log("onAdstudents");
+    this.router.navigate(['students/new']);
 
   }
+  onEditstudents(student) {
+    this.router.navigate(['students/' + student._id]);
+  }
+
 
 }

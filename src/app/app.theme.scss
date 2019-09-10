@@ -86,7 +86,11 @@ $typography: mat-typography-config(
 @import "src/app/authentication/reset-password/reset-password.theme";
 @import "src/app/authentication/lock/lock.theme";
 @import "src/app/authentication/mail-confirm/mail-confirm.theme";
+<<<<<<< HEAD
 @import "src/app/main/courses/courses.theme";
+=======
+@import "./main/students/students.theme";
+>>>>>>> 77fb4af029b8c36fe0c2d6170c6ef5d1cce66e3f
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -100,7 +104,11 @@ $typography: mat-typography-config(
     @include reset-password-theme($theme);
     @include lock-theme($theme);
     @include mail-confirm-theme($theme);
+<<<<<<< HEAD
     @include courses-theme($theme);
+=======
+    @include students-theme($theme);
+>>>>>>> 77fb4af029b8c36fe0c2d6170c6ef5d1cce66e3f
 }
 
 // -----------------------------------------------------------------------------------------------------
