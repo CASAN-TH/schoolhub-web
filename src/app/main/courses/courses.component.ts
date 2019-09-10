@@ -3,6 +3,8 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 
 import { locale as english } from './i18n/en';
 import { locale as thai } from './i18n/th';
+import { CoursesService } from './courses.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses',
@@ -10,16 +12,20 @@ import { locale as thai } from './i18n/th';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+  course: any;
 
   constructor(
-    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService,
+    private CoursesService : CoursesService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
 
 
   ngOnInit(): void {
-
+    this.CoursesService.onCoursesChanged.subscribe((res: any) =>{
+      console.log(res);
+    })
   }
 
 }
