@@ -4,12 +4,16 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
+import { StudentsService } from './students.service';
 
 const routes = [
   {
       path     : '**',
       component: StudentsComponent,
-      canActivate: [AuthenGuardService]
+      canActivate: [AuthenGuardService],
+      resolve: {
+        students:StudentsService
+      }
   }
 ];
 
