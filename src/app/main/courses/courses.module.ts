@@ -5,22 +5,35 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { CoursesService } from './courses.service';
+import { MatIconModule } from '@angular/material';
+import { CourseslistComponent } from './courseslist/courseslist.component';
 
 const routes = [
   {
-      path     : '**',
-      component: CoursesComponent,
-      canActivate: [AuthenGuardService],
-      resolve:{
-        courses: CoursesService
-      }
+    path: '',
+    component: CoursesComponent,
+    canActivate: [AuthenGuardService],
+    resolve: {
+      courses: CoursesService
+    }
+  },
+  {
+    path: 'courseslist/:actiontype/:year',
+    component: CourseslistComponent,
+    canActivate: [AuthenGuardService],
+    resolve: {
+      courses: CoursesService
+    }
   }
 ];
 
 @NgModule({
-  declarations: [CoursesComponent],
+  declarations: [
+    CoursesComponent,
+    CourseslistComponent],
   imports: [
     RouterModule.forChild(routes),
+    MatIconModule,
 
     TranslateModule,
 
