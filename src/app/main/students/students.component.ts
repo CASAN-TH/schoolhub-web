@@ -30,7 +30,7 @@ export class StudentsComponent implements OnInit {
   ngOnInit(): void {
     this.studentsService.onDataChanged.subscribe((res: any) => {
       this.students = res;
-      console.log(this.students);
+      // console.log(this.students);
     });
   }
   onAdstudents() {
