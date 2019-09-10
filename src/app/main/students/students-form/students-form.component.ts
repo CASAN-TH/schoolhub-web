@@ -114,11 +114,13 @@ export class StudentsFormComponent implements OnInit {
   onAddNew() {
     // console.log("onAddNew");
     this.studentsService.adStudentsData(this.studentsForm.getRawValue());
+    this.router.navigate(['students']);
   }
 
   onsaveEdit() {
     console.log("onsaveEdit");
     this.studentsService.editStudentsData(this.studentsForm.getRawValue());
+    this.router.navigate(['students']);
   }
 
   oncloseAdd() {
