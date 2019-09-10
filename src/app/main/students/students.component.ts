@@ -26,12 +26,21 @@ export class StudentsComponent implements OnInit {
   studentsForm: FormGroup;
   students: any = [];
   displayedColumns = ['prefix', 'firstname', 'studentid', 'phonenumber', 'buttons'];
-  
+
   ngOnInit(): void {
     this.studentsService.onDataChanged.subscribe((res: any) => {
       this.students = res;
       console.log(this.students);
     });
   }
+  onAdstudents() {
+    // console.log("onAdstudents");
+    this.router.navigate(['students/new']);
+
+  }
+  onEditstudents(student) {
+    this.router.navigate(['students/' + student._id]);
+  }
+
 
 }

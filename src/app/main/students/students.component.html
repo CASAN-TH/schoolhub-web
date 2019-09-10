@@ -71,7 +71,7 @@
             <mat-cell *matCellDef="let student">
               <div fxFlex="row" fxLayoutAlign="end center">
                 <button mat-icon-button aria-label="More">
-                  <mat-icon class="secondary-text">more_vert</mat-icon>
+                  <mat-icon class="secondary-text" (click)="onEditstudents(student)">more_vert</mat-icon>
                 </button>
               </div>
             </mat-cell>
@@ -92,6 +92,6 @@
 </div>
 <!-- ADD CONTACT BUTTON -->
 <button mat-fab class="accent" id="add-contact-button" aria-label="add contact">
-  <mat-icon>person_add</mat-icon>
+  <mat-icon (click)="onAdstudents()">person_add</mat-icon>
 </button>
 <!-- / ADD CONTACT BUTTON -->

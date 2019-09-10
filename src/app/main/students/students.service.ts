@@ -24,7 +24,7 @@ export class StudentsService {
   resolve(route: ActivatedRouteSnapshot) {
     console.log("resolve");
     this.routeParam = route.params;
-    if (!this.routeParam.studentId) {
+    if (!this.routeParam.studentsId) {
       console.log("no");
      return this.getstudentsDataList();
     } else {
@@ -42,7 +42,7 @@ export class StudentsService {
     });
   }
 
-  getstudentsbyId(studentId) {
+  getstudentsbyId(studentsId) {
     console.log("getstudentsbyId");
   }
 

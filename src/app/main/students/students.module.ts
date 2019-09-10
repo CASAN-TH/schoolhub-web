@@ -11,12 +11,19 @@ import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 
 const routes = [
   {
-      path     : '**',
+      path     : '',
       component: StudentsComponent,
       canActivate: [AuthenGuardService],
       resolve: {
         students:StudentsService
       }
+  },{
+    path     : ':studentsId',
+    component: StudentsFormComponent,
+    canActivate: [AuthenGuardService],
+    resolve: {
+      student:StudentsService
+    }
   }
 ];
 
