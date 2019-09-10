@@ -28,8 +28,8 @@ const appRoutes: Routes = [
         loadChildren: './main/students/students.module#StudentsModule'
     },
     {
-        path        : 'couse',
-        loadChildren: './main/couse/couse.module#CouseModule'
+        path        : 'courses',
+        loadChildren: './main/courses/courses.module#CoursesModule'
     },
     {
         path      : '**',

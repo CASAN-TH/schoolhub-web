@@ -6,6 +6,10 @@ export const locale = {
             'STUDENTS'        : {
                 'TITLE': 'ระเบียนนักเรียน',
                 'BADGE': '15'
+            },
+            'COURSES'        : {
+                'TITLE': 'งานวิชาการและวัดผล',
+                'BADGE': '25'
             }
         }
     }
