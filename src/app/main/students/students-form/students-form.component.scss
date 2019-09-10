@@ -1,0 +1,87 @@
+@import "src/@fuse/scss/fuse";
+
+.aaa {
+  top: 30px;
+  height: 400px;
+}
+
+.students-form {
+  @include media-breakpoint("xs") {
+    width: 100%;
+  }
+
+  @include media-breakpoint("gt-xs") {
+    width: 400px;
+  }
+
+  .mat-card {
+    padding: 0px;
+
+    .mat-toolbar {
+      flex: 1 0 auto;
+      min-height: initial;
+    }
+
+    .toolbar-bottom {
+      height: auto;
+    }
+  }
+
+  .dialog-content-wrapper {
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@import "src/@fuse/scss/fuse";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    height: 100%;
+
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+        @include media-breakpoint(gt-sm) {
+            padding: 24px 4px 24px 24px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            flex: 0 1 auto;
+            padding: 0;
+            border-radius: 8px;
+
+            @include media-breakpoint(gt-sm) {
+                @include mat-elevation(1);
+            }
+
+            > .header {
+                flex: 0 1 auto;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            }
+
+            > .content {
+                flex: 0 1 auto;
+            }
+        }
+
+    }
+}
+
+
+.example-card {
+  max-width: 900px;
+  margin-left: 12%;
+}
+.mat-form-field-flex {
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  width: 100%;
+}
