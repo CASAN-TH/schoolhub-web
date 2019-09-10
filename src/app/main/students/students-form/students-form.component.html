@@ -1,3 +1,231 @@
-<p>
-  students-form works!
-</p>
+<mat-card class="example-card" style="text-align: center">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>AdStudent</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="studentsForm">
+
+      <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100" class="pt-20">
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Room</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="room" formControlName="room" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Studentnumber</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="studentnumber" formControlName="studentnumber" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Studentid</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="studentid" formControlName="studentid" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Prefix</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="prefix" formControlName="prefix" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Firstname</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="firstname" formControlName="firstname" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Lastname</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="lastname" formControlName="lastname" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Identificationnumber</mat-label>
+            <mat-icon matSuffix class="secondary-text">work</mat-icon>
+            <input name="identificationnumber" formControlName="identificationnumber" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Attendancedate</mat-label>
+            <input matInput [matDatepicker]="birthdayDatePicker" name="attendancedate" formControlName="attendancedate">
+            <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #birthdayDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Oldschool</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="oldschool" formControlName="oldschool" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Province</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="province" formControlName="province" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="40">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Lastfloor</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="lastfloor" formControlName="lastfloor" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Birthday</mat-label>
+            <input matInput [matDatepicker]="birthdayDatePicker1" name="birthday" formControlName="birthday">
+            <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker1"></mat-datepicker-toggle>
+            <mat-datepicker #birthdayDatePicker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Sex</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="sex" formControlName="sex" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="40">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Nationality</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="nationality" formControlName="nationality" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="40">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Religion</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="religion" formControlName="religion" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="45">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Fatherfullname</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="fatherfullname" formControlName="fatherfullname" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="45">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Motherfullname</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="motherfullname" formControlName="motherfullname" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Phonenumber</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="phonenumber" formControlName="phonenumber" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Pp1set</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="pp1set" formControlName="pp1set" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Pp1number</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="pp1number" formControlName="pp1number" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Pp2number</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="pp2number" formControlName="pp2number" matInput>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Enddateofapproval</mat-label>
+            <input matInput [matDatepicker]="birthdayDatePicker2" name="enddateofapproval"
+              formControlName="enddateofapproval">
+            <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker2"></mat-datepicker-toggle>
+            <mat-datepicker #birthdayDatePicker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="30">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Approvaldate</mat-label>
+            <input matInput [matDatepicker]="birthdayDatePicker3" name="approvaldate" formControlName="approvaldate">
+            <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker3"></mat-datepicker-toggle>
+            <mat-datepicker #birthdayDatePicker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+        &nbsp;
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="50">
+          <mat-form-field appearance="outline" fxFlex>
+            <mat-label>Cause</mat-label>
+            <mat-icon matSuffix class="secondary-text">home</mat-icon>
+            <input name="cause" matInput formControlName="cause">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+      <button *ngIf="students.room ==''" mat-button class="save-button" aria-label="SAVE" (click)="oncloseAdd()">
+        CANCEL
+      </button>
+      <button *ngIf="students.room ==''" mat-button class="save-button" [disabled]="studentsForm.invalid"
+        aria-label="SAVE" (click)="onAddNew()">
+        ADD
+      </button>
+
+      <button *ngIf="students.room !==''" mat-button class="save-button" aria-label="SAVE" (click)="onclpseEdit()">
+        CANCEL
+      </button>
+      <button *ngIf="students.room !==''" mat-button class="save-button" [disabled]="studentsForm.invalid"
+        aria-label="SAVE" (click)="onsaveEdit(studentsForm)">
+        SAVE
+      </button>
+    </div>
+  </mat-card-actions>
+
+</mat-card>
