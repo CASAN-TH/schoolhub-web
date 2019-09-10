@@ -41,7 +41,6 @@ export class CoursesComponent implements OnInit {
           this.yearmax =  parseInt(item.year);
         }
       });
-      console.log(this.yearmax)
       this.courses = result; 
     })
   }

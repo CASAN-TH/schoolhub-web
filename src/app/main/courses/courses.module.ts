@@ -5,9 +5,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { CoursesService } from './courses.service';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatMenuModule } from '@angular/material';
 import { CourseslistComponent } from './courseslist/courseslist.component';
 import { CourseComponent } from './courseslist/course/course.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import { OrderModule } from 'ngx-order-pipe';
+import { StudentsComponent } from './courseslist/students/students.component';
 
 const routes = [
   {
@@ -25,6 +29,11 @@ const routes = [
     resolve: {
       courses: CoursesService
     }
+  },
+  {
+    path: 'students/:year/:grade',
+    component: StudentsComponent,
+    canActivate: [AuthenGuardService],
   }
 ];
 
@@ -32,10 +41,16 @@ const routes = [
   declarations: [
     CoursesComponent,
     CourseslistComponent,
-    CourseComponent],
+    CourseComponent,
+    StudentsComponent],
   imports: [
     RouterModule.forChild(routes),
     MatIconModule,
+    MatTabsModule,
+    MatTableModule,
+    MatMenuModule,
+
+    OrderModule,
 
     TranslateModule,
 

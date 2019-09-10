@@ -1,3 +1,30 @@
-<p>
-  courseslist works!
-</p>
+<mat-tab-group>
+
+  <mat-tab label="ประถมศึกษา">
+    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100" class="pt-20 pl-10" >
+      <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" *ngFor="let course of level1 | orderBy: order;">
+        <app-course [list]="course">
+        </app-course>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="มัธยมศึกษาตอนต้น">
+    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100" class="pt-20">
+      <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" *ngFor="let course of level2 | orderBy: order;">
+        <app-course [list]="course">
+        </app-course>
+      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="มัธยมศึกษาตอนปลาย">
+    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100" class="pt-20">
+      <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" *ngFor="let course of level3 | orderBy: order;">
+        <app-course [list]="course">
+        </app-course>
+      </div>
+    </div>
+  </mat-tab>
+  
+</mat-tab-group>

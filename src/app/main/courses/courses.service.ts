@@ -12,12 +12,14 @@ import { environment } from 'environments/environment';
 export class CoursesService {
 
   onCoursesChanged: BehaviorSubject<any>;
+  onCourseChanged: BehaviorSubject<any>;
   routeParams: any;
 
   constructor(
     private http: HttpClient
   ) {
     this.onCoursesChanged = new BehaviorSubject([]);
+    this.onCourseChanged = new BehaviorSubject([]);
   }
   private authorizationHeader() {
     const token = window.localStorage.getItem(`token@${environment.appName}`);
@@ -51,7 +53,7 @@ export class CoursesService {
   getCourseYear(year): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(environment.apiUrl + '/api/courses/year/' + year, { headers: this.authorizationHeader() }).subscribe((res: any) => {
-        this.onCoursesChanged.next(res.data);
+        this.onCourseChanged.next(res.data);
       })
     })
   }
