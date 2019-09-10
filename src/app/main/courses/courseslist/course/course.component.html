@@ -5,7 +5,7 @@
     <span>{{list.name}}</span>
 
     <div fxFlex="0 1 auto">
-      <button (click) ="addPerson()" mat-icon-button aria-label="Example icon-button with a heart icon">
+      <button (click) ="addPerson(list.grade)" mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon [matBadge]="list.students ? list.students.length : 0" matBadgeColor="accent">group</mat-icon>
       </button>
     </div>
