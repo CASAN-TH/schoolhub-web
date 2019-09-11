@@ -51,16 +51,9 @@
       <th class="th-weight" mat-header-cell *matHeaderCellDef></th>
       <td class="td-weight" mat-cell *matCellDef="let structure" (click)="editSubject(structure)">
         <button mat-icon-button aria-label="More">
-          <mat-icon class="secondary-text" (click)="deletesubject(structure)">clear</mat-icon>
+          <mat-icon class="secondary-text" (click)="deletesubject(structure)">delete</mat-icon>
         </button>
       </td>
-      <!-- <mat-cell *matCellDef="let structure">
-        <div fxFlex="row" fxLayoutAlign="end center">
-          <button mat-icon-button aria-label="More">
-            <mat-icon class="secondary-text" (click)="deletesubject(structure)">clear</mat-icon>
-          </button>
-        </div>
-      </mat-cell> -->
     </ng-container>
 
     <ng-container matColumnDef="disclaimer">
