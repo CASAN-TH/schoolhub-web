@@ -1,35 +1,96 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoursesService } from '../../courses.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SubjectdialogComponent } from './subjectdialog/subjectdialog.component';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
-  styleUrls: ['./course.component.scss']
+  styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
+
   @Input()
-  list:any;
+  list: any;
 
   course: any;
-  displayedColumns: string[] = ['numbers', 'id', 'name', 'type','time','weight'];
+  displayedColumns: string[] = ['numbers', 'id', 'name', 'type', 'time', 'weight', 'buttons'];
+
   dataSource: any;
-  
+
   constructor(
     private route: Router,
-    private CoursesService: CoursesService
+    private CoursesService: CoursesService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
     this.CoursesService.onCourseChanged
-    .subscribe((res: any)=>{
-      this.course = res;
-    })
+      .subscribe((res: any) => {
+        this.course = res;
+      })
     this.dataSource = this.list.structures;
-    console.log(this.list);
   }
 
-  addPerson(grade){
+  addPerson(grade) {
     this.route.navigate(['courses/students/' + this.list.year + '/' + grade])
   }
+
+  addSubject(Actiontype) {
+    this.openDialog(Actiontype, null);
+  }
+
+  editSubject(data) {
+    this.openDialog('edit', data);
+  }
+
+  deletesubject(data) {
+
+    const index: number = this.dataSource.indexOf(data);
+    if (index !== -1) {
+      console.log(data);
+      this.dataSource.splice(index, 1);
+      this.list.structures = this.dataSource;
+      this.CoursesService.courseSubjectEdit(this.list);
+    }
+  }
+
+  openDialog(Actiontype, data) {
+    let body = {
+      actiontype: Actiontype,
+      data: data
+    }
+    const dialogRef = this.dialog.open(SubjectdialogComponent, {
+      width: '300px',
+      height: '85%',
+      data: body
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result._id) {
+          let x = 0;
+          this.dataSource.forEach(item => {
+            if (item._id === result._id) {
+              this.dataSource[x] = result;
+            }
+            x += 1;
+          });
+
+        } else {
+          result.seq = this.dataSource.length + 1;
+          this.dataSource.push(result);
+        }
+        this.list.structures = this.dataSource;
+        this.CoursesService.courseSubjectEdit(this.list);
+      }
+    });
+  }
+
 }
+
+
+
+

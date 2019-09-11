@@ -61,8 +61,18 @@ export class CoursesService {
   cloneCourseYear(year): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.post(environment.apiUrl + "/api/courses/clone/" + year.from + "/" + year.to, null, { headers: this.authorizationHeader() }).subscribe((res: any) => {
-        console.log(res);
+        this.onCoursesChanged.next(res.data);
       })
     });
+  }
+
+  courseSubjectEdit(data): Promise<any>{
+    return new Promise((resolve, reject) =>{
+      console.log(data);
+      this.http.put(environment.apiUrl + "/api/courses/" + data._id, data, { headers: this.authorizationHeader() }).subscribe((res: any) =>{
+        console.log(res)
+        this.getCourseYear(res.data.year);
+      })
+    })
   }
 }

@@ -5,14 +5,25 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { CoursesService } from './courses.service';
-import { MatIconModule, MatButtonModule, MatBadgeModule } from '@angular/material';
+import {
+  MatIconModule,
+  MatButtonModule,
+  MatBadgeModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule
+} from '@angular/material';
 import { CourseslistComponent } from './courseslist/courseslist.component';
 import { CourseComponent } from './courseslist/course/course.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { OrderModule } from 'ngx-order-pipe';
 import { StudentsComponent } from './courseslist/students/students.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { SubjectdialogComponent } from './courseslist/course/subjectdialog/subjectdialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 const routes = [
   {
@@ -43,7 +54,8 @@ const routes = [
     CoursesComponent,
     CourseslistComponent,
     CourseComponent,
-    StudentsComponent],
+    StudentsComponent,
+    SubjectdialogComponent],
   imports: [
     RouterModule.forChild(routes),
     MatIconModule,
@@ -52,12 +64,20 @@ const routes = [
     MatMenuModule,
     MatButtonModule,
     MatBadgeModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    CdkTableModule,
 
     OrderModule,
 
     TranslateModule,
 
     FuseSharedModule
+  ],
+  entryComponents: [
+    SubjectdialogComponent
   ],
   exports: [
     CoursesComponent

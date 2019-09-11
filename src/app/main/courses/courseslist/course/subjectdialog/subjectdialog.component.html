@@ -1,0 +1,73 @@
+<div fxLayout="column" fxLayout.gt-sm="row wrap">
+
+  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="100">
+    <h2>เพิ่มรายวิชา</h2>
+  </div>
+
+  <div fxLayout="row">
+    <form [formGroup]="subjectForm">
+      <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100" class="pt-20">
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="100">
+          <mat-form-field appearance="outline">
+            <mat-label>รหัสวิชา</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="code" formControlName="code" matInput>
+          </mat-form-field>
+        </div>
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="100">
+          <mat-form-field appearance="outline">
+            <mat-label>ชื่อวิชา</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="subject" formControlName="subject" matInput>
+          </mat-form-field>
+        </div>
+        <div class="text-form" fxFlex="100" fxFlex.gt-sm="100">
+          <mat-form-field appearance="outline" class="text-hours">
+            <mat-label>ประเภท</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <!-- <input name="course_type" formControlName="course_type" matInput> -->
+            <mat-select name="course_type" formControlName="course_type">
+                <mat-option value ="">เลือกประเภท</mat-option>
+                <mat-option value="พื้นฐาน">พื้นฐาน</mat-option>
+                <mat-option value="เพิ่มเติม">เพิ่มเติม</mat-option>
+                <mat-option value="กิจกรรม">กิจกรรม</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <mat-select [(value)]="types">
+                <mat-option>เลือกประเภท</mat-option>
+                <mat-option value="พื้นฐาน">พื้นฐาน</mat-option>
+                <mat-option value="เพิ่มเติม">เพิ่มเติม</mat-option>
+                <mat-option value="กิจกรรม">กิจกรรม</mat-option>
+            </mat-select>
+            <input [name]="type" formControlName="type" matInput>
+          </mat-form-field> -->
+        </div>
+        <div class="text-form" fxFlex="100" fxFlex.gt-sm="100">
+          <mat-form-field appearance="outline" class="text-hours">
+            <mat-label>เวลาเรียน</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="hours" formControlName="hours" matInput>
+          </mat-form-field>
+        </div>
+        <div class="text-form" fxFlex="100" fxFlex.gt-sm="100">
+          <mat-form-field appearance="outline" class="text-weight">
+            <mat-label>น้ำหนัก</mat-label>
+            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <input name="weight" formControlName="weight" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="50">
+    <button mat-button aria-label="SAVE" (click)="onclose()">
+      ยกเลิก
+    </button>
+  </div>
+  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="50">
+    <button mat-button aria-label="SAVE" (click)="oncloseAdd()">
+      บันทึก
+    </button>
+  </div>
+</div>
