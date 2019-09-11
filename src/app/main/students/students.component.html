@@ -54,16 +54,25 @@
               </p>
             </mat-cell>
           </ng-container>
-
-          <!-- Company Column -->
-          <ng-container matColumnDef="company">
-            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>Company</mat-header-cell>
-            <mat-cell *matCellDef="let student" fxHide fxShow.gt-lg>
-              <p class="company text-truncate">
-                {{student.company}}
+          <!-- Phone Column -->
+          <ng-container matColumnDef="fatherfullname">
+            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล บิดา</mat-header-cell>
+            <mat-cell *matCellDef="let student" fxHide fxShow.gt-md>
+              <p class="phone text-truncate">
+                {{student.fatherfullname}}
               </p>
             </mat-cell>
           </ng-container>
+          <!-- Phone Column -->
+          <ng-container matColumnDef="motherfullname">
+            <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล มารดา</mat-header-cell>
+            <mat-cell *matCellDef="let student" fxHide fxShow.gt-md>
+              <p class="phone text-truncate">
+                {{student.motherfullname}}
+              </p>
+            </mat-cell>
+          </ng-container>
+
 
           <!-- Buttons Column -->
           <ng-container matColumnDef="buttons">
