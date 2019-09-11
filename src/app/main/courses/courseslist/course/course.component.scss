@@ -37,3 +37,12 @@
 .td-weight{
     padding-left: 4%;
 }
+
+td.mat-cell{
+    text-align: start;
+    padding-left: 10px;
+}
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 0px;
+}
