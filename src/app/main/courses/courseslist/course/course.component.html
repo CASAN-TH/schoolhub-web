@@ -21,14 +21,13 @@
     </ng-container>
 
     <ng-container matColumnDef="id">
-      <th class="th-4" mat-header-cell *matHeaderCellDef> รหัสวิชา </th>
+      <th class="th-4" mat-header-cell *matHeaderCellDef> รหัส </th>
       <td class="td-4" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.code}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <th class="th-12" mat-header-cell *matHeaderCellDef> ชื่อวิชา </th>
-      <td class="td-12" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.subject}}
-      </td>
+      <td class="td-12" mat-cell *matCellDef="let structure"  (click)="editSubject(structure)"> {{structure.subject}}</td>
     </ng-container>
 
     <ng-container matColumnDef="type">
@@ -37,7 +36,7 @@
     </ng-container>
 
     <ng-container matColumnDef="time">
-      <th class="th-time" mat-header-cell *matHeaderCellDef> เวลาเรียน/ปี </th>
+      <th class="th-time" mat-header-cell *matHeaderCellDef> เวลาเรียน </th>
       <td class="td-time" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.hours}}
       </td>
     </ng-container>
@@ -66,8 +65,11 @@
 
     <ng-container matColumnDef="disclaimer">
       <td mat-footer-cell *matFooterCellDef colspan="6" (click)="addSubject('new')">
-        <mat-icon>add_circle_outline</mat-icon>
-        <label>เพิ่มรายวิชา</label>
+
+        <button mat-icon-button>
+          <mat-icon>add_circle_outline</mat-icon>
+          <label>เพิ่มรายวิชา</label>
+        </button>
       </td>
     </ng-container>
 
