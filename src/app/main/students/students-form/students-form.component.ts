@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../students.service';
-
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { locale as english } from '../i18n/en';
+import { locale as thai } from '../i18n/th';
 @Component({
   selector: 'app-students-form',
   templateUrl: './students-form.component.html',
@@ -12,70 +14,52 @@ export class StudentsFormComponent implements OnInit {
 
   studentsForm: FormGroup;
   students: any = [];
+  class: Array<any> = [
+    { value: 'p1', viewValue: 'ประถมศึกษาปีที่ 1' },
+    { value: 'p2', viewValue: 'ประถมศึกษาปีที่ 2' },
+    { value: 'p3', viewValue: 'ประถมศึกษาปีที่ 3' }
+  ];
+
+  prefixs: Array<any> = [
+    { value: 'เด็กชาย', viewValue: 'เด็กชาย' },
+    { value: 'เด็กหญิง', viewValue: 'เด็กหญิง' },
+    { value: 'นาย', viewValue: 'นาย' },
+    { value: 'นางสาว', viewValue: 'นางสาว' }
+  ];
+
+  sexs: Array<any> = [
+    { value: 'ชาย', viewValue: 'ชาย' },
+    { value: 'หญิง', viewValue: 'หญิง' }
+  ];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private studentsService: StudentsService,
-    private formBuilder: FormBuilder, ) { }
+    private formBuilder: FormBuilder,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService ) { 
+      this._fuseTranslationLoaderService.loadTranslations(english, thai);
+    }
 
   ngOnInit() {
-    this.studentsForm = this.formBuilder.group({
-      room: ['', Validators.required],
-      studentnumber: ['', Validators.required],
-      studentid: ['', Validators.required],
-      prefix: ['', Validators.required],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      identificationnumber: ['', Validators.required],
-      attendancedate: ['', Validators.required],
-      oldschool: ['', Validators.required],
-      province: ['', Validators.required],
-      lastfloor: ['', Validators.required],
-      birthday: ['', Validators.required],
-      sex: ['', Validators.required],
-      nationality: ['', Validators.required],
-      religion: ['', Validators.required],
-      fatherfullname: ['', Validators.required],
-      motherfullname: ['', Validators.required],
-      phonenumber: ['', Validators.required],
-      pp1set: ['', Validators.required],
-      pp1number: ['', Validators.required],
-      pp2number: ['', Validators.required],
-      enddateofapproval: ['', Validators.required],
-      approvaldate: ['', Validators.required],
-      cause: ['', Validators.required]
-    });
 
     this.studentsService.onDataChanged.subscribe((res: any) => {
       this.students = res;
       // console.log(this.students);
       if (!this.students) {
         this.students = {
+          class: "",
           room: "",
-          studentnumber: "",
           studentid: "",
           prefix: "",
           firstname: "",
           lastname: "",
           identificationnumber: "",
-          attendancedate: "",
-          oldschool: "",
-          province: "",
-          lastfloor: "",
           birthday: "",
           sex: "",
-          nationality: "",
-          religion: "",
           fatherfullname: "",
           motherfullname: "",
           phonenumber: "",
-          pp1set: "",
-          pp1number: "",
-          pp2number: "",
-          enddateofapproval: "",
-          approvaldate: "",
-          cause: ""
         }
       }
       this.studentsForm = this.createStudentsForm();
@@ -84,30 +68,19 @@ export class StudentsFormComponent implements OnInit {
   createStudentsForm(): FormGroup {
     return this.formBuilder.group({
       _id: [this.students._id],
+      class: [this.students.class, Validators.required],
       room: [this.students.room],
-      studentnumber: [this.students.studentnumber],
-      studentid: [this.students.studentid],
-      prefix: [this.students.prefix],
-      firstname: [this.students.firstname],
-      lastname: [this.students.lastname],
-      identificationnumber: [this.students.identificationnumber],
-      attendancedate: [this.students.attendancedate],
-      oldschool: [this.students.oldschool],
-      province: [this.students.province],
-      lastfloor: [this.students.lastfloor],
-      birthday: [this.students.birthday],
-      sex: [this.students.sex],
-      nationality: [this.students.nationality],
-      religion: [this.students.religion],
-      fatherfullname: [this.students.fatherfullname],
-      motherfullname: [this.students.motherfullname],
-      phonenumber: [this.students.phonenumber],
-      pp1set: [this.students.pp1set],
-      pp1number: [this.students.pp1number],
-      pp2number: [this.students.pp2number],
-      enddateofapproval: [this.students.enddateofapproval],
-      approvaldate: [this.students.approvaldate],
-      cause: [this.students.cause]
+      studentid: [this.students.studentid, Validators.required],
+      prefix: [this.students.prefix, Validators.required],
+      firstname: [this.students.firstname, Validators.required],
+      lastname: [this.students.lastname, Validators.required],
+      identificationnumber: [this.students.identificationnumber, Validators.required],
+      birthday: [this.students.birthday, Validators.required],
+      sex: [this.students.sex, Validators.required],
+      fatherfullname: [this.students.fatherfullname, Validators.required],
+      motherfullname: [this.students.motherfullname, Validators.required],
+      phonenumber: [this.students.phonenumber, Validators.required],
+
     });
 
   }
