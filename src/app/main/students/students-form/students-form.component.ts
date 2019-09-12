@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../students.service';
@@ -6,11 +6,14 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
 
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { fuseAnimations } from '@fuse/animations';
 @Component({
   selector: 'app-students-form',
   templateUrl: './students-form.component.html',
-  styleUrls: ['./students-form.component.scss']
+  styleUrls: ['./students-form.component.scss'],
+  animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsFormComponent implements OnInit {
 
@@ -111,5 +114,9 @@ export class StudentsFormComponent implements OnInit {
     this._location.back();
   }
 
-  
+  goBack() {
+    this._location.back();
+  }
+
+
 }

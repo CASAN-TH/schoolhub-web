@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
 import { locale as english } from './i18n/en';
@@ -6,11 +6,14 @@ import { locale as thai } from './i18n/th';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StudentsService } from './students.service';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.scss']
+  styleUrls: ['./students.component.scss'],
+  animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsComponent implements OnInit {
 
@@ -29,7 +32,10 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentsService.onDataChanged.subscribe((res: any) => {
-      this.students = res;
+      if (res) {
+        this.students = res;
+      }
+
       // console.log(this.students);
     });
   }
