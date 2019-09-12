@@ -16,7 +16,7 @@
 
     <ng-container matColumnDef="numbers">
       <th style="padding-left: 3%" mat-header-cell *matHeaderCellDef> ลำดับ </th>
-      <td style="padding-left: 5%" mat-cell *matCellDef="let element; let i = index;" >
+      <td style="padding-left: 5%" mat-cell *matCellDef="let element; let i = index;">
         {{i + 1}} </td>
     </ng-container>
 
@@ -27,7 +27,8 @@
 
     <ng-container matColumnDef="name">
       <th class="th-12" mat-header-cell *matHeaderCellDef> ชื่อวิชา </th>
-      <td class="td-12" mat-cell *matCellDef="let structure"  (click)="editSubject(structure)"> {{structure.subject}}</td>
+      <td class="td-12" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.subject}}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="type">
@@ -37,13 +38,15 @@
 
     <ng-container matColumnDef="time">
       <th class="th-time" mat-header-cell fxHide fxShow.gt-md *matHeaderCellDef> เวลาเรียน </th>
-      <td class="td-time" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.hours}}
+      <td class="td-time" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)">
+        {{structure.hours}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="weight">
       <th class="th-weight" mat-header-cell fxHide fxShow.gt-md *matHeaderCellDef> น้ำหนัก </th>
-      <td class="td-weight" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.weight}}
+      <td class="td-weight" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)">
+        {{structure.weight}}
       </td>
     </ng-container>
 
@@ -57,7 +60,7 @@
     </ng-container>
 
     <ng-container matColumnDef="disclaimer">
-      <td mat-footer-cell *matFooterCellDef colspan="6" >
+      <td mat-footer-cell *matFooterCellDef colspan="6">
         <button mat-stroked-button color="accent" (click)="addSubject('new')">
           <mat-icon>add_circle_outline</mat-icon>
           <label>เพิ่มรายวิชา</label>

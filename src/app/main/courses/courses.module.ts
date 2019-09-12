@@ -11,7 +11,8 @@ import {
   MatBadgeModule,
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCardModule
 } from '@angular/material';
 import { CourseslistComponent } from './courseslist/courseslist.component';
 import { CourseComponent } from './courseslist/course/course.component';
@@ -71,6 +72,7 @@ const routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatCardModule,
     CdkTableModule,
 
     OrderModule,
