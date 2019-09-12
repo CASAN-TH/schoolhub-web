@@ -57,9 +57,8 @@
     </ng-container>
 
     <ng-container matColumnDef="disclaimer">
-      <td mat-footer-cell *matFooterCellDef colspan="6" (click)="addSubject('new')">
-
-        <button mat-icon-button>
+      <td mat-footer-cell *matFooterCellDef colspan="6" >
+        <button mat-stroked-button color="accent" (click)="addSubject('new')">
           <mat-icon>add_circle_outline</mat-icon>
           <label>เพิ่มรายวิชา</label>
         </button>
