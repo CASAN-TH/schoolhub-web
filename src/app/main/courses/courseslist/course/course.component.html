@@ -5,7 +5,7 @@
     <span>{{list.name}}</span>
 
     <div fxFlex="0 1 auto">
-      <button (click)="addPerson(list.grade)" mat-icon-button aria-label="Example icon-button with a heart icon">
+      <button (click)="addPerson(list)" mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon [matBadge]="list.students ? list.students.length : 0" matBadgeColor="accent">group</mat-icon>
       </button>
     </div>
@@ -36,14 +36,14 @@
     </ng-container>
 
     <ng-container matColumnDef="time">
-      <th class="th-time" mat-header-cell *matHeaderCellDef> เวลาเรียน </th>
-      <td class="td-time" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.hours}}
+      <th class="th-time" mat-header-cell fxHide fxShow.gt-md *matHeaderCellDef> เวลาเรียน </th>
+      <td class="td-time" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.hours}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="weight">
-      <th class="th-weight" mat-header-cell *matHeaderCellDef> น้ำหนัก </th>
-      <td class="td-weight" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.weight}}
+      <th class="th-weight" mat-header-cell fxHide fxShow.gt-md *matHeaderCellDef> น้ำหนัก </th>
+      <td class="td-weight" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.weight}}
       </td>
     </ng-container>
 

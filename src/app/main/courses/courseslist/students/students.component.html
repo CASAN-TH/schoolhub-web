@@ -1,3 +1,69 @@
-<p>
-  students works!
-</p>
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+  <div class="content">
+
+    <div class="center p-24 pb-56 pr-sm-92" fusePerfectScrollbar>
+
+      <div class="content">
+        <mat-table #table [dataSource]="students">
+
+          <ng-container matColumnDef="seq">
+            <mat-header-cell *matHeaderCellDef>ลำดับ</mat-header-cell>
+            <mat-cell *matCellDef="let students">
+              {{students.seq}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="student_no">
+            <mat-header-cell *matHeaderCellDef>รหัสนักเรียน</mat-header-cell>
+            <mat-cell *matCellDef="let students">
+              {{students.student_no}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>ชื่อ-นามสกุล</mat-header-cell>
+            <mat-cell *matCellDef="let students">
+              {{students.title}} {{students.firstname}} {{students.lastname}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="citizenid">
+            <mat-header-cell *matHeaderCellDef>รหัสประจำตัวประชาชน</mat-header-cell>
+            <mat-cell *matCellDef="let students">
+              {{students.citizenid}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="buttons">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let student">
+              <div fxFlex="row" fxLayoutAlign="end center">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>assessment</mat-icon>
+                    <span>วัดผลการศึกษา</span>
+                  </button>
+                </mat-menu>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let student; columns: displayedColumns;" class="student" matRipple>
+          </mat-row>
+        </mat-table>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<button mat-fab class="accent" id="add-contact-button" aria-label="add contact">
+  <mat-icon (click)="onAdstudents()">person_add</mat-icon>
+</button>

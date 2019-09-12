@@ -46,6 +46,9 @@ const routes = [
     path: 'students/:year/:grade',
     component: StudentsComponent,
     canActivate: [AuthenGuardService],
+    resolve: {
+      courses: CoursesService
+    }
   }
 ];
 

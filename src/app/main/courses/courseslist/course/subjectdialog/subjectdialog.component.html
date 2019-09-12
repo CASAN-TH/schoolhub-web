@@ -1,30 +1,30 @@
 <div fxLayout="column" fxLayout.gt-sm="row wrap">
 
-  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="100">
+  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
     <h2>เพิ่มรายวิชา</h2>
   </div>
 
   <div fxLayout="row">
     <form [formGroup]="subjectForm">
-      <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100" class="pt-20">
-        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="100">
-          <mat-form-field appearance="outline">
+      <div fxLayout="column" fxFlex="100">
+        <div fxLayoutAlign="center" fxFlex="100">
+          <mat-form-field appearance="outline" fxFlex>
             <mat-label>รหัสวิชา</mat-label>
-            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <mat-icon matSuffix class="secondary-text">assignment</mat-icon>
             <input name="code" formControlName="code" matInput>
           </mat-form-field>
         </div>
-        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="100">
-          <mat-form-field appearance="outline">
+        <div fxLayoutAlign="center" fxFlex="100">
+          <mat-form-field appearance="outline" fxFlex>
             <mat-label>ชื่อวิชา</mat-label>
-            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <mat-icon matSuffix class="secondary-text">assignment</mat-icon>
             <input name="subject" formControlName="subject" matInput>
           </mat-form-field>
         </div>
-        <div class="text-form" fxFlex="100" fxFlex.gt-sm="100">
-          <mat-form-field appearance="outline" class="text-hours">
+        <div fxFlex="100">
+          <mat-form-field appearance="outline" fxFlex>
             <mat-label>ประเภท</mat-label>
-            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <mat-icon matSuffix class="secondary-text">assignment</mat-icon>
             <!-- <input name="course_type" formControlName="course_type" matInput> -->
             <mat-select name="course_type" formControlName="course_type">
               <mat-option value="">เลือกประเภท</mat-option>
@@ -34,17 +34,17 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="text-form" fxFlex="100" fxFlex.gt-sm="100">
-          <mat-form-field appearance="outline" class="text-hours">
+        <div fxFlex="100">
+          <mat-form-field appearance="outline" fxFlex>
             <mat-label>เวลาเรียน</mat-label>
-            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <mat-icon matSuffix class="secondary-text">access_time</mat-icon>
             <input type="number" name="hours" formControlName="hours" matInput>
           </mat-form-field>
         </div>
-        <div class="text-form" fxFlex="100" fxFlex.gt-sm="100">
-          <mat-form-field appearance="outline" class="text-weight">
+        <div fxFlex="100">
+          <mat-form-field appearance="outline" fxFlex>
             <mat-label>น้ำหนัก</mat-label>
-            <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+            <mat-icon matSuffix class="secondary-text">assignment</mat-icon>
             <input type="number" name="weight" formControlName="weight" matInput>
           </mat-form-field>
         </div>
@@ -52,14 +52,17 @@
     </form>
   </div>
 
-  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="50">
+  <div fxLayout="row" fxFlex="100">
+  <div fxLayoutAlign="center"  fxFlex="50">
     <button mat-button aria-label="ยกเลิก" (click)="onclose()">
       ยกเลิก
     </button>
   </div>
-  <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-sm="50">
+  <div fxLayoutAlign="center" fxFlex="50">
     <button mat-button aria-label="บันทึก" [disabled]="subjectForm.invalid" (click)="oncloseAdd()">
       บันทึก
     </button>
   </div>
+</div>
+
 </div>

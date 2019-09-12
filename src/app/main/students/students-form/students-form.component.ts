@@ -37,9 +37,9 @@ export class StudentsFormComponent implements OnInit {
     private route: ActivatedRoute,
     private studentsService: StudentsService,
     private formBuilder: FormBuilder,
-    private _fuseTranslationLoaderService: FuseTranslationLoaderService ) { 
-      this._fuseTranslationLoaderService.loadTranslations(english, thai);
-    }
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService) {
+    this._fuseTranslationLoaderService.loadTranslations(english, thai);
+  }
 
   ngOnInit() {
 
@@ -86,14 +86,19 @@ export class StudentsFormComponent implements OnInit {
   }
   onAddNew() {
     // console.log("onAddNew");
-    this.studentsService.adStudentsData(this.studentsForm.getRawValue());
-    this.router.navigate(['students']);
+    this.studentsService.adStudentsData(this.studentsForm.getRawValue()).then(value => {
+      this.router.navigate(['students']);
+    });
+
+
   }
 
   onsaveEdit() {
     console.log("onsaveEdit");
-    this.studentsService.editStudentsData(this.studentsForm.getRawValue());
-    this.router.navigate(['students']);
+    this.studentsService.editStudentsData(this.studentsForm.getRawValue()).then(value => {
+      this.router.navigate(['students']);
+    });
+
   }
 
   oncloseAdd() {

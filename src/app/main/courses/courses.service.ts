@@ -36,7 +36,9 @@ export class CoursesService {
         to: this.routeParams.year
       }
       this.cloneCourseYear(bodyyear);
-    } else if (this.routeParams.actiontype === 'read') {
+    }else if (this.routeParams.actiontype === 'read') {
+      this.getCourseYear(this.routeParams.year);
+    }else{
       this.getCourseYear(this.routeParams.year);
     }
     this.getCouresList()

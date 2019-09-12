@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { CoursesService } from '../../courses.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SubjectdialogComponent } from './subjectdialog/subjectdialog.component';
@@ -34,8 +34,8 @@ export class CourseComponent implements OnInit {
     this.dataSource = this.list.structures;
   }
 
-  addPerson(grade) {
-    this.route.navigate(['courses/students/' + this.list.year + '/' + grade])
+  addPerson(course) {
+    this.route.navigate(['courses/students/' + this.list.year + '/' + course.grade]);
   }
 
   addSubject(Actiontype) {
@@ -64,7 +64,6 @@ export class CourseComponent implements OnInit {
     }
     const dialogRef = this.dialog.open(SubjectdialogComponent, {
       width: '300px',
-      height: '85%',
       data: body
     });
 
