@@ -1,7 +1,7 @@
-<mat-card class="example-card" style="text-align: center">
+<mat-card class="example-card" >
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>AdStudent</mat-card-title>
+    <mat-card-title>{{ !students._id ? "Add New Student" : "Edit Student" }}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
@@ -125,18 +125,15 @@
   </mat-card-content>
   <mat-card-actions>
     <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
-      <button *ngIf="students.room ==''" mat-button class="save-button" aria-label="SAVE" (click)="oncloseAdd()">
+      <button  mat-button class="save-button"  (click)="onClose()">
         CANCEL
       </button>
-      <button *ngIf="students.room ==''" mat-button class="save-button" [disabled]="studentsForm.invalid"
+      <button *ngIf="!students._id" mat-button class="save-button" [disabled]="studentsForm.invalid"
         aria-label="SAVE" (click)="onAddNew()">
         ADD
       </button>
 
-      <button *ngIf="students.room !==''" mat-button class="save-button" aria-label="SAVE" (click)="onclpseEdit()">
-        CANCEL
-      </button>
-      <button *ngIf="students.room !==''" mat-button class="save-button" [disabled]="studentsForm.invalid"
+      <button *ngIf="students._id" mat-button class="save-button" [disabled]="studentsForm.invalid"
         aria-label="SAVE" (click)="onsaveEdit(studentsForm)">
         SAVE
       </button>

@@ -5,6 +5,8 @@ import { StudentsService } from '../students.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
+
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-students-form',
   templateUrl: './students-form.component.html',
@@ -37,6 +39,7 @@ export class StudentsFormComponent implements OnInit {
     private route: ActivatedRoute,
     private studentsService: StudentsService,
     private formBuilder: FormBuilder,
+    private _location: Location,
     private _fuseTranslationLoaderService: FuseTranslationLoaderService) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -87,7 +90,8 @@ export class StudentsFormComponent implements OnInit {
   onAddNew() {
     // console.log("onAddNew");
     this.studentsService.adStudentsData(this.studentsForm.getRawValue()).then(value => {
-      this.router.navigate(['students']);
+      //this.router.navigate(['students']);
+      this._location.back();
     });
 
 
@@ -96,16 +100,16 @@ export class StudentsFormComponent implements OnInit {
   onsaveEdit() {
     console.log("onsaveEdit");
     this.studentsService.editStudentsData(this.studentsForm.getRawValue()).then(value => {
-      this.router.navigate(['students']);
+      // this.router.navigate(['students']);
+      this._location.back();
     });
 
   }
 
-  oncloseAdd() {
-    this.router.navigate(['students']);
+  onClose() {
+    //this.router.navigate(['students']);
+    this._location.back();
   }
 
-  onclpseEdit() {
-    this.router.navigate(['students']);
-  }
+  
 }
