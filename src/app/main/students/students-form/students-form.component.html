@@ -151,17 +151,17 @@
       </div>
       <div fxLayout="row">
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
-          <button mat-button class="save-button" (click)="onClose()">
+          <button mat-stroked-button color="warn"  (click)="onClose()">
             CANCEL
           </button>
         </div>
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
-          <button *ngIf="!students._id" mat-button class="save-button" [disabled]="studentsForm.invalid"
+          <button *ngIf="!students._id" mat-stroked-button color="accent"   [disabled]="studentsForm.invalid"
             aria-label="SAVE" (click)="onAddNew()">
             ADD
           </button>
 
-          <button *ngIf="students._id" mat-button class="save-button" [disabled]="studentsForm.invalid"
+          <button *ngIf="students._id" mat-stroked-button color="accent"   [disabled]="studentsForm.invalid"
             aria-label="SAVE" (click)="onsaveEdit(studentsForm)">
             SAVE
           </button>
