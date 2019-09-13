@@ -10,6 +10,10 @@ export const locale = {
             'COURSES'        : {
                 'TITLE': 'งานวิชาการและวัดผล',
                 'BADGE': '25'
+            },
+            'ADMISSIONS'        : {
+                'TITLE': 'การรับสมัครนักเรียน',
+                'BADGE': '25'
             }
         }
     }
