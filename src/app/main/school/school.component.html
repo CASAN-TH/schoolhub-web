@@ -8,7 +8,16 @@
     <!-- HEADER -->
     <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
 
+      <!-- APP TITLE -->
+      <div fxLayout="row" fxLayoutAlign="start center">
 
+        <div fxLayout="column" fxLayoutAlign="start start" >
+          <div class="h2">
+            Add New School
+          </div>
+        </div>
+      </div>
+      <!-- / APP TITLE -->
 
     </div>
     <!-- / HEADER -->
@@ -20,7 +29,7 @@
         <form [formGroup]="schoolsForm">
 
           <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
-           
+
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>SchoolName</mat-label>
@@ -53,7 +62,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>Under</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
@@ -61,7 +70,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>Area</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
@@ -69,7 +78,7 @@
               </mat-form-field>
             </div>
 
-            
+
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
@@ -105,7 +114,7 @@
 
 
 
-            
+
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
 
             </div>
@@ -113,12 +122,12 @@
         </form>
       </div>
       <div fxLayout="row">
-        
+
         <div class="pb-20" fxLayoutAlign="center" fxFlex="100">
-          <button fxFlex="25" mat-stroked-button color="accent"   [disabled]="schoolsForm.invalid"
-          aria-label="SAVE" (click)="onSaveSchool()">
-          AddSchool
-        </button>
+          <button fxFlex="25" mat-stroked-button color="accent" [disabled]="schoolsForm.invalid" aria-label="SAVE"
+            (click)="onSaveSchool()">
+            AddSchool
+          </button>
         </div>
       </div>
     </div>

@@ -24,6 +24,10 @@ const appRoutes: Routes = [
         loadChildren: './authentication/authentication.module#AuthenticationModule'
     },
     {
+        path        : 'admissions',
+        loadChildren: './main/admissions/admissions.module#AdmissionsModule'
+    },
+    {
         path        : 'students',
         loadChildren: './main/students/students.module#StudentsModule'
     },
@@ -37,7 +41,7 @@ const appRoutes: Routes = [
     },
     {
         path      : '**',
-        redirectTo: 'students'
+        redirectTo: 'admissions'
     }
 ];
 
