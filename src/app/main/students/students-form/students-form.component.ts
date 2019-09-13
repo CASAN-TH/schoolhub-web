@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../students.service';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
+
+import { Location } from '@angular/common';
+import { fuseAnimations } from '@fuse/animations';
 @Component({
   selector: 'app-students-form',
   templateUrl: './students-form.component.html',
-  styleUrls: ['./students-form.component.scss']
+  styleUrls: ['./students-form.component.scss'],
+  animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsFormComponent implements OnInit {
 
@@ -37,6 +42,7 @@ export class StudentsFormComponent implements OnInit {
     private route: ActivatedRoute,
     private studentsService: StudentsService,
     private formBuilder: FormBuilder,
+    private _location: Location,
     private _fuseTranslationLoaderService: FuseTranslationLoaderService) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -74,12 +80,26 @@ export class StudentsFormComponent implements OnInit {
       prefix: [this.students.prefix, Validators.required],
       firstname: [this.students.firstname, Validators.required],
       lastname: [this.students.lastname, Validators.required],
-      identificationnumber: [this.students.identificationnumber, Validators.required],
+
+      identificationnumber: [this.students.identificationnumber,
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+          Validators.minLength(13),
+          Validators.maxLength(13)
+        ]
+      ],
+
       birthday: [this.students.birthday, Validators.required],
       sex: [this.students.sex, Validators.required],
       fatherfullname: [this.students.fatherfullname, Validators.required],
       motherfullname: [this.students.motherfullname, Validators.required],
-      phonenumber: [this.students.phonenumber, Validators.required],
+      phonenumber: [this.students.phonenumber, 
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
 
     });
 
@@ -87,7 +107,8 @@ export class StudentsFormComponent implements OnInit {
   onAddNew() {
     // console.log("onAddNew");
     this.studentsService.adStudentsData(this.studentsForm.getRawValue()).then(value => {
-      this.router.navigate(['students']);
+      //this.router.navigate(['students']);
+      this._location.back();
     });
 
 
@@ -96,16 +117,20 @@ export class StudentsFormComponent implements OnInit {
   onsaveEdit() {
     console.log("onsaveEdit");
     this.studentsService.editStudentsData(this.studentsForm.getRawValue()).then(value => {
-      this.router.navigate(['students']);
+      // this.router.navigate(['students']);
+      this._location.back();
     });
 
   }
 
-  oncloseAdd() {
-    this.router.navigate(['students']);
+  onClose() {
+    //this.router.navigate(['students']);
+    this._location.back();
   }
 
-  onclpseEdit() {
-    this.router.navigate(['students']);
+  goBack() {
+    this._location.back();
   }
+
+
 }
