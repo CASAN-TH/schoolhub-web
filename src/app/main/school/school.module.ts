@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
+import { MatInputModule, MatIconModule, MatTableModule, MatPaginatorModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatFormFieldModule} from '@angular/material';
 
 const routes = [
   {
@@ -17,7 +18,16 @@ const routes = [
   declarations: [SchoolComponent],
   imports: [
     RouterModule.forChild(routes),
-
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    
+  
     TranslateModule,
 
     FuseSharedModule

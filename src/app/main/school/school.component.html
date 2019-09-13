@@ -1,6 +1,127 @@
-<div class="page-layout blank p-24" fusePerfectScrollbar>
+<div class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
 
-  <h2>{{'SCHOOL.HELLO' | translate}}</h2>
-  
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
 
+
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <!-- CONTENT -->
+      <div class="content mt-20" fusePerfectScrollbar>
+        <form [formGroup]="schoolsForm">
+
+          <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
+           
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>SchoolName</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="schoolname" formControlName="schoolname" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="32" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>SubDistric</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="subdistric" formControlName="subdistric" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="32" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Distric</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="distric" formControlName="distric" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="31" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Province</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="province" formControlName="province" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Under</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="under" formControlName="under" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Area</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="area" formControlName="area" matInput>
+              </mat-form-field>
+            </div>
+
+            
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Registrar</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="registrar" formControlName="registrar" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Position</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="position" formControlName="position" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Director</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="direction" formControlName="direction" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Position</mat-label>
+                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
+                <input name="positions" formControlName="positions" matInput>
+              </mat-form-field>
+            </div>
+
+
+
+            
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
+
+            </div>
+          </div>
+        </form>
+      </div>
+      <div fxLayout="row">
+        
+        <div class="pb-20" fxLayoutAlign="center" fxFlex="100">
+          <button fxFlex="25" mat-stroked-button color="accent"   [disabled]="schoolsForm.invalid"
+          aria-label="SAVE" (click)="onSaveSchool()">
+          AddSchool
+        </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
