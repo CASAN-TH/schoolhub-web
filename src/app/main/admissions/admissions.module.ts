@@ -5,6 +5,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { AdmissionsService } from './admissions.service';
+import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
+import { MatInputModule, MatIconModule, MatTableModule, MatPaginatorModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatDatepickerModule, MatCardModule, MatSelectModule } from '@angular/material';
 
 const routes = [
   {
@@ -21,10 +23,24 @@ const routes = [
   declarations: [AdmissionsComponent],
   imports: [
     RouterModule.forChild(routes),
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatSelectModule,
+
 
     TranslateModule,
 
-    FuseSharedModule
+    FuseSharedModule,
+    FuseConfirmDialogModule,
+    FuseSidebarModule
   ],
   exports: [
     AdmissionsComponent
