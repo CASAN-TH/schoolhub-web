@@ -20,9 +20,9 @@ export class SchoolService {
 
     return new Promise((resolve, reject) => {
       this.httpClient.post(environment.apiUrl + "/api/schools", data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-        this.httpClient.get(environment.apiUrl + "/api/auth/refreshToken", { headers: this.authorizationHeader() }).subscribe((res) => {
-          window.localStorage.setItem(`token@${environment.appName}`, response.token);
-          const user = response.token ? this.jwt.decodeToken(response.token) : null;
+        this.httpClient.get(environment.apiUrl + "/api/auth/refreshToken", { headers: this.authorizationHeader() }).subscribe((res: any) => {
+          window.localStorage.setItem(`token@${environment.appName}`, res.token);
+          const user = res.token ? this.jwt.decodeToken(res.token) : null;
           if (user) {
             window.localStorage.setItem(`token@${environment.appName}-school`, user.ref1);
           }

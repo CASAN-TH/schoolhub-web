@@ -24,7 +24,7 @@ export class AuthenService {
     if (this.user && this.user != null) {
       this.school = this.user && this.user.ref1 && this.user.ref1 !== '-' ? this.jwt.decodeToken(this.user.ref1) : null;
       if (this.school) {
-        window.localStorage.setItem(`token@${environment.appName}-school`, this.school);
+        window.localStorage.setItem(`token@${environment.appName}-school`, this.user.ref1);
       }
       this.onUserDataChanged.next(this.user);
     }
@@ -41,7 +41,7 @@ export class AuthenService {
         this.user = this.token ? this.jwt.decodeToken(this.token) : null;
         this.school = this.user && this.user.ref1 && this.user.ref1 !== '-' ? this.jwt.decodeToken(this.user.ref1) : null;
         if (this.school) {
-          window.localStorage.setItem(`token@${environment.appName}-school`, this.school);
+          window.localStorage.setItem(`token@${environment.appName}-school`, this.user.ref1);
         }
         this.onUserDataChanged.next(this.user);
         resolve(this.user);
@@ -59,7 +59,7 @@ export class AuthenService {
         this.user = this.token ? this.jwt.decodeToken(this.token) : null;
         this.school = this.user && this.user.ref1 && this.user.ref1 !== '-' ? this.jwt.decodeToken(this.user.ref1) : null;
         if (this.school) {
-          window.localStorage.setItem(`token@${environment.appName}-school`, this.school);
+          window.localStorage.setItem(`token@${environment.appName}-school`, this.user.ref1);
         }
         this.onUserDataChanged.next(this.user);
         resolve(this.user);
@@ -72,6 +72,7 @@ export class AuthenService {
 
     return new Promise((resolve, reject) => {
       window.localStorage.removeItem(`token@${environment.appName}`);
+      window.localStorage.removeItem(`token@${environment.appName}-school`);
       this.token = window.localStorage.getItem(`token@${environment.appName}`);
       this.user = this.token ? this.jwt.decodeToken(this.token) : null;
       this.onUserDataChanged.next(this.user);
