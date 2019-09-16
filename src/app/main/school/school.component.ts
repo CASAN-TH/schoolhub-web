@@ -14,7 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SchoolComponent implements OnInit {
 
   schoolsForm: FormGroup;
-  
+
 
 
   constructor(
@@ -42,16 +42,18 @@ export class SchoolComponent implements OnInit {
         direction: ['', Validators.required],
         positions: ['', Validators.required]
       }
-      
+
     );
 
   }
 
 
- 
+
 
   onSaveSchool() {
-    this.schoolservice.addSchool(this.schoolsForm.getRawValue());
-    this.router.navigate(['']);
-}
+    this.schoolservice.addSchool(this.schoolsForm.getRawValue()).then(data => {
+      this.router.navigate(['']);
+    });
+
+  }
 }
