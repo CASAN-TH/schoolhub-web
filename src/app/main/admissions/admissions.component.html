@@ -33,6 +33,15 @@
     <div class="content-card">
       <mat-table #table [dataSource]="admissions" [@animateStagger]="{value:'50'}">
 
+        <!-- Avatar Column -->
+        <ng-container matColumnDef="avatar">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let admission">
+            <img class="avatar" *ngIf="admission.avatar" [alt]="admission.firstname" [alt]="admission.lastname"
+              [src]="admission.avatar" />
+          </mat-cell>
+        </ng-container>
+
         <!-- prefix Column -->
         <ng-container matColumnDef="prefix">
           <mat-header-cell *matHeaderCellDef>คำนำหน้าชื่อ</mat-header-cell>
@@ -82,9 +91,23 @@
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let admission">
             <div fxFlex="row" fxLayoutAlign="end center">
-              <button mat-icon-button aria-label="More">
-                <mat-icon class="secondary-text">more_vert</mat-icon>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
               </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onImportData()">
+                  <mat-icon>import_export</mat-icon>
+                  <span>Import</span>
+                </button>
+                <button mat-menu-item (click)="onEditadmissions(admission)">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item (click)="onDeleteadmissions(admission._id)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
             </div>
           </mat-cell>
         </ng-container>
@@ -104,6 +127,6 @@
 
 <!-- ADD CONTACT BUTTON -->
 <button mat-fab class="accent" id="add-contact-button" aria-label="add contact">
-  <mat-icon>person_add</mat-icon>
+  <mat-icon (click)="onAddadmissions()">person_add</mat-icon>
 </button>
 <!-- / ADD CONTACT BUTTON -->

@@ -82,23 +82,23 @@ export class StudentsFormComponent implements OnInit {
       lastname: [this.students.lastname, Validators.required],
 
       identificationnumber: [this.students.identificationnumber,
-        [
-          Validators.required,
-          Validators.pattern("^[0-9]*$"),
-          Validators.minLength(13),
-          Validators.maxLength(13)
-        ]
+      [
+        Validators.required,
+        Validators.pattern("^[0-9]*$"),
+        Validators.minLength(13),
+        Validators.maxLength(13)
+      ]
       ],
 
       birthday: [this.students.birthday, Validators.required],
       sex: [this.students.sex, Validators.required],
       fatherfullname: [this.students.fatherfullname, Validators.required],
       motherfullname: [this.students.motherfullname, Validators.required],
-      phonenumber: [this.students.phonenumber, 
-        [
-          Validators.required,
-          Validators.pattern("^[0-9]*$")
-        ]
+      phonenumber: [this.students.phonenumber,
+      [
+        Validators.required,
+        Validators.pattern("^[0-9]*$")
+      ]
       ],
 
     });
@@ -115,7 +115,7 @@ export class StudentsFormComponent implements OnInit {
   }
 
   onsaveEdit() {
-    console.log("onsaveEdit");
+    // console.log("onsaveEdit");
     this.studentsService.editStudentsData(this.studentsForm.getRawValue()).then(value => {
       // this.router.navigate(['students']);
       this._location.back();

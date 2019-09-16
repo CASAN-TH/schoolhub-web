@@ -10,6 +10,10 @@ export const locale = {
             'COURSES'        : {
                 'TITLE': 'Courses',
                 'BADGE': '25'
+            },
+            'ADMISSIONS'        : {
+                'TITLE': 'Admissions',
+                'BADGE': '25'
             }
         }
     }
