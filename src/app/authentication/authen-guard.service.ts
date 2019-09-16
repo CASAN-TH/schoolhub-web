@@ -17,9 +17,9 @@ export class AuthenGuardService {
     const schoolToken = window.localStorage.getItem(
       `token@${environment.appName}-school`
     );
-
+    console.log(schoolToken);
     if (token) {
-      console.log(schoolToken);
+      
       if (!schoolToken) {
         this.router.navigate(['/school']);
         return false;
