@@ -48,7 +48,7 @@ export class AdmissionsFormComponent implements OnInit {
   ) { this._fuseTranslationLoaderService.loadTranslations(english, thai) }
 
   ngOnInit() {
-    this.admissionService.onDataChanged.subscribe((res: any) => {
+    this.admissionService.onEditDataChanged.subscribe((res: any) => {
       this.admissions = res;
       console.log(this.admissions);
       if (!this.admissions) {
