@@ -16,12 +16,14 @@ export class AdmissionsService {
   }
   onDataChanged: BehaviorSubject<any>;
   onEditDataChanged: BehaviorSubject<any>;
+  onImportDataChanged: BehaviorSubject<any>;
   admissions: any = [];
   routeParam: any;
 
   constructor(private httpClient: HttpClient) {
     this.onDataChanged = new BehaviorSubject([]);
     this.onEditDataChanged = new BehaviorSubject([]);
+    this.onImportDataChanged = new BehaviorSubject([]);
   }
 
   resolve(route: ActivatedRouteSnapshot) {
@@ -87,6 +89,16 @@ export class AdmissionsService {
         resolve(response.data);
       }, reject);
     });
+  }
+
+  importData(data: any) {
+    console.log(data);
+    return this.httpClient.post(environment.apiUrl + "/api/students", data, { headers: this.authorizationHeader() })
+      // .map(res => { return res.json() })
+      .subscribe(res => {
+        console.log(res);
+        // this.onImportDataChanged.next('true');
+      });
   }
 
 }
