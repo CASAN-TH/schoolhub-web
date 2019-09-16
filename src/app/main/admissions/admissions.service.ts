@@ -35,7 +35,7 @@ export class AdmissionsService {
   getadmissionsDataList() {
     console.log("getadmissionsDataList");
     return new Promise((resolve, reject) => {
-      this.httpClient.get("http://localhost:3000/api/admissions", { headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.httpClient.get(environment.apiUrl + "/api/admissions", { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.onDataChanged.next(response.data);
         resolve(response.data);
       }, reject);

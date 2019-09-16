@@ -36,6 +36,10 @@ const appRoutes: Routes = [
         loadChildren: './main/courses/courses.module#CoursesModule'
     },
     {
+        path        : 'school',
+        loadChildren: './main/school/school.module#SchoolModule'
+    },
+    {
         path      : '**',
         redirectTo: 'admissions'
     }
