@@ -9,8 +9,7 @@ import { MatInputModule, MatIconModule, MatTableModule, MatPaginatorModule, MatM
 const routes = [
   {
       path     : '**',
-      component: SchoolComponent,
-      canActivate: [AuthenGuardService]
+      component: SchoolComponent
   }
 ];
 
