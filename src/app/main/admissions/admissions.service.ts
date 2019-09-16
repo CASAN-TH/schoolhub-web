@@ -15,10 +15,14 @@ export class AdmissionsService {
     return headers;
   }
   onDataChanged: BehaviorSubject<any>;
+  onEditDataChanged: BehaviorSubject<any>;
   admissions: any = [];
   routeParam: any;
 
-  constructor(private httpClient: HttpClient) { this.onDataChanged = new BehaviorSubject([]); }
+  constructor(private httpClient: HttpClient) {
+    this.onDataChanged = new BehaviorSubject([]);
+    this.onEditDataChanged = new BehaviorSubject([]);
+  }
 
   resolve(route: ActivatedRouteSnapshot) {
     console.log("resolve");
@@ -46,11 +50,11 @@ export class AdmissionsService {
     console.log(admissionsId);
     return new Promise((resolve, reject) => {
       if (admissionsId === 'new') {
-        this.onDataChanged.next(null);
+        this.onEditDataChanged.next(null);
         resolve(null);
       } else {
         this.httpClient.get(environment.apiUrl + "/api/admissions/" + admissionsId, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-          this.onDataChanged.next(response.data);
+          this.onEditDataChanged.next(response.data);
           resolve(response.data);
         }, reject);
       }
@@ -70,7 +74,7 @@ export class AdmissionsService {
     console.log(data);
     return new Promise((resolve, reject) => {
       this.httpClient.post(environment.apiUrl + "/api/admissions", data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-        this.onDataChanged.next(response.data);
+        this.getadmissionsDataList();
         resolve(response.data);
       }, reject);
     });
