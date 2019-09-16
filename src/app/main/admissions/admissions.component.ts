@@ -6,6 +6,7 @@ import { locale as thai } from './i18n/th';
 import { AdmissionsService } from './admissions.service';
 import { fuseAnimations } from '@fuse/animations';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-admissions',
@@ -16,13 +17,15 @@ import { Router } from '@angular/router';
 })
 export class AdmissionsComponent implements OnInit {
 
+  admissiondata: any;
   admissions: any = [];
   displayedColumns = ['prefix', 'firstname', 'fatherfullname', 'motherfullname', 'phonenumber', 'buttons'];
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private admissionsService: AdmissionsService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -49,8 +52,24 @@ export class AdmissionsComponent implements OnInit {
     this.admissionsService.deleteData(_id);
   }
 
-  onImportData() {
-    console.log("onImportData");
+  onImportData(admission) {
+    this.admissiondata = {
+      class: admission.class,
+      room: ' ',
+      studentid: ' ',
+      prefix: admission.prefix,
+      firstname: admission.firstname,
+      lastname: admission.lastname,
+      identificationnumber: admission.identificationnumber,
+      birthday: admission.birthday,
+      sex: admission.sex,
+      fatherfullname: admission.fatherfullname,
+      motherfullname: admission.motherfullname,
+      phonenumber: admission.phonenumber,
+
+    }
+    console.log(this.admissiondata);
+    this.admissionsService.importData(this.admissiondata);
   }
 
 }
