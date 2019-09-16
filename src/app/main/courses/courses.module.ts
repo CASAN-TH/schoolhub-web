@@ -24,6 +24,7 @@ import { StudentsComponent } from './courseslist/students/students.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { SubjectdialogComponent } from './courseslist/course/subjectdialog/subjectdialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TranscriptComponent } from './courseslist/transcript/transcript.component';
 
 
 const routes = [
@@ -50,6 +51,14 @@ const routes = [
     resolve: {
       courses: CoursesService
     }
+  },
+  {
+    path: 'students/transcript/:courseId/:studentId',
+    component: TranscriptComponent,
+    canActivate: [AuthenGuardService],
+    resolve: {
+      courses: CoursesService
+    }
   }
 ];
 
@@ -59,7 +68,8 @@ const routes = [
     CourseslistComponent,
     CourseComponent,
     StudentsComponent,
-    SubjectdialogComponent],
+    SubjectdialogComponent,
+    TranscriptComponent],
   imports: [
     RouterModule.forChild(routes),
     MatIconModule,

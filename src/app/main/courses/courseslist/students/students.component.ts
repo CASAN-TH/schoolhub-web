@@ -16,7 +16,7 @@ export class StudentsComponent implements OnInit {
   constructor(
     private CourseService: CoursesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
 
   }
@@ -30,7 +30,14 @@ export class StudentsComponent implements OnInit {
     })
   }
 
-  onAdstudents(){
+  EvaluationStudent(student) {
+    this.coursegrade.forEach(element => {
+      this.router.navigate(['/courses/students/transcript/' + element._id + '/' + student.student_id]);
+    });
+  }
+
+
+  onAdstudents() {
     this.router.navigate(['/students/new']);
   }
 }

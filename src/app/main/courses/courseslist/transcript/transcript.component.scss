@@ -1,0 +1,27 @@
+.example-card {
+    width: 85%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .example-container {
+    height: 60%;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+
+  .option-result{
+    width: 80%;
+  }
+
+  .option-remark{
+    width: 80%;
+  }

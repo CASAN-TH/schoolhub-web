@@ -1,0 +1,97 @@
+<div fxLayoutAlign="center" class="pt-20">
+  <mat-card class="example-card">
+
+    <div fxLayoutAlign="center" fxLayout="column" fxLayout.gt-sm="row wrap">
+
+      <div fxLayoutAlign="center" fxLayout="column" fxFlex="100">
+        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
+          <h2>แบบรายงานผลพัฒนาคุณภาพผู้เรียนรายบุคคล</h2>
+        </div>
+
+        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
+          <h3>{{student.name}}ปีการศึกษา {{student.year}} </h3>
+        </div>
+
+        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
+          <h3>โรงเรียนไตรพัฒน์</h3>
+        </div>
+
+        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
+          <h3>
+            รหัสประจำตัวนักเรียน: {{student.student.student_no}}
+            ชื่อ-นามสกุล: {{student.student.title}} {{student.student.firstname}} {{student.student.lastname}}
+            ห้อง: 1/1
+            เลขที่: {{student.student.seq}}
+          </h3>
+        </div>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
+        <div class="example-container mat-elevation-z8">
+          <table mat-table [dataSource]="student.structures">
+
+            <ng-container matColumnDef="numbers">
+              <th mat-header-cell *matHeaderCellDef> ลำดับ </th>
+              <td style="padding-left: 5%" mat-cell *matCellDef="let element; let i = index;">
+                {{i + 1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef> รหัสวิชา </th>
+              <td mat-cell *matCellDef="let structures"> {{structures.code}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> ชื่อวิขา </th>
+              <td mat-cell *matCellDef="let structures"> {{structures.subject}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> ประเภท </th>
+              <td mat-cell *matCellDef="let structures"> {{structures.course_type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> น้ำหนัก/หน่วยกิต </th>
+              <td mat-cell *matCellDef="let structures"> {{structures.weight}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="result">
+              <th mat-header-cell *matHeaderCellDef> ระดับผลการเรียน </th>
+              <td mat-cell *matCellDef="let structures">
+                <mat-form-field class="option-result" appearance="outline">
+                  <mat-label>คะแนน</mat-label>
+                  <input type="number" [(ngModel)]="transcript.result" matInput>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="remark">
+              <th mat-header-cell *matHeaderCellDef> หมายเหตุ </th>
+              <td mat-cell *matCellDef="let structures">
+                <mat-form-field class="option-result" appearance="outline">
+                  <mat-label>หมายเหตุ</mat-label>
+                  <input type="number" [(ngModel)]="transcript.remark" matInput>
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex="50">
+        <button mat-stroked-button (click)="onCancel()">ยกเลิก</button>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex="50">
+        <button mat-stroked-button (click)="onSaveTranscript()">บันทึก</button>
+      </div>
+
+    </div>
+
+  </mat-card>
+</div>

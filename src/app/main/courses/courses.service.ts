@@ -13,13 +13,16 @@ export class CoursesService {
 
   onCoursesChanged: BehaviorSubject<any>;
   onCourseChanged: BehaviorSubject<any>;
+  onTranscriptChanged: BehaviorSubject<any>;
   routeParams: any;
+  courseId: any;
 
   constructor(
     private http: HttpClient
   ) {
     this.onCoursesChanged = new BehaviorSubject([]);
     this.onCourseChanged = new BehaviorSubject([]);
+    this.onTranscriptChanged = new BehaviorSubject([]);
   }
   private authorizationHeader() {
     const token = window.localStorage.getItem(`token@${environment.appName}`);
@@ -36,10 +39,13 @@ export class CoursesService {
         to: this.routeParams.year
       }
       this.cloneCourseYear(bodyyear);
-    }else if (this.routeParams.actiontype === 'read') {
+    } else if (this.routeParams.actiontype === 'read') {
       this.getCourseYear(this.routeParams.year);
-    }else{
+    } else {
       this.getCourseYear(this.routeParams.year);
+    }
+    if (this.routeParams.studentId) {
+      this.getTranscript(this.routeParams);
     }
     this.getCouresList()
   }
@@ -68,12 +74,18 @@ export class CoursesService {
     });
   }
 
-  courseSubjectEdit(data): Promise<any>{
-    return new Promise((resolve, reject) =>{
-      console.log(data);
-      this.http.put(environment.apiUrl + "/api/courses/" + data._id, data, { headers: this.authorizationHeader() }).subscribe((res: any) =>{
-        console.log(res)
+  courseSubjectEdit(data): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.put(environment.apiUrl + "/api/courses/" + data._id, data, { headers: this.authorizationHeader() }).subscribe((res: any) => {
         this.getCourseYear(res.data.year);
+      })
+    })
+  }
+
+  getTranscript(body): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get(environment.apiUrl + "/api/courses/" + body.courseId + "/" + body.studentId, { headers: this.authorizationHeader() }).subscribe((res: any) => {
+       this.onTranscriptChanged.next(res.data);
       })
     })
   }
