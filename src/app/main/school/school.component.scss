@@ -1,0 +1,145 @@
+@import "src/@fuse/scss/fuse";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    height: 100%;
+
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+        @include media-breakpoint(gt-sm) {
+            padding: 24px 4px 24px 24px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            flex: 0 1 auto;
+            padding: 0;
+            border-radius: 8px;
+
+            @include media-breakpoint(gt-sm) {
+                @include mat-elevation(1);
+            }
+
+            > .header {
+                flex: 0 1 auto;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            }
+
+            > .content {
+                flex: 0 1 auto;
+            }
+        }
+
+    }
+}
+
+
+.example-card {
+  max-width: 900px;
+  margin-left: 12%;
+}
+.mat-form-field-flex {
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@import "src/@fuse/scss/fuse";
+
+#schools {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+
+  mat-table {
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+
+    .mat-column-buttons {
+      flex: 0 1 80px;
+    }
+
+    .mat-row {
+      position: relative;
+      cursor: pointer;
+      padding: 8px;
+      height: 60px;
+      .mat-cell {
+        min-width: 0;
+
+        &.mat-column-detail-button {
+          flex: 0 1 auto;
+          padding: 0 24px 0 0;
+
+          @include media-breakpoint("gt-md") {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  mat-paginator {
+    position: absolute;
+    bottom: 12px;
+    right: 42px;
+  }
+  .header {
+    .search-wrapper {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      @include mat-elevation(1);
+
+      .search {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 18px;
+
+        input {
+          width: 100%;
+          height: 48px;
+          min-height: 48px;
+          max-height: 48px;
+          padding: 0 16px;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .content {
+    overflow: hidden;
+
+    .sidebar {
+      &:not(.locked-open) {
+        background: white;
+      }
+    }
+  }
+}
+
+#add-contact-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 0;
+  z-index: 99;
+
+  @include media-breakpoint("xs") {
+    position: sticky;
+    top: calc(100vh - 120px);
+    bottom: auto;
+  }
+}

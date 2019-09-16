@@ -88,6 +88,8 @@ $typography: mat-typography-config(
 @import "src/app/authentication/mail-confirm/mail-confirm.theme";
 @import "src/app/main/courses/courses.theme";
 @import "./main/students/students.theme";
+@import "./main/school/school.theme";
+@import "./main/admissions/admissions.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
@@ -103,6 +105,8 @@ $typography: mat-typography-config(
     @include mail-confirm-theme($theme);
     @include courses-theme($theme);
     @include students-theme($theme);
+    @include schools-theme($theme);
+    @include admissions-theme($theme);
 }
 
 // -----------------------------------------------------------------------------------------------------

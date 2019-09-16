@@ -1,0 +1,92 @@
+@import "src/@fuse/scss/fuse";
+
+#admissions {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+
+  mat-table {
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+
+    .mat-column-buttons {
+      flex: 0 1 80px;
+    }
+
+    .mat-row {
+      position: relative;
+      cursor: pointer;
+      padding: 8px;
+      height: 60px;
+      .mat-cell {
+        min-width: 0;
+
+        &.mat-column-detail-button {
+          flex: 0 1 auto;
+          padding: 0 24px 0 0;
+
+          @include media-breakpoint("gt-md") {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  mat-paginator {
+    position: absolute;
+    bottom: 12px;
+    right: 42px;
+  }
+  .header {
+    .search-wrapper {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      @include mat-elevation(1);
+
+      .search {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 18px;
+
+        input {
+          width: 100%;
+          height: 48px;
+          min-height: 48px;
+          max-height: 48px;
+          padding: 0 16px;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .content {
+    overflow: hidden;
+
+    .sidebar {
+      &:not(.locked-open) {
+        background: white;
+      }
+    }
+  }
+}
+
+#add-contact-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 0;
+  z-index: 99;
+
+  @include media-breakpoint("xs") {
+    position: sticky;
+    top: calc(100vh - 120px);
+    bottom: auto;
+  }
+}

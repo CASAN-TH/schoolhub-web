@@ -1,0 +1,132 @@
+<div id="admissions" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+      fxLayoutAlign.gt-xs="space-between center">
+
+      <!-- APP TITLE -->
+      <div class="logo mb-24 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+          group
+        </mat-icon>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Admissions</span>
+      </div>
+      <!-- / APP TITLE -->
+
+      <!-- SEARCH -->
+      <div class="search-wrapper  ml-sm-32">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>search</mat-icon>
+          <input #filter placeholder="Search for a admission">
+        </div>
+      </div>
+      <!-- / SEARCH -->
+
+    </div>
+    <!-- / HEADER -->
+
+    <div class="content-card">
+      <mat-table #table [dataSource]="admissions" [@animateStagger]="{value:'50'}">
+
+        <!-- Avatar Column -->
+        <ng-container matColumnDef="avatar">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let admission">
+            <img class="avatar" *ngIf="admission.avatar" [alt]="admission.firstname" [alt]="admission.lastname"
+              [src]="admission.avatar" />
+          </mat-cell>
+        </ng-container>
+
+        <!-- prefix Column -->
+        <ng-container matColumnDef="prefix">
+          <mat-header-cell *matHeaderCellDef>คำนำหน้าชื่อ</mat-header-cell>
+          <mat-cell *matCellDef="let admission">
+            <p class="text-truncate font-weight-600">{{admission.prefix}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstname">
+          <mat-header-cell *matHeaderCellDef>ชื่อนักเรียน</mat-header-cell>
+          <mat-cell *matCellDef="let admission">
+            <p class="text-truncate font-weight-600">{{admission.firstname}} {{admission.lastname}}</p>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phonenumber">
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>เบอร์โทรศัพท์</mat-header-cell>
+          <mat-cell *matCellDef="let admission" fxHide fxShow.gt-md>
+            <p class="phone text-truncate">
+              {{admission.phonenumber}}
+            </p>
+          </mat-cell>
+        </ng-container>
+        <!-- Phone Column -->
+        <ng-container matColumnDef="fatherfullname">
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล บิดา</mat-header-cell>
+          <mat-cell *matCellDef="let admission" fxHide fxShow.gt-md>
+            <p class="phone text-truncate">
+              {{admission.fatherfullname}}
+            </p>
+          </mat-cell>
+        </ng-container>
+        <!-- Phone Column -->
+        <ng-container matColumnDef="motherfullname">
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล มารดา</mat-header-cell>
+          <mat-cell *matCellDef="let admission" fxHide fxShow.gt-md>
+            <p class="phone text-truncate">
+              {{admission.motherfullname}}
+            </p>
+          </mat-cell>
+        </ng-container>
+
+
+        <!-- Buttons Column -->
+        <ng-container matColumnDef="buttons">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let admission">
+            <div fxFlex="row" fxLayoutAlign="end center">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onImportData()">
+                  <mat-icon>import_export</mat-icon>
+                  <span>Import</span>
+                </button>
+                <button mat-menu-item (click)="onEditadmissions(admission)">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item (click)="onDeleteadmissions(admission._id)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let admission; columns: displayedColumns;" class="admission" matRipple>
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator class="mr-20" [length]="admissions.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+<!-- ADD CONTACT BUTTON -->
+<button mat-fab class="accent" id="add-contact-button" aria-label="add contact">
+  <mat-icon (click)="onAddadmissions()">person_add</mat-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->
