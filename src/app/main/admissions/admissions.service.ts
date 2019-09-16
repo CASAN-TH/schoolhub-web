@@ -49,7 +49,7 @@ export class AdmissionsService {
         this.onDataChanged.next(null);
         resolve(null);
       } else {
-        this.httpClient.get("http://localhost:3000/api/admissions/" + admissionsId, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+        this.httpClient.get(environment.apiUrl + "/api/admissions/" + admissionsId, { headers: this.authorizationHeader() }).subscribe((response: any) => {
           this.onDataChanged.next(response.data);
           resolve(response.data);
         }, reject);
@@ -59,7 +59,7 @@ export class AdmissionsService {
   editAdmissionsData(admissions) {
     console.log("editAdmissionsData");
     return new Promise((resolve, reject) => {
-      this.httpClient.put("http://localhost:3000/api/admissions/" + admissions._id, admissions, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.httpClient.put(environment.apiUrl + "/api/admissions/" + admissions._id, admissions, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getadmissionsDataList();
         resolve(response.data);
       }, reject);
@@ -69,7 +69,7 @@ export class AdmissionsService {
   ADDadmissionsData(data: any) {
     console.log(data);
     return new Promise((resolve, reject) => {
-      this.httpClient.post("http://localhost:3000/api/admissions", data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.httpClient.post(environment.apiUrl + "/api/admissions", data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.onDataChanged.next(response.data);
         resolve(response.data);
       }, reject);
@@ -78,7 +78,7 @@ export class AdmissionsService {
 
   deleteData(_id) {
     return new Promise((resolve, reject) => {
-      this.httpClient.delete("http://localhost:3000/api/admissions/" + _id, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.httpClient.delete(environment.apiUrl + "/api/admissions/" + _id, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getadmissionsDataList();
         resolve(response.data);
       }, reject);
