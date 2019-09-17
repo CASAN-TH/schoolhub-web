@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private CoursesService: CoursesService,
-    private _router: Router
+    private _router: Router,
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }

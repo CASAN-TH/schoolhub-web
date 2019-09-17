@@ -12,7 +12,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
-  MatCardModule
+  MatCardModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { CourseslistComponent } from './courseslist/courseslist.component';
 import { CourseComponent } from './courseslist/course/course.component';
@@ -83,6 +84,7 @@ const routes = [
     MatInputModule,
     MatSelectModule,
     MatCardModule,
+    MatPaginatorModule,
     CdkTableModule,
 
     OrderModule,
