@@ -22,40 +22,50 @@
 
     <ng-container matColumnDef="id">
       <th class="th-4" mat-header-cell *matHeaderCellDef> รหัส </th>
-      <td class="td-4" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.code}} </td>
+      <td class="td-4" mat-cell *matCellDef="let structure"> {{structure.code}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <th class="th-12" mat-header-cell *matHeaderCellDef> ชื่อวิชา </th>
-      <td class="td-12" mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.subject}}
+      <td class="td-12" mat-cell *matCellDef="let structure"> {{structure.subject}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="type">
       <th class="th-8" mat-header-cell *matHeaderCellDef> ประเภท </th>
-      <td mat-cell *matCellDef="let structure" (click)="editSubject(structure)"> {{structure.course_type}} </td>
+      <td mat-cell *matCellDef="let structure"> {{structure.course_type}} </td>
     </ng-container>
 
     <ng-container matColumnDef="time">
       <th class="th-time" mat-header-cell fxHide fxShow.gt-md *matHeaderCellDef> เวลาเรียน </th>
-      <td class="td-time" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)">
+      <td class="td-time" mat-cell fxHide fxShow.gt-md *matCellDef="let structure">
         {{structure.hours}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="weight">
       <th class="th-weight" mat-header-cell fxHide fxShow.gt-md *matHeaderCellDef> น้ำหนัก </th>
-      <td class="td-weight" mat-cell fxHide fxShow.gt-md *matCellDef="let structure" (click)="editSubject(structure)">
+      <td class="td-weight" mat-cell fxHide fxShow.gt-md *matCellDef="let structure">
         {{structure.weight}}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="buttons">
       <th class="th-weight" mat-header-cell *matHeaderCellDef></th>
-      <td class="td-weight" mat-cell *matCellDef="let structure" (click)="editSubject(structure)">
-        <button mat-icon-button aria-label="More">
-          <mat-icon class="secondary-text" (click)="deletesubject(structure)">delete</mat-icon>
+      <td class="td-weight" mat-cell *matCellDef="let structure">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editSubject(structure)">
+            <mat-icon>edit</mat-icon>
+            <span>แก้ไข</span>
+          </button>
+          <button mat-menu-item (click)="deletesubject(structure)">
+            <mat-icon>delete</mat-icon>
+            <span>ลบ</span>
+          </button>
+        </mat-menu>
       </td>
     </ng-container>
 

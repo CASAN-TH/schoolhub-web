@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CoursesService } from '../../courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { fuseAnimations } from '@fuse/animations';
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.scss']
+  styleUrls: ['./students.component.scss'],
+  animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsComponent implements OnInit {
   coursegrade: any;
-  students: Array<any>;
+  students :any = [];
 
   displayedColumns = ['seq', 'student_no', 'name', 'citizenid', 'buttons'];
 
@@ -17,6 +21,7 @@ export class StudentsComponent implements OnInit {
     private CourseService: CoursesService,
     private route: ActivatedRoute,
     private router: Router,
+    private _location: Location
   ) {
 
   }
@@ -39,5 +44,9 @@ export class StudentsComponent implements OnInit {
 
   onAdstudents() {
     this.router.navigate(['/students/new']);
+  }
+
+  goBack(){
+    this._location.back();
   }
 }

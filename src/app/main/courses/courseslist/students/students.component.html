@@ -1,69 +1,91 @@
-<div class="page-layout blank p-24" fusePerfectScrollbar>
+<div id="students" class="page-layout carded fullwidth inner-scroll">
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
 
-  <div class="content">
+  <div class="center">
 
-    <div class="center p-24 pb-56 pr-sm-92" fusePerfectScrollbar>
+    <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+      fxLayoutAlign.gt-xs="space-between center">
 
-      <div class="content">
-        <mat-table #table [dataSource]="students">
+      <div class="logo mb-24 mb-sm-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}" (click)="goBack()">
+          arrow_back
+        </mat-icon>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Students</span>
+      </div>
 
-          <ng-container matColumnDef="seq">
-            <mat-header-cell *matHeaderCellDef>ลำดับ</mat-header-cell>
-            <mat-cell *matCellDef="let students">
-              {{students.seq}}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="student_no">
-            <mat-header-cell *matHeaderCellDef>รหัสนักเรียน</mat-header-cell>
-            <mat-cell *matCellDef="let students">
-              {{students.student_no}}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>ชื่อ-นามสกุล</mat-header-cell>
-            <mat-cell *matCellDef="let students">
-              {{students.title}} {{students.firstname}} {{students.lastname}}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="citizenid">
-            <mat-header-cell *matHeaderCellDef>รหัสประจำตัวประชาชน</mat-header-cell>
-            <mat-cell *matCellDef="let students">
-              {{students.citizenid}}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="buttons">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let student">
-              <div fxFlex="row" fxLayoutAlign="end center">
-                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item (click)="EvaluationStudent(student)">
-                    <mat-icon>assessment</mat-icon>
-                    <span>วัดผลการศึกษา</span>
-                  </button>
-                </mat-menu>
-              </div>
-            </mat-cell>
-          </ng-container>
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let student; columns: displayedColumns;" class="student" matRipple>
-          </mat-row>
-        </mat-table>
+      <div class="search-wrapper  ml-sm-32">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>search</mat-icon>
+          <input #filter placeholder="Search for a student">
+        </div>
       </div>
 
     </div>
 
-  </div>
+    <div class="content-card">
+      <mat-table #table [dataSource]="students" [@animateStagger]="{value:'50'}">
 
+        <ng-container matColumnDef="seq">
+          <mat-header-cell *matHeaderCellDef>ลำดับ</mat-header-cell>
+          <mat-cell *matCellDef="let students; let i = index;">
+            <p class="font-weight-600">{{i + 1}}</p>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="student_no">
+          <mat-header-cell class="pl-20" *matHeaderCellDef>รหัสนักเรียน</mat-header-cell>
+          <mat-cell class="pl-20" *matCellDef="let students">
+            <p class="font-weight-600">{{students.student_no}}</p>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>ชื่อ-สกุล</mat-header-cell>
+          <mat-cell *matCellDef="let students">
+            {{students.title}} {{students.firstname}} {{students.lastname}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="citizenid">
+          <mat-header-cell *matHeaderCellDef>เลขประจำตัวประชาชน</mat-header-cell>
+          <mat-cell *matCellDef="let students">
+            <p class="font-weight-600">
+              {{students.citizenid}}
+            </p>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="buttons">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let students">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="EvaluationStudent(students)">
+                <mat-icon>assignment</mat-icon>
+                <span>วัดผลการศึกษา</span>
+              </button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let student; columns: displayedColumns;" class="student" matRipple>
+        </mat-row>
+      </mat-table>
+
+      <mat-paginator class="mr-20" [length]="students.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
 </div>
 
+
+<!-- ADD CONTACT BUTTON -->
 <button mat-fab class="accent" id="add-contact-button" aria-label="add contact">
   <mat-icon (click)="onAdstudents()">person_add</mat-icon>
 </button>
+<!-- / ADD CONTACT BUTTON -->

@@ -1,30 +1,64 @@
-<mat-tab-group>
+<!-- <div class="header p-16 p-md-24" fxLayout="column">
 
-  <mat-tab label="ประถมศึกษา">
-    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
-      <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20" *ngFor="let course of level1 | orderBy: order;">
-        <app-course [list]="course">
-        </app-course>
-      </div>
+  <div fxLayout="row wrap">
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlexOrder="2" fxFlexOrder.gt-xs="1">
+      <button mat-raised-button class="header-boards-button" routerLink="/apps/scrumboard/boards"
+        aria-label="boards button">
+        <mat-icon class="mr-8">assessment</mat-icon>
+        <span>BOARDS</span>
+      </button>
     </div>
-  </mat-tab>
 
-  <mat-tab label="มัธยมศึกษาตอนต้น">
-    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
-      <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20" *ngFor="let course of level2 | orderBy: order;">
-        <app-course  [list]="course">
-        </app-course>
-      </div>
+    <div fxLayout="row" fxLayoutAlign="center" fxFlex="100">
+      1
     </div>
-  </mat-tab>
 
-  <mat-tab label="มัธยมศึกษาตอนปลาย">
-    <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
-      <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20" *ngFor="let course of level3 | orderBy: order;">
-        <app-course [list]="course">
-        </app-course>
+  </div>
+
+</div> -->
+
+<div fxLayout="column">
+  <div fxlayOut="row" class="m-20">
+
+    <button mat-icon-button class="mr-16" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    
+    <label style="font-size: 20px">ข้อมูลหลักสูตร ประจำปีการศึกษา {{courses[0] ? courses[0].year: ''}}</label>
+
+  </div>
+  <mat-tab-group>
+
+    <mat-tab label="ประถมศึกษา">
+      <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20"
+          *ngFor="let course of level1 | orderBy: order;">
+          <app-course [list]="course">
+          </app-course>
+        </div>
       </div>
-    </div>
-  </mat-tab>
-  
-</mat-tab-group>
+    </mat-tab>
+
+    <mat-tab label="มัธยมศึกษาตอนต้น">
+      <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20"
+          *ngFor="let course of level2 | orderBy: order;">
+          <app-course [list]="course">
+          </app-course>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="มัธยมศึกษาตอนปลาย">
+      <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
+        <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20"
+          *ngFor="let course of level3 | orderBy: order;">
+          <app-course [list]="course">
+          </app-course>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

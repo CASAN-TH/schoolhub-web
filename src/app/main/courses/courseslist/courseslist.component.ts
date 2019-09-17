@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CoursesService } from '../courses.service';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-
+import { Subject, from } from 'rxjs';
+import { Location } from '@angular/common'
 @Component({
   selector: 'app-courseslist',
   templateUrl: './courseslist.component.html',
@@ -18,7 +18,8 @@ export class CourseslistComponent implements OnInit {
   order: string = 'seq';
 
   constructor(
-    private CoursesService: CoursesService
+    private CoursesService: CoursesService,
+    private _location: Location
   ) {
    }
 
@@ -32,4 +33,7 @@ export class CourseslistComponent implements OnInit {
     })
   }
 
+  goBack(){
+    this._location.back();
+  }
 }
