@@ -13,7 +13,7 @@
 
         <div fxLayout="column" fxLayoutAlign="start start" >
           <div class="h2">
-            Add New School
+            <mat-label>{{ 'SCHOOL.ADDSCHOOL' | translate}}</mat-label>
           </div>
         </div>
       </div>
@@ -30,9 +30,11 @@
 
           <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
 
+            
+
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>SchoolName</mat-label>
+                <mat-label>{{ 'SCHOOL.SCHOOLNAME' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="schoolname" formControlName="schoolname" matInput>
               </mat-form-field>
@@ -40,7 +42,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="32" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>SubDistric</mat-label>
+                <mat-label>{{ 'SCHOOL.SUBDISTRIC' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="subdistric" formControlName="subdistric" matInput>
               </mat-form-field>
@@ -48,7 +50,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="32" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Distric</mat-label>
+                <mat-label>{{ 'SCHOOL.DISTRIC' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="distric" formControlName="distric" matInput>
               </mat-form-field>
@@ -56,7 +58,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="31" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Province</mat-label>
+                <mat-label>{{ 'SCHOOL.PROVINCE' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="province" formControlName="province" matInput>
               </mat-form-field>
@@ -64,7 +66,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Under</mat-label>
+                <mat-label>{{ 'SCHOOL.UNDER' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="under" formControlName="under" matInput>
               </mat-form-field>
@@ -72,7 +74,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Area</mat-label>
+                <mat-label>{{ 'SCHOOL.AREA' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="area" formControlName="area" matInput>
               </mat-form-field>
@@ -82,7 +84,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Registrar</mat-label>
+                <mat-label>{{ 'SCHOOL.REGISTRAR' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="registrar" formControlName="registrar" matInput>
               </mat-form-field>
@@ -90,7 +92,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Position</mat-label>
+                <mat-label>{{ 'SCHOOL.POSITION' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="position" formControlName="position" matInput>
               </mat-form-field>
@@ -98,7 +100,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Director</mat-label>
+                <mat-label>{{ 'SCHOOL.DIRECTOR' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="direction" formControlName="direction" matInput>
               </mat-form-field>
@@ -106,7 +108,7 @@
 
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
-                <mat-label>Position</mat-label>
+                <mat-label>{{ 'SCHOOL.POSITION2' | translate}}</mat-label>
                 <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="positions" formControlName="positions" matInput>
               </mat-form-field>
@@ -126,7 +128,7 @@
         <div class="pt-20 pb-20" fxLayoutAlign="center" fxFlex="100">
           <button fxFlex="25" mat-stroked-button color="accent" [disabled]="schoolsForm.invalid" aria-label="SAVE"
             (click)="onSaveSchool()">
-            Save
+            <mat-label>{{ 'SCHOOL.SAVEBTN' | translate}}</mat-label>
           </button>
         </div>
       </div>
