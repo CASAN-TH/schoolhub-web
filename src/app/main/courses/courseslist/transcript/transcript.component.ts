@@ -26,6 +26,10 @@ export class TranscriptComponent implements OnInit {
     this.school = this.AuthService.school;
   }
 
+  onCancel(){
+    this._location.back();
+  }
+
   onSaveTranscript(){
     this.CourseService.createTranscript(this.student).then((res :any) =>{
     this._location.back();
