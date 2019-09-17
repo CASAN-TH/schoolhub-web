@@ -32,7 +32,7 @@ export class StudentsComponent implements OnInit {
 
   EvaluationStudent(student) {
     this.coursegrade.forEach(element => {
-      this.router.navigate(['/courses/students/transcript/' + element._id + '/' + student.student_id]);
+      this.router.navigate(['/courses/students/transcript/' + element._id + '/' + student.student_id])
     });
   }
 

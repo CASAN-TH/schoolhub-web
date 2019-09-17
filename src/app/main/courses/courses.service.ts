@@ -85,8 +85,25 @@ export class CoursesService {
   getTranscript(body): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(environment.apiUrl + "/api/courses/" + body.courseId + "/" + body.studentId, { headers: this.authorizationHeader() }).subscribe((res: any) => {
+        console.log(res);
        this.onTranscriptChanged.next(res.data);
       })
+    })
+  }
+
+  createTranscript(body): Promise<any>{
+    return new Promise((resolve,reject) =>{
+      if(!body._id){
+        this.http.post(environment.apiUrl + "/api/course/transcript", body ,{ headers: this.authorizationHeader() }).subscribe((res: any) =>{
+          console.log(res);
+          resolve(res);
+        })
+      }else{
+        this.http.put(environment.apiUrl + "/api/course/transcript/" + body._id , body ,{ headers: this.authorizationHeader() }).subscribe((res: any) =>{
+          console.log(res);
+          resolve(res);
+        })
+      }
     })
   }
 }

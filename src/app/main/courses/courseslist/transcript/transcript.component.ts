@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../courses.service';
+import { AuthenService } from 'app/authentication/authen.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-transcript',
@@ -8,25 +10,27 @@ import { CoursesService } from '../../courses.service';
 })
 export class TranscriptComponent implements OnInit {
   student: any;
-  transcript: any = [{
-    result: '',
-    remark: ''
-  }]
+  school: any;
   displayedColumns = ['numbers', 'code', 'name', 'type', 'weight', 'result', 'remark'];
 
   constructor(
-    private CourseService: CoursesService
+    private CourseService: CoursesService,
+    private AuthService:  AuthenService,
+    private _location: Location
   ) { }
 
   ngOnInit() {
     this.CourseService.onTranscriptChanged.subscribe((res: any) => {
       this.student = res;
-      console.log(res);
     })
+    this.school = this.AuthService.school;
   }
 
   onSaveTranscript(){
-    console.log(this.transcript);
+    this.CourseService.createTranscript(this.student).then((res :any) =>{
+    this._location.back();
+    });
+
   }
 
 }
