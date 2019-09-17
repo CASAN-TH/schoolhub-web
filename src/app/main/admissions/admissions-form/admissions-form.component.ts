@@ -88,7 +88,9 @@ export class AdmissionsFormComponent implements OnInit {
       motherfullname: [this.admissions.motherfullname, Validators.required],
       phonenumber: [this.admissions.phonenumber, [
         Validators.required,
-        Validators.pattern("^[0-9]*$")
+        Validators.pattern("^[0-9]*$"),
+        Validators.minLength(10),
+        Validators.maxLength(10)
       ]]
     });
   }

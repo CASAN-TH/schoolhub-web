@@ -70,7 +70,7 @@ export class StudentsService {
   }
 
   editStudentsData(students) {
-    console.log(students);
+    // console.log(students);
     return new Promise((resolve, reject) => {
       this.httpclient.put(environment.apiUrl + "/api/students/" + students._id, students, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getstudentsDataList();

@@ -27,19 +27,19 @@ export class AdmissionsService {
   }
 
   resolve(route: ActivatedRouteSnapshot) {
-    console.log("resolve");
+    // console.log("resolve");
     this.routeParam = route.params
     if (!this.routeParam.admissionsId) {
-      console.log("no");
+      // console.log("no");
       this.getadmissionsDataList();
     } else {
-      console.log("yes");
+      // console.log("yes");
       this.getadmissionsDatabyId(this.routeParam.admissionsId);
     }
   }
 
   getadmissionsDataList() {
-    console.log("getadmissionsDataList");
+    // console.log("getadmissionsDataList");
     return new Promise((resolve, reject) => {
       this.httpClient.get(environment.apiUrl + "/api/admissions", { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.onDataChanged.next(response.data);
@@ -49,7 +49,7 @@ export class AdmissionsService {
   }
 
   getadmissionsDatabyId(admissionsId) {
-    console.log(admissionsId);
+    // console.log(admissionsId);
     return new Promise((resolve, reject) => {
       if (admissionsId === 'new') {
         this.onEditDataChanged.next(null);
@@ -63,7 +63,7 @@ export class AdmissionsService {
     });
   }
   editAdmissionsData(admissions) {
-    console.log("editAdmissionsData");
+    // console.log("editAdmissionsData");
     return new Promise((resolve, reject) => {
       this.httpClient.put(environment.apiUrl + "/api/admissions/" + admissions._id, admissions, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getadmissionsDataList();
@@ -73,7 +73,7 @@ export class AdmissionsService {
   }
 
   ADDadmissionsData(data: any) {
-    console.log(data);
+    // console.log(data);
     return new Promise((resolve, reject) => {
       this.httpClient.post(environment.apiUrl + "/api/admissions", data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getadmissionsDataList();
@@ -92,12 +92,10 @@ export class AdmissionsService {
   }
 
   importData(data: any) {
-    console.log(data);
+    // console.log(data);
     return this.httpClient.post(environment.apiUrl + "/api/students", data, { headers: this.authorizationHeader() })
-      // .map(res => { return res.json() })
       .subscribe(res => {
-        console.log(res);
-        // this.onImportDataChanged.next('true');
+        // console.log(res);
       });
   }
 
