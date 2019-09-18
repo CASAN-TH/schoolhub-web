@@ -98,9 +98,6 @@ export class RegisterComponent implements OnInit, OnDestroy
         this.auth.register(data)
             .then((result) => {
                 this.router.navigate(['']);
-            })
-            .catch((error) => {
-                console.log(error);
             });
     }
 }
