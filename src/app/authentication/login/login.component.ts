@@ -69,9 +69,6 @@ export class LoginComponent implements OnInit {
         this.auth.login(data)
             .then((result) => {
                 this.router.navigate(['']);
-            })
-            .catch((error) => {
-                console.log(error);
             });
     }
 }
