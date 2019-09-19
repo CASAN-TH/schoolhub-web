@@ -18,7 +18,7 @@ export const locale = {
         },
         'STUDENTSLIST': {
             'EDIT': 'Edit',
-            'RESIGN': 'Resign',
+            'SOLDOUT': 'Soldout',
             'DELETE': 'Delete',
             'STUDENTS': 'Students',
             'PREFIX': 'Prefix',
@@ -28,6 +28,11 @@ export const locale = {
             'PHONENUMBER': 'Phone No.',
             'FATHERFULLNAME': 'Father Name',
             'MOTHERFULLNAME': 'Mother Name',
+
+        },
+        'STUDENTSFORMDIALOG': {
+            'CAUSE':'Cause',
+            'ENDDATEOFAPPROVAL':'Enddate of Approval'
 
         }
     }

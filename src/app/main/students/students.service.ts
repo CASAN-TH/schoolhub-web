@@ -22,19 +22,16 @@ export class StudentsService {
   constructor(private httpclient: HttpClient) { this.onDataChanged = new BehaviorSubject([]); }
 
   resolve(route: ActivatedRouteSnapshot) {
-    // console.log("resolve");
+
     this.routeParam = route.params;
     if (!this.routeParam.studentsId) {
-      // console.log("no");
       return this.getstudentsDataList();
     } else {
-      // console.log("yes");
       this.getstudentsbyId(this.routeParam.studentsId);
     }
   }
 
   getstudentsDataList() {
-    // console.log("getstudentsDataList");
     return new Promise((resolve, reject) => {
       this.httpclient.get(environment.apiUrl + "/api/students", { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.onDataChanged.next(response.data);
@@ -44,7 +41,6 @@ export class StudentsService {
   }
 
   getstudentsbyId(studentsId) {
-    // console.log("getstudentsbyId");
     return new Promise((resolve, reject) => {
       if (studentsId === 'new') {
         this.onDataChanged.next(null);
@@ -59,18 +55,15 @@ export class StudentsService {
   }
 
   adStudentsData(data: any) {
-    // console.log(data);
     return new Promise((resolve, reject) => {
       this.httpclient.post(environment.apiUrl + "/api/students", data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getstudentsDataList();
-        // console.log(response.data);
         resolve(response.data);
       }, reject);
     });
   }
 
   editStudentsData(students) {
-    // console.log(students);
     return new Promise((resolve, reject) => {
       this.httpclient.put(environment.apiUrl + "/api/students/" + students._id, students, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         this.getstudentsDataList();
@@ -78,6 +71,18 @@ export class StudentsService {
       }, reject);
     });
   }
+
+
+  studentsSoldoutData(students) {
+    console.log(students);
+    return new Promise((resolve, reject) => {
+      this.httpclient.put(environment.apiUrl + "/api/students/" + students._id, students, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+        this.getstudentsDataList();
+        resolve(response.data);
+      }, reject);
+    });
+  }
+
 
   // deleteData(_id) {
   //   return new Promise((resolve, reject) => {
@@ -88,8 +93,5 @@ export class StudentsService {
   //   });
   // }
 
-  causeStudentsData(student) {
-    console.log(student);
-  }
 
 }

@@ -60,7 +60,6 @@ export class StudentsFormComponent implements OnInit {
 
     this.studentsService.onDataChanged.subscribe((res: any) => {
       this.students = res;
-      // console.log(this.students);
       if (!this.students) {
         this.students = {
           class: "",
@@ -111,31 +110,21 @@ export class StudentsFormComponent implements OnInit {
         Validators.maxLength(10)
       ]
       ],
-
     });
-
   }
   onAddNew() {
-    // console.log("onAddNew");
     this.studentsService.adStudentsData(this.studentsForm.getRawValue()).then(value => {
-      //this.router.navigate(['students']);
       this._location.back();
     });
-
-
   }
 
   onsaveEdit() {
-    // console.log("onsaveEdit");
     this.studentsService.editStudentsData(this.studentsForm.getRawValue()).then(value => {
-      // this.router.navigate(['students']);
       this._location.back();
     });
-
   }
 
   onClose() {
-    //this.router.navigate(['students']);
     this._location.back();
   }
 

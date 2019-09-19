@@ -19,7 +19,7 @@ export const locale = {
         },
         'STUDENTSLIST': {
             'EDIT': 'แก้ไขข้อมูล',
-            'RESIGN': 'ลาออก',
+            'SOLDOUT': 'จำหน่ายออก',
             'DELETE': 'ลบข้อมูล',
             'STUDENTS': 'นักเรียน',
             'PREFIX': 'คำนำหน้าชื่อ',
@@ -29,6 +29,11 @@ export const locale = {
             'PHONENUMBER': 'เบอร์โทรศัพท์',
             'FATHERFULLNAME': 'ชื่อ-สกุล บิดา',
             'MOTHERFULLNAME':'ชื่อ-สกุล มารดา',
+
+        },
+        'STUDENTSFORMDIALOG': {
+            'CAUSE':'สาเหตุที่ลาออก',
+            'ENDDATEOFAPPROVAL':'วันที่ลาออก'
 
         }
     }
