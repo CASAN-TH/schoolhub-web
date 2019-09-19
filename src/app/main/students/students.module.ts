@@ -6,7 +6,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { StudentsService } from './students.service';
 import { StudentsFormComponent } from './students-form/students-form.component';
-import { MatInputModule, MatIconModule, MatTableModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatDatepickerModule, MatCardModule, MatSelectModule, MatPaginatorModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatTableModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatDatepickerModule, MatCardModule, MatSelectModule, MatPaginatorModule, MatCheckboxModule } from '@angular/material';
 import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 
 const routes = [
@@ -31,7 +31,8 @@ const routes = [
   declarations: [StudentsComponent, StudentsFormComponent],
   imports: [
     RouterModule.forChild(routes),
-
+    
+    MatCheckboxModule,
     MatInputModule,
     MatIconModule,
     MatTableModule,

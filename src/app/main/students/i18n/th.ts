@@ -14,7 +14,22 @@ export const locale = {
             'SEX': 'เพศ',
             'FATHERFULLNAME': 'ชื่อ-สกุล บิดา',
             'MOTHERFULLNAME':'ชื่อ-สกุล มารดา',
+            'PHONENUMBER': 'เบอร์โทรศัพท์'
+            
+        },
+        'STUDENTSLIST': {
+            'EDIT': 'แก้ไขข้อมูล',
+            'RESIGN': 'ลาออก',
+            'DELETE': 'ลบข้อมูล',
+            'STUDENTS': 'นักเรียน',
+            'PREFIX': 'คำนำหน้าชื่อ',
+            'FIRSTNAME': 'ชื่อ',
+            'LASTNAME': 'นามสกุล',
+            'STUDENTSID': 'รหัสนักเรียน',
             'PHONENUMBER': 'เบอร์โทรศัพท์',
+            'FATHERFULLNAME': 'ชื่อ-สกุล บิดา',
+            'MOTHERFULLNAME':'ชื่อ-สกุล มารดา',
+
         }
     }
 };

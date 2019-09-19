@@ -79,4 +79,17 @@ export class StudentsService {
     });
   }
 
+  // deleteData(_id) {
+  //   return new Promise((resolve, reject) => {
+  //     this.httpclient.delete(environment.apiUrl + "/api/students/" + _id, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+  //       this.getstudentsDataList();
+  //       resolve(response.data);
+  //     }, reject);
+  //   });
+  // }
+
+  causeStudentsData(student) {
+    console.log(student);
+  }
+
 }

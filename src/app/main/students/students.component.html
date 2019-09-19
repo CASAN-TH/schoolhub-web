@@ -14,7 +14,7 @@
         <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
           group
         </mat-icon>
-        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Students</span>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{ 'STUDENTSLIST.STUDENTS' | translate}}</span>
       </div>
       <!-- / APP TITLE -->
 
@@ -44,14 +44,14 @@
 
         <!-- prefix Column -->
         <ng-container matColumnDef="prefix">
-          <mat-header-cell *matHeaderCellDef>คำนำหน้าชื่อ</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'STUDENTSLIST.PREFIX' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let student">
             <p class="text-truncate font-weight-600">{{student.prefix}}</p>
           </mat-cell>
         </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="firstname">
-          <mat-header-cell *matHeaderCellDef>ชื่อนักเรียน</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'STUDENTSLIST.FIRSTNAME' | translate}}-{{ 'STUDENTSLIST.LASTNAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let student">
             <p class="text-truncate font-weight-600">{{student.firstname}} {{student.lastname}}</p>
           </mat-cell>
@@ -59,7 +59,7 @@
 
         <!-- StudentId Column -->
         <ng-container matColumnDef="studentid">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>รหัสนักเรียน</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>{{ 'STUDENTSLIST.STUDENTSID' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let student" fxHide fxShow.gt-sm>
             <p class="studentid text-truncate">
               {{student.studentid}}
@@ -69,7 +69,7 @@
 
         <!-- Phone Column -->
         <ng-container matColumnDef="phonenumber">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>เบอร์โทรศัพท์</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>{{ 'STUDENTSLIST.PHONENUMBER' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let student" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
               {{student.phonenumber}}
@@ -78,7 +78,7 @@
         </ng-container>
         <!-- Phone Column -->
         <ng-container matColumnDef="fatherfullname">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล บิดา</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>{{ 'STUDENTSLIST.FATHERFULLNAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let student" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
               {{student.fatherfullname}}
@@ -87,7 +87,7 @@
         </ng-container>
         <!-- Phone Column -->
         <ng-container matColumnDef="motherfullname">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล มารดา</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>{{ 'STUDENTSLIST.MOTHERFULLNAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let student" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
               {{student.motherfullname}}
@@ -96,14 +96,28 @@
         </ng-container>
 
 
-        <!-- Buttons Column -->
-        <ng-container matColumnDef="buttons">
+         <!-- Buttons Column -->
+         <ng-container matColumnDef="buttons">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let student">
             <div fxFlex="row" fxLayoutAlign="end center">
-              <button mat-icon-button aria-label="More">
-                <mat-icon class="secondary-text" (click)="onEditstudents(student)">more_vert</mat-icon>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
               </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onEditstudents(student)">
+                  <mat-icon>edit</mat-icon>
+                  <span>{{ 'STUDENTSLIST.EDIT' | translate}}</span>
+                </button>
+                <button mat-menu-item (click)="onCausestudents(student)">
+                  <mat-icon>school</mat-icon>
+                  <span>{{ 'STUDENTSLIST.RESIGN' | translate}}</span>
+                </button>
+                <!-- <button mat-menu-item (click)="onDeletestudents(student._id)">
+                  <mat-icon>delete</mat-icon>
+                  <span>{{ 'STUDENTSLIST.DELETE' | translate}}</span>
+                </button> -->
+              </mat-menu>
             </div>
           </mat-cell>
         </ng-container>

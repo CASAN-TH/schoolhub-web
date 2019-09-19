@@ -13,6 +13,19 @@ export const locale = {
             'FATHERFULLNAME': 'Father Name',
             'MOTHERFULLNAME':'Mother Name',
             'PHONENUMBER': 'Phone No.',
+        },
+        'ADMISSIONSLIST': {
+            'IMPORT': 'Import',
+            'EDIT': 'Edit',
+            'DELETE': 'Delete',
+            'ADMISSIONS': 'Admissions',
+            'PREFIX': 'Prefix',
+            'FIRSTNAME': 'First Name',
+            'LASTNAME': 'Last Name',
+            'PHONENUMBER': 'Phone No.',
+            'FATHERFULLNAME': 'Father Name',
+            'MOTHERFULLNAME': 'Mother Name',
+
         }
     }
 };
