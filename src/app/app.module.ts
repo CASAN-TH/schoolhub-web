@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { GlobalErrorHandler } from './global-error-handler';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatSnackBarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import 'hammerjs';
 
@@ -17,6 +18,8 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+
+import { ServerErrorInterceptor } from './server-error.interceptor';
 
 const appRoutes: Routes = [
     {
@@ -63,6 +66,7 @@ const appRoutes: Routes = [
         // Material
         MatButtonModule,
         MatIconModule,
+        MatSnackBarModule,
 
         // Fuse modules
         FuseModule.forRoot(fuseConfig),
@@ -74,6 +78,10 @@ const appRoutes: Routes = [
         // App modules
         LayoutModule,
         SampleModule
+    ],
+    providers: [
+      { provide: ErrorHandler, useClass: GlobalErrorHandler },
+      { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
     ],
     bootstrap   : [
         AppComponent

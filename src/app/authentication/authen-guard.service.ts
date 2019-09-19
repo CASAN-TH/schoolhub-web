@@ -17,7 +17,7 @@ export class AuthenGuardService {
     const schoolToken = window.localStorage.getItem(
       `token@${environment.appName}-school`
     );
-    console.log(schoolToken);
+    
     if (token) {
       
       if (!schoolToken) {
