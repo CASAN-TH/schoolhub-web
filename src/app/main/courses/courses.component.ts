@@ -45,7 +45,12 @@ export class CoursesComponent implements OnInit {
     })
   }
 
-  newCourse(Actiontype){
-    this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
+  newCourse(){
+    if(this.courses.length > 0){
+      let Actiontype = 'newyear'
+      this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
+    }else{
+      let Actiontype = 'import'
+    }
   }
 }

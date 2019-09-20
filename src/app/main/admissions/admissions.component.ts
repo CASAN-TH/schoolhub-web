@@ -19,7 +19,7 @@ export class AdmissionsComponent implements OnInit {
 
   admissiondata: any;
   admissions: any = [];
-  displayedColumns = ['prefix', 'firstname', 'fatherfullname', 'motherfullname', 'phonenumber', 'buttons'];
+  displayedColumns = ['checkbox','prefix', 'firstname', 'fatherfullname', 'motherfullname', 'phonenumber', 'buttons'];
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,

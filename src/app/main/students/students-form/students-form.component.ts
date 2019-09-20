@@ -20,9 +20,18 @@ export class StudentsFormComponent implements OnInit {
   studentsForm: FormGroup;
   students: any = [];
   class: Array<any> = [
-    { value: 'p1', viewValue: 'ประถมศึกษาปีที่ 1' },
-    { value: 'p2', viewValue: 'ประถมศึกษาปีที่ 2' },
-    { value: 'p3', viewValue: 'ประถมศึกษาปีที่ 3' }
+    { value: 'ประถมศึกษาปีที่ 1', viewValue: 'ประถมศึกษาปีที่ 1' },
+    { value: 'ประถมศึกษาปีที่ 2', viewValue: 'ประถมศึกษาปีที่ 2' },
+    { value: 'ประถมศึกษาปีที่ 3', viewValue: 'ประถมศึกษาปีที่ 3' },
+    { value: 'ประถมศึกษาปีที่ 4', viewValue: 'ประถมศึกษาปีที่ 4' },
+    { value: 'ประถมศึกษาปีที่ 5', viewValue: 'ประถมศึกษาปีที่ 5' },
+    { value: 'ประถมศึกษาปีที่ 6', viewValue: 'ประถมศึกษาปีที่ 6' },
+    { value: 'มัธยมศึกษาปีที่ 1', viewValue: 'มัธยมศึกษาปีที่ 1' },
+    { value: 'มัธยมศึกษาปีที่ 2', viewValue: 'มัธยมศึกษาปีที่ 2' },
+    { value: 'มัธยมศึกษาปีที่ 3', viewValue: 'มัธยมศึกษาปีที่ 3' },
+    { value: 'มัธยมศึกษาปีที่ 4', viewValue: 'มัธยมศึกษาปีที่ 4' },
+    { value: 'มัธยมศึกษาปีที่ 5', viewValue: 'มัธยมศึกษาปีที่ 5' },
+    { value: 'มัธยมศึกษาปีที่ 6', viewValue: 'มัธยมศึกษาปีที่ 6' }
   ];
 
   prefixs: Array<any> = [
@@ -51,7 +60,6 @@ export class StudentsFormComponent implements OnInit {
 
     this.studentsService.onDataChanged.subscribe((res: any) => {
       this.students = res;
-      // console.log(this.students);
       if (!this.students) {
         this.students = {
           class: "",
@@ -102,31 +110,21 @@ export class StudentsFormComponent implements OnInit {
         Validators.maxLength(10)
       ]
       ],
-
     });
-
   }
   onAddNew() {
-    // console.log("onAddNew");
     this.studentsService.adStudentsData(this.studentsForm.getRawValue()).then(value => {
-      //this.router.navigate(['students']);
       this._location.back();
     });
-
-
   }
 
   onsaveEdit() {
-    // console.log("onsaveEdit");
     this.studentsService.editStudentsData(this.studentsForm.getRawValue()).then(value => {
-      // this.router.navigate(['students']);
       this._location.back();
     });
-
   }
 
   onClose() {
-    //this.router.navigate(['students']);
     this._location.back();
   }
 
