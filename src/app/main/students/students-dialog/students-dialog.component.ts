@@ -1,13 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { StudentsService } from '../students.service';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'app-students-dialog',
   templateUrl: './students-dialog.component.html',
-  styleUrls: ['./students-dialog.component.scss']
+  styleUrls: ['./students-dialog.component.scss'],
+  animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsDialogComponent implements OnInit {
 
