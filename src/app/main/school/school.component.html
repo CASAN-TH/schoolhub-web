@@ -1,151 +1,111 @@
 <div class="page-layout carded fullwidth inner-scroll">
-  <!-- TOP BACKGROUND -->
-  <div class="top-bg accent"></div>
-  <!-- / TOP BACKGROUND -->
 
-  <!-- CENTER -->
+  <div class="top-bg accent"></div>
+
+
+
   <div class="center">
-    <!-- HEADER -->
+
     <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
 
-      <!-- APP TITLE -->
+
       <div fxLayout="row" fxLayoutAlign="start center">
 
-        <div fxLayout="column" fxLayoutAlign="start start" >
+        <div fxLayout="column" fxLayoutAlign="start start">
           <div class="h2">
             <mat-label>{{ 'SCHOOL.ADDSCHOOL' | translate}}</mat-label>
           </div>
         </div>
       </div>
-      <!-- / APP TITLE -->
+
 
     </div>
-    <!-- / HEADER -->
 
-    <!-- CONTENT CARD -->
+
+
     <div class="content-card">
-      <!-- CONTENT -->
       <div class="content mt-20" fusePerfectScrollbar>
         <form [formGroup]="schoolsForm">
 
-          <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
-
-            
-              <div class="center" >
-                  <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
-                  (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-                      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                        
-                          <button mat-flat-button color="accent" type="button" (click)="openFileSelector()">Browse Files</button>
-                      </ng-template>
-                  </ngx-file-drop>
-                  <div class="upload-table">
-                      <table class="table">
-                          <thead>
-                              <tr>
-                                  <th>Name</th>
-                              </tr>
-                          </thead>
-                          <tbody class="upload-name-style">
-                              <tr *ngFor="let item of files; let i=index">
-                                  <td><strong>{{ item.relativePath }}</strong></td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
+          <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100" fxFlex.gt-xs="100">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="40" class="pl-20 pr-16">
+              <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                  click to browse file or drop file here
+                  <img height="30%" width="30%" src="https://image.flaticon.com/icons/svg/685/685686.svg"
+                    (click)="openFileSelector()">
+                </ng-template>
+              </ngx-file-drop>
+            </div>
+            <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="50" fxFlex.gt-xs="50">
+              <div fxLayout="row" fxLayoutAlign="center" fxFlex fxFlex.gt-xs="100" class="pl-20 pr-16">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>{{ 'SCHOOL.SCHOOLNAME' | translate}}</mat-label>
+                  <input name="schoolname" formControlName="schoolname" matInput>
+                </mat-form-field>
               </div>
-              
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
-              <mat-form-field appearance="outline" fxFlex>
-                <mat-label>{{ 'SCHOOL.SCHOOLNAME' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
-                <input name="schoolname" formControlName="schoolname" matInput>
-              </mat-form-field>
+              <div fxLayout="row" fxLayoutAlign="center" fxFlex fxFlex.gt-xs="50" class="pl-20 pr-16">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>{{ 'SCHOOL.SUBDISTRIC' | translate}}</mat-label>
+                  <input name="subdistric" formControlName="subdistric" matInput>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center" fxFlex fxFlex.gt-xs="50" class="pl-20 pr-16">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>{{ 'SCHOOL.DISTRIC' | translate}}</mat-label>
+                  <input name="distric" formControlName="distric" matInput>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center" fxFlex fxFlex.gt-xs="100" class="pl-20 pr-16">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>{{ 'SCHOOL.PROVINCE' | translate}}</mat-label>
+                  <input name="province" formControlName="province" matInput>
+                </mat-form-field>
+              </div>
             </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="32" class="pl-20 pr-16">
-              <mat-form-field appearance="outline" fxFlex>
-                <mat-label>{{ 'SCHOOL.SUBDISTRIC' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
-                <input name="subdistric" formControlName="subdistric" matInput>
-              </mat-form-field>
-            </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="32" class="pl-20 pr-16">
-              <mat-form-field appearance="outline" fxFlex>
-                <mat-label>{{ 'SCHOOL.DISTRIC' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
-                <input name="distric" formControlName="distric" matInput>
-              </mat-form-field>
-            </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="31" class="pl-20 pr-16">
-              <mat-form-field appearance="outline" fxFlex>
-                <mat-label>{{ 'SCHOOL.PROVINCE' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
-                <input name="province" formControlName="province" matInput>
-              </mat-form-field>
-            </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.UNDER' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="under" formControlName="under" matInput>
               </mat-form-field>
             </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.AREA' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="area" formControlName="area" matInput>
               </mat-form-field>
             </div>
-
-
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.REGISTRAR' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="registrar" formControlName="registrar" matInput>
               </mat-form-field>
             </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.POSITION' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="position" formControlName="position" matInput>
               </mat-form-field>
             </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="47" class="pl-20 pr-16">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.DIRECTOR' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="direction" formControlName="direction" matInput>
               </mat-form-field>
             </div>
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="48" class="pl-20 pr-16">
+            <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.POSITION2' | translate}}</mat-label>
-                <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
                 <input name="positions" formControlName="positions" matInput>
               </mat-form-field>
             </div>
 
-
-
-
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20 pr-16">
-
-            </div>
           </div>
         </form>
+
       </div>
+
+
       <div fxLayout="row">
 
         <div class="pt-20 pb-20" fxLayoutAlign="center" fxFlex="100">
