@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { StudentsService } from '../students.service';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { fuseAnimations } from '@fuse/animations';
 
 @Component({
@@ -21,6 +21,7 @@ export class StudentsDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _location: Location,
     private studentsService: StudentsService,
+    public matDialogRef: MatDialogRef<StudentsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private _data: any
   ) {
     if (this.students) {
@@ -31,18 +32,6 @@ export class StudentsDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.studentsService.onDataChanged.subscribe((res: any) => {
-    //   console.log(res);
-    //   this.students = res;
-    //   console.log(this.students);
-    //   // if (!this.students) {
-    //   //   this.students = {
-    //   //     cause: '',
-    //   //     enddateofapproval: ''
-    //   //   }
-    //   // }
-    // });
-
 
   }
 
@@ -85,14 +74,14 @@ export class StudentsDialogComponent implements OnInit {
   }
 
   onsoldoutClose() {
-    this._location.back();
+    this.matDialogRef.close();
   }
 
-  onsoldoutSave() {
-    // console.log(students);
-    this.studentsService.studentsSoldoutData(this.studentForm.getRawValue()).then(value => {
-      this._location.back();
-    });
-  }
+  // onsoldoutSave() {
+  //   // console.log(students);
+  //   this.studentsService.studentsSoldoutData(this.studentForm.getRawValue()).then(value => {
+  //     this._location.back();
+  //   });
+  // }
 
 }

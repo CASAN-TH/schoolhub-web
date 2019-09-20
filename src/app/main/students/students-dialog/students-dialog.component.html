@@ -66,7 +66,7 @@
         </div>
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
           <button fxFlex="25" mat-stroked-button color="accent" [disabled]="studentForm.invalid" aria-label="SAVE"
-            (click)="onsoldoutSave(studentForm)">
+            (click)="matDialogRef.close(studentForm.getRawValue())">
             SAVE
           </button>
         </div>

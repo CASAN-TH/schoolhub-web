@@ -62,7 +62,10 @@ export class StudentsComponent implements OnInit {
     console.log(students._id);
 
     dialogRef.afterClosed().subscribe((response: any) => {
-
+      if(response){
+        this.studentsService.studentsSoldoutData(response);
+      }
+      
     });
   }
 
