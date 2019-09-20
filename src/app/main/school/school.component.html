@@ -31,7 +31,30 @@
           <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
 
             
-
+              <div class="center" >
+                  <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+                  (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                      <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                        
+                          <button mat-flat-button color="accent" type="button" (click)="openFileSelector()">Browse Files</button>
+                      </ng-template>
+                  </ngx-file-drop>
+                  <div class="upload-table">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                              </tr>
+                          </thead>
+                          <tbody class="upload-name-style">
+                              <tr *ngFor="let item of files; let i=index">
+                                  <td><strong>{{ item.relativePath }}</strong></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+              
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="95" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'SCHOOL.SCHOOLNAME' | translate}}</mat-label>
