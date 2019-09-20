@@ -14,7 +14,7 @@
         <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
           group
         </mat-icon>
-        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Admissions</span>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{ 'ADMISSIONSLIST.ADMISSIONS' | translate}}</span>
       </div>
       <!-- / APP TITLE -->
 
@@ -33,6 +33,15 @@
     <div class="content-card">
       <mat-table #table [dataSource]="admissions" [@animateStagger]="{value:'50'}">
 
+         <!-- Checkbox Column -->
+         <ng-container matColumnDef="checkbox">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let admission">
+              <mat-checkbox (click)="$event.stopPropagation()">
+              </mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
         <!-- Avatar Column -->
         <ng-container matColumnDef="avatar">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
@@ -44,14 +53,14 @@
 
         <!-- prefix Column -->
         <ng-container matColumnDef="prefix">
-          <mat-header-cell *matHeaderCellDef>คำนำหน้าชื่อ</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'ADMISSIONSLIST.PREFIX' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let admission">
             <p class="text-truncate font-weight-600">{{admission.prefix}}</p>
           </mat-cell>
         </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="firstname">
-          <mat-header-cell *matHeaderCellDef>ชื่อนักเรียน</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'ADMISSIONSLIST.FIRSTNAME' | translate}}-{{ 'ADMISSIONSLIST.LASTNAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let admission">
             <p class="text-truncate font-weight-600">{{admission.firstname}} {{admission.lastname}}</p>
           </mat-cell>
@@ -59,7 +68,7 @@
 
         <!-- Phone Column -->
         <ng-container matColumnDef="phonenumber">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>เบอร์โทรศัพท์</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>{{ 'ADMISSIONSLIST.PHONENUMBER' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let admission" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
               {{admission.phonenumber}}
@@ -68,7 +77,7 @@
         </ng-container>
         <!-- Phone Column -->
         <ng-container matColumnDef="fatherfullname">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล บิดา</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>{{ 'ADMISSIONSLIST.FATHERFULLNAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let admission" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
               {{admission.fatherfullname}}
@@ -77,7 +86,7 @@
         </ng-container>
         <!-- Phone Column -->
         <ng-container matColumnDef="motherfullname">
-          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>ชื่อ-สกุล มารดา</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>{{ 'ADMISSIONSLIST.MOTHERFULLNAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let admission" fxHide fxShow.gt-md>
             <p class="phone text-truncate">
               {{admission.motherfullname}}
@@ -97,15 +106,15 @@
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="onImportData(admission)">
                   <mat-icon>import_export</mat-icon>
-                  <span>Import</span>
+                  <span>{{ 'ADMISSIONSLIST.IMPORT' | translate}}</span>
                 </button>
                 <button mat-menu-item (click)="onEditadmissions(admission)">
                   <mat-icon>edit</mat-icon>
-                  <span>Edit</span>
+                  <span>{{ 'ADMISSIONSLIST.EDIT' | translate}}</span>
                 </button>
                 <button mat-menu-item (click)="onDeleteadmissions(admission._id)">
                   <mat-icon>delete</mat-icon>
-                  <span>Delete</span>
+                  <span>{{ 'ADMISSIONSLIST.DELETE' | translate}}</span>
                 </button>
               </mat-menu>
             </div>

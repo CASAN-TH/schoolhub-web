@@ -13,8 +13,27 @@ export const locale = {
             'BIRTHDAY': 'Birthday',
             'SEX': 'Sex',
             'FATHERFULLNAME': 'Father Name',
-            'MOTHERFULLNAME':'Mother Name',
+            'MOTHERFULLNAME': 'Mother Name',
+            'PHONENUMBER': 'Phone No.'
+        },
+        'STUDENTSLIST': {
+            'EDIT': 'Edit',
+            'SOLDOUT': 'Soldout',
+            'DELETE': 'Delete',
+            'STUDENTS': 'Students',
+            'PREFIX': 'Prefix',
+            'FIRSTNAME': 'First Name',
+            'LASTNAME': 'Last Name',
+            'STUDENTSID': 'Students ID',
             'PHONENUMBER': 'Phone No.',
+            'FATHERFULLNAME': 'Father Name',
+            'MOTHERFULLNAME': 'Mother Name',
+
+        },
+        'STUDENTSFORMDIALOG': {
+            'CAUSE':'Cause',
+            'ENDDATEOFAPPROVAL':'Enddate of Approval'
+
         }
     }
 };

@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StudentsService } from './students.service';
 import { fuseAnimations } from '@fuse/animations';
+import { MatDialog } from '@angular/material';
+import { StudentsDialogComponent } from './students-dialog/students-dialog.component';
 
 @Component({
   selector: 'app-students',
@@ -23,10 +25,12 @@ export class StudentsComponent implements OnInit {
     private route: ActivatedRoute,
     private studentsService: StudentsService,
     private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
   studentsForm: FormGroup;
+  studentForm: FormGroup;
   students: any = [];
   displayedColumns = ['prefix', 'firstname', 'studentid', 'fatherfullname', 'motherfullname', 'phonenumber', 'buttons'];
 
@@ -35,18 +39,36 @@ export class StudentsComponent implements OnInit {
       if (res) {
         this.students = res;
       }
-
-      // console.log(this.students);
     });
   }
+
   onAdstudents() {
-    // console.log("onAdstudents");
     this.router.navigate(['students/new']);
 
   }
+
   onEditstudents(student) {
     this.router.navigate(['students/' + student._id]);
   }
 
+  openDialog(students): void {
+    console.log(students);
+    const dialogRef = this.dialog.open(StudentsDialogComponent, {
+      width: '900px',
+      data: {
+        student: students
+      }
+    });
+    console.log(students._id);
+
+    dialogRef.afterClosed().subscribe((response: any) => {
+
+    });
+  }
+
+  // onDeletestudents(_id: any) {
+  //   // console.log(_id);
+  //   this.studentsService.deleteData(_id);
+  // }
 
 }
