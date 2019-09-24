@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
+import { DateAdapter } from '@angular/material';
 
 import { Location } from '@angular/common';
 import { fuseAnimations } from '@fuse/animations';
@@ -53,13 +54,18 @@ export class AdmissionsFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _location: Location,
-    private _fuseTranslationLoaderService: FuseTranslationLoaderService
-  ) { this._fuseTranslationLoaderService.loadTranslations(english, thai) }
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService,
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this._fuseTranslationLoaderService.loadTranslations(english, thai);
+    // DateAdapter()
+    this.dateAdapter.setLocale('th-TH');
+  }
 
   ngOnInit() {
     this.admissionService.onEditDataChanged.subscribe((res: any) => {
       this.admissions = res;
-      console.log(this.admissions);
+      // console.log(this.admissions);
       if (!this.admissions) {
         this.admissions = {
           class: "",
@@ -79,6 +85,10 @@ export class AdmissionsFormComponent implements OnInit {
   }
 
   createadmissionsForm() {
+
+    if (this.admissions.birthday) {
+      this.admissions.birthday = this.admissions.birthday.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3");
+    }
     return this.formBuilder.group({
       _id: [this.admissions._id],
       class: [this.admissions.class, Validators.required],
@@ -91,7 +101,7 @@ export class AdmissionsFormComponent implements OnInit {
         Validators.minLength(13),
         Validators.maxLength(13)
       ]],
-      birthday: [this.admissions.birthday, Validators.required],
+      birthday: [new Date(this.admissions.birthday), Validators.required],
       sex: [this.admissions.sex, Validators.required],
       fatherfullname: [this.admissions.fatherfullname, Validators.required],
       motherfullname: [this.admissions.motherfullname, Validators.required],
