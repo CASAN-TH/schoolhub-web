@@ -61,7 +61,9 @@ export class SchoolComponent implements OnInit {
         fileEntry.file((file: File) => {
  
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
+          // console.log(file);
+
+          this.schoolservice.uploadPhoto(file);
  
           /**
           // You could upload it like this:
@@ -92,6 +94,8 @@ export class SchoolComponent implements OnInit {
     this.schoolservice.addSchool(this.schoolsForm.getRawValue()).then(data => {
       this.router.navigate(['']);
     });
-
   }
+
+
+
 }

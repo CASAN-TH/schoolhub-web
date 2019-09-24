@@ -33,7 +33,7 @@
                 <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                   click to browse file or drop file here
                   <img height="30%" width="30%" src="https://image.flaticon.com/icons/svg/685/685686.svg"
-                    (click)="openFileSelector()">
+                    (click)="openFileSelector($event)">
                 </ng-template>
               </ngx-file-drop>
             </div>

@@ -32,4 +32,13 @@ export class SchoolService {
     }
     );
   }
+
+  uploadPhoto(datafile) {
+    return new Promise((resolve, reject)=> {
+      this.httpClient.post('http://localhost:3000/api/schools/upload', datafile ,{ headers: this.authorizationHeader() }).subscribe((response: any) => {
+        console.log(response);
+      })
+    })
+  }
+
 }
