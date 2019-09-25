@@ -46,11 +46,13 @@ export class CoursesComponent implements OnInit {
   }
 
   newCourse(){
-    if(this.courses.length > 0){
+    let test = []
+    if(test.length > 0){
       let Actiontype = 'newyear'
       this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
     }else{
       let Actiontype = 'import'
+      this._router.navigate(['/courses/' + Actiontype]);
     }
   }
 }

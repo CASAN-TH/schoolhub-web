@@ -1,36 +1,45 @@
-<div fxLayoutAlign="center" class="pt-20 pb-20">
+<div fxLayoutAlign="center center" class="pt-20 pb-20" fxLayout="column" fxFlex="100" fxFlex.gt-xs="100">
   <mat-card class="example-card">
 
-    <div fxLayoutAlign="center" fxLayout="column" fxLayout.gt-sm="row wrap">
-
-      <div fxLayoutAlign="center" fxLayout="column" fxFlex="100">
-        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
-          <h1>แบบรายงานผลพัฒนาคุณภาพผู้เรียนรายบุคคล</h1>
-        </div>
-
-        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
-          <h2>{{student.name}}ปีการศึกษา {{student.year}} </h2>
-        </div>
-
-        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
-          <h2>{{school.schoolname}}</h2>
-        </div>
-
-        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
-          <h3>{{school.under}} {{school.area}} จังหวัด {{school.province}}</h3>
-        </div>
-
-        <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
-          <h4>
-            รหัสประจำตัวนักเรียน: {{student.student ? student.student.student_no : ''}}
-            ชื่อ-นามสกุล: {{student.student ? student.student.title : ''}} {{student.student ? student.student.firstname : ''}} {{student.student ? student.student.lastname : ''}}
-            ห้อง: 1/1
-            เลขที่: {{student.student ? student.student.seq : ''}}
-          </h4>
-        </div>
+    <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100" fxFlex.gt-xs="100">
+        
+      <div fxLayout="row" fxFlex="40" fxFlex.gt-xs="40">
+        <mat-icon (click)="goBack()">arrow_back</mat-icon> Student
       </div>
 
-      <div fxLayoutAlign="center" fxLayout="row" fxFlex="100">
+      <div fxLayoutAlign="end" fxLayout="row" fxFlex="40" fxFlex.gt-xs="40">
+          <button mat-stroked-button (click)="printtranscript()">
+            print <mat-icon>print</mat-icon>
+          </button>
+        </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="100" fxFlex="100">
+        <h1>แบบรายงานผลพัฒนาคุณภาพผู้เรียนรายบุคคล</h1>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="100" fxFlex="100">
+        <h2>{{student.name}}ปีการศึกษา {{student.year}} </h2>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="100" fxFlex="100">
+        <h2>{{school.schoolname}}</h2>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="100" fxFlex="100">
+        <h3>{{school.under}} {{school.area}} จังหวัด {{school.province}}</h3>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="100" fxFlex="100">
+        <h4>
+          รหัสประจำตัวนักเรียน: {{student.student ? student.student.student_no : ''}}
+          ชื่อ-นามสกุล: {{student.student ? student.student.title : ''}}
+          {{student.student ? student.student.firstname : ''}} {{student.student ? student.student.lastname : ''}}
+          ห้อง: 1/1
+          เลขที่: {{student.student ? student.student.seq : ''}}
+        </h4>
+      </div>
+
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex="100" fxFlex.gt-xs="100">
         <div class="example-container mat-elevation-z8">
           <table mat-table [dataSource]="student.structures">
 
@@ -42,7 +51,8 @@
 
             <ng-container matColumnDef="code">
               <th style="text-align: center" class="pl-20" mat-header-cell *matHeaderCellDef> รหัสวิชา </th>
-              <td style="text-align: center" class="pl-20" mat-cell *matCellDef="let structures"> {{structures.code}} </td>
+              <td style="text-align: center" class="pl-20" mat-cell *matCellDef="let structures"> {{structures.code}}
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
@@ -57,14 +67,15 @@
 
             <ng-container matColumnDef="weight">
               <th style="text-align: center" class="pl-20" mat-header-cell *matHeaderCellDef> น้ำหนัก/หน่วยกิต </th>
-              <td style="text-align: center" class="pl-20" mat-cell *matCellDef="let structures"> {{structures.weight}} </td>
+              <td style="text-align: center" class="pl-20" mat-cell *matCellDef="let structures"> {{structures.weight}}
+              </td>
             </ng-container>
 
             <ng-container matColumnDef="result">
               <th style="text-align: center" mat-header-cell *matHeaderCellDef> ระดับผลการเรียน </th>
               <td style="text-align: center" mat-cell *matCellDef="let structures">
                 <mat-form-field class="option-result" appearance="outline">
-                  <mat-label>คะแนน</mat-label>
+                  <mat-label>เกรด</mat-label>
                   <input type="text" [(ngModel)]="structures.result" matInput>
                 </mat-form-field>
               </td>
@@ -87,11 +98,11 @@
 
       </div>
 
-      <div fxLayoutAlign="center" fxLayout="row" fxFlex="50" class="pt-20">
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="50" fxFlex="50" class="pt-20">
         <button mat-stroked-button color="warn" (click)="onCancel()">ยกเลิก</button>
       </div>
 
-      <div fxLayoutAlign="center" fxLayout="row" fxFlex="50" class="pt-20">
+      <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="50" fxFlex="50" class="pt-20">
         <button mat-stroked-button color="accent" (click)="onSaveTranscript()">บันทึก</button>
       </div>
 

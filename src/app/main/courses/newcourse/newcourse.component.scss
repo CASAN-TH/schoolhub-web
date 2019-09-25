@@ -1,0 +1,25 @@
+.dropzone {
+    background: #fafafa;
+    border: 0.1rem dashed #bababa;
+    min-height: 15rem;
+    color: #bababa;
+    margin: 20px;
+  }
+  .dropzone input {
+    display: none;
+  }
+  .dropzone mat-icon {
+    font-size: 1200%;
+  }
+  .dowload-panal {
+    min-height: 15rem;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    margin: 20px;
+  }
+  .show-data {
+    min-height: 15rem;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    margin: 20px;
+  }

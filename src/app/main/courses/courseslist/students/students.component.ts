@@ -3,6 +3,7 @@ import { CoursesService } from '../../courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import {Location} from '@angular/common'
+import { environment } from 'environments/environment.hmr';
 
 @Component({
   selector: 'app-students',
@@ -48,5 +49,9 @@ export class StudentsComponent implements OnInit {
 
   goBack(){
     this._location.back();
+  }
+
+  printpp1(students){
+    window.open(environment.apiUrl + '/api/course/pp1/' + students.student_id)
   }
 }

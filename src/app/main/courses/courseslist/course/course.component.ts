@@ -50,7 +50,6 @@ export class CourseComponent implements OnInit {
 
     const index: number = this.dataSource.indexOf(data);
     if (index !== -1) {
-      console.log(data);
       this.dataSource.splice(index, 1);
       this.list.structures = this.dataSource;
       this.CoursesService.courseSubjectEdit(this.list);

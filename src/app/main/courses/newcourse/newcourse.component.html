@@ -1,0 +1,37 @@
+<div fxLayout="column" fxFlex="100" class="dropzone" fxLayoutAlign="center">
+
+  <div fxLayout="row" fxFlex="100" fxLayoutAlign="center" (drop)="drop($event)" (dragover)="allowDrop($event)">
+    <label for="file-input">
+      <p>
+        <mat-icon>backup</mat-icon>
+      </p>
+      <p>คุณสามารถลากและปล่อยไฟล์ Excel ในนี้เพื่ออัพโหลด</p>
+      <p>หรือ คลิ๊กเพื่อเลือกไฟล์ Excel จากไดเรกทอรีของท่าน</p>
+      <input name="detectFiles" id="file-input" type="file" (change)="detectFiles($event)" accept=".xls,.xlsx" />
+    </label>
+  </div>
+
+</div>
+
+<div fxLayout="column" fxFlex="100">
+
+  <div fxLayout="row" fxFlex="100" class="dowload-panal" fxLayoutAlign="center">
+    <div style="text-align: center" class="mt-80">
+      <h2>ดาวน์โหลดไฟล์ต้นแบบ</h2>
+      <p>สนับสนุนการใช้งานเฉพาะไฟล์ excel เท่านั้น</p>
+      <button mat-raised-button color="accent" (click)="download()">ดาวน์โหลด</button>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxFlex="100" class="dowload-panal" fxLayoutAlign="center">
+
+    <div style="text-align: center">
+      <h2>ตรวจสอบข้อมูลจาก file ที่ท่านอัพโหลด</h2>
+      <div *ngFor="let item of datas">
+        {{item.mini_01}}
+      </div>
+    </div>
+    
+  </div>
+
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../courses.service';
 import { AuthenService } from 'app/authentication/authen.service';
 import { Location } from '@angular/common';
+import { environment } from 'environments/environment.hmr';
 
 @Component({
   selector: 'app-transcript',
@@ -36,5 +37,11 @@ export class TranscriptComponent implements OnInit {
     });
 
   }
+  goBack(){
+    this._location.back();
+  }
 
+  printtranscript(){
+    window.open(environment.apiUrl + '/api/course/transcriptreport/' + this.student._id);
+  }
 }
