@@ -9,6 +9,8 @@ import { StudentsFormComponent } from './students-form/students-form.component';
 import { MatInputModule, MatIconModule, MatTableModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatDatepickerModule, MatCardModule, MatSelectModule, MatPaginatorModule, MatCheckboxModule } from '@angular/material';
 import { FuseConfirmDialogModule, FuseSidebarModule } from '@fuse/components';
 import { StudentsDialogComponent } from './students-dialog/students-dialog.component';
+import { CoursesService } from '../courses/courses.service';
+import { StudentsCoursesComponent } from './students-courses/students-courses.component';
 
 
 const routes = [
@@ -26,11 +28,18 @@ const routes = [
     resolve: {
       student: StudentsService
     }
+  }, {
+    path: ':coursesId/:studentsId',
+    component: StudentsCoursesComponent,
+    canActivate: [AuthenGuardService],
+    resolve: {
+      course: StudentsService
+    }
   }
 ];
 
 @NgModule({
-  declarations: [StudentsComponent, StudentsFormComponent, StudentsDialogComponent],
+  declarations: [StudentsComponent, StudentsFormComponent, StudentsDialogComponent, StudentsCoursesComponent],
   imports: [
     RouterModule.forChild(routes),
 

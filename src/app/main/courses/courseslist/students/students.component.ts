@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CoursesService } from '../../courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
-import {Location} from '@angular/common'
+import { Location } from '@angular/common'
 import { environment } from 'environments/environment.hmr';
 
 @Component({
@@ -14,7 +14,7 @@ import { environment } from 'environments/environment.hmr';
 })
 export class StudentsComponent implements OnInit {
   coursegrade: any;
-  students :any = [];
+  students: any = [];
 
   displayedColumns = ['seq', 'student_no', 'name', 'citizenid', 'buttons'];
 
@@ -44,14 +44,15 @@ export class StudentsComponent implements OnInit {
 
 
   onAdstudents() {
-    this.router.navigate(['/students/new']);
+    console.log("ssfgrgfs");
+    this.router.navigate(['/students/' + this.coursegrade[0]._id + '/new']);
   }
 
-  goBack(){
+  goBack() {
     this._location.back();
   }
 
-  printpp1(students){
+  printpp1(students) {
     window.open(environment.apiUrl + '/api/course/pp1/' + students.student_id)
   }
 }
