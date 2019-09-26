@@ -16,6 +16,7 @@ export class SchoolComponent implements OnInit {
 
  
   schoolsForm: FormGroup;
+  schoollogo ="";
   public files: NgxFileDropEntry[] = [];
 
 
@@ -63,7 +64,12 @@ export class SchoolComponent implements OnInit {
           // Here you can access the real file
           // console.log(file);
 
-          this.schoolservice.uploadPhoto(file);
+          const formData = new FormData()
+          formData.append('filename', file, droppedFile.relativePath)
+
+          this.schoolservice.uploadPhoto(formData).then((res : any)=>{
+            this.schoollogo = res.url;
+          });
  
           /**
           // You could upload it like this:
@@ -91,7 +97,9 @@ export class SchoolComponent implements OnInit {
   }
 
   onSaveSchool() {
-    this.schoolservice.addSchool(this.schoolsForm.getRawValue()).then(data => {
+    let data = this.schoolsForm.getRawValue();
+    data.imageUrl = this.schoollogo;
+    this.schoolservice.addSchool(data).then(data => {
       this.router.navigate(['']);
     });
   }
