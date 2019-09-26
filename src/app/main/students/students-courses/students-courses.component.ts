@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { FormGroup } from '@angular/forms';
+import { fuseAnimations } from '@fuse/animations';
 
 @Component({
   selector: 'app-students-courses',
   templateUrl: './students-courses.component.html',
-  styleUrls: ['./students-courses.component.scss']
+  styleUrls: ['./students-courses.component.scss'],
+  animations: fuseAnimations,
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsCoursesComponent implements OnInit {
 
