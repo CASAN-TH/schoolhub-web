@@ -35,6 +35,25 @@ export const locale = {
             'CAUSE':'สาเหตุที่ลาออก',
             'ENDDATEOFAPPROVAL':'วันที่ลาออก'
 
+        },
+        'STUDENTSCOURSE': {
+            'STUDENT_NO': 'รหัสนักเรียน',
+            'TITLE': 'คำนำหน้าชื่อ',
+            'FIRSTNAME': 'ชื่อ',
+            'LASTNAME': 'นามสกุล',
+            'CITIZENID': 'เลขประจำตัวประชาชน',
+            'BIRTHDAY': 'วันเกิด',
+            'BIRTHMONTH': 'เดือนเกิด',
+            'BIRTHYEAR': 'ปีเกิด',
+            'SEX': 'เพศ',
+            'NATIONALITY': 'สัญชาติ',
+            'RELIGION': 'ศาสนา',
+            'FATHERNAME': 'ชื่อ-สกุล บิดา',
+            'MOTHERNAME': 'ชื่อ-สกุล มารดา',
+            'ATTENDENCEDATE': 'วันที่เข้าเรียน',
+            'OLDSCOOL': 'โรงเรียนเดิม',
+            'OLDPROVINCE': 'จังหวัด',
+            'LASTCLASS': 'ชั้นเรียนสุดท้าย'
         }
     }
 };

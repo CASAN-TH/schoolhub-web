@@ -33,16 +33,162 @@
         <form [formGroup]="studentsForm">
           <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
 
-              <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
-                  <mat-form-field appearance="outline" fxFlex>
-                    <mat-label>{{ 'STUDENTS.STUDENTID' | translate}}</mat-label>
-                    <!-- <mat-icon matSuffix class="secondary-text">account_circle</mat-icon> -->
-                    <input name="student_no" formControlName="student_no" matInput>
-                  </mat-form-field>
-                </div>
+            <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100">
+              <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20   pr-16">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>{{ 'STUDENTSCOURSE.STUDENT_NO' | translate}}</mat-label>
+                  <input name="student_no" formControlName="student_no" matInput>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.TITLE' | translate}}</mat-label>
+                <mat-select name="title" formControlName="title">
+                  <mat-option *ngFor="let title of titles" [value]="title.value">
+                    {{title.viewValue}}
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="35" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.FIRSTNAME' | translate}}</mat-label>
+                <input name="firstname" formControlName="firstname" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="35" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.LASTNAME' | translate}}</mat-label>
+                <input name="lastname" formControlName="lastname" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.CITIZENID' | translate}}</mat-label>
+                <input name="citizenid" formControlName="citizenid" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="23" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.BIRTHDAY' | translate}}</mat-label>
+                <mat-select name="birthday" formControlName="birthday">
+                    <mat-option *ngFor="let birthday of birthdays" [value]="birthday.value">
+                      {{birthday.viewValue}}
+                    </mat-option>
+  
+                  </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="23" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.BIRTHMONTH' | translate}}</mat-label>
+                <mat-select name="birthmonth" formControlName="birthmonth">
+                    <mat-option *ngFor="let birthmonth of birthmonths" [value]="birthmonth.value">
+                      {{birthmonth.viewValue}}
+                    </mat-option>
+  
+                  </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="23" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.BIRTHYEAR' | translate}}</mat-label>
+                <input name="birthyear" formControlName="birthyear" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.SEX' | translate}}</mat-label>
+                <mat-select name="sex" formControlName="sex">
+                  <mat-option *ngFor="let sex of sexs" [value]="sex.value">
+                    {{sex.viewValue}}
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.NATIONALITY' | translate}}</mat-label>
+                <input name="nationality" formControlName="nationality" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.RELIGION' | translate}}</mat-label>
+                <input name="religion" formControlName="religion" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.FATHERNAME' | translate}}</mat-label>
+                <input name="fathername" formControlName="fathername" matInput>
+              </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.MOTHERNAME' | translate}}</mat-label>
+                <input name="mothername" formControlName="mothername" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20 pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.ATTENDENCEDATE' | translate}}</mat-label>
+                <input matInput [matDatepicker]="birthdayDatePicker" name="attendencedate"
+                  formControlName="attendencedate">
+                <mat-datepicker-toggle matSuffix [for]="birthdayDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #birthdayDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.OLDSCOOL' | translate}}</mat-label>
+                <input name="oldschool" formControlName="oldschool" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.OLDPROVINCE' | translate}}</mat-label>
+                <input name="oldprovince" formControlName="oldprovince" matInput>
+              </mat-form-field>
+            </div>
+
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20  pr-16">
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>{{ 'STUDENTSCOURSE.LASTCLASS' | translate}}</mat-label>
+                <input name="lastclass" formControlName="lastclass" matInput>
+              </mat-form-field>
+            </div>
 
           </div>
         </form>
+      </div>
+
+      <div fxLayout="row">
+        <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
+          <button fxFlex="25" mat-stroked-button color="warn">
+            CANCEL
+          </button>
+        </div>
+        <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
+          <button fxFlex="25" mat-stroked-button color="accent" [disabled]="studentsForm.invalid" aria-label="SAVE">
+            ADD
+          </button>
+        </div>
       </div>
 
     </div>
