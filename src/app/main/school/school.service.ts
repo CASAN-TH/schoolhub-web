@@ -34,10 +34,12 @@ export class SchoolService {
   }
 
   uploadPhoto(datafile) {
+    console.log(datafile);
     return new Promise((resolve, reject)=> {
-      this.httpClient.post('http://localhost:3000/api/schools/upload', datafile ,{ headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.httpClient.post(environment.apiUrl + "/api/schools/upload/logo", datafile).subscribe((response: any) => {
         console.log(response);
-      })
+        resolve(response.data);
+      },reject)
     })
   }
 
