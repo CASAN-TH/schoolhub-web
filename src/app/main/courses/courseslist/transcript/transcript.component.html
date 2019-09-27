@@ -2,16 +2,16 @@
   <mat-card class="example-card">
 
     <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100" fxFlex.gt-xs="100">
-        
-      <div fxLayout="row" fxFlex="40" fxFlex.gt-xs="40">
+
+      <div fxLayoutAlign="start" fxLayout="row" fxFlex="50" fxFlex.gt-xs="50">
         <mat-icon (click)="goBack()">arrow_back</mat-icon> Student
       </div>
 
-      <div fxLayoutAlign="end" fxLayout="row" fxFlex="40" fxFlex.gt-xs="40">
-          <button mat-stroked-button (click)="printtranscript()">
-            print <mat-icon>print</mat-icon>
-          </button>
-        </div>
+      <div fxLayoutAlign="end" fxLayout="row" fxFlex="50" fxFlex.gt-xs="50">
+        <button mat-stroked-button (click)="printtranscript()">
+          print <mat-icon>print</mat-icon>
+        </button>
+      </div>
 
       <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="100" fxFlex="100">
         <h1>แบบรายงานผลพัฒนาคุณภาพผู้เรียนรายบุคคล</h1>
