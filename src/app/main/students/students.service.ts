@@ -16,16 +16,15 @@ export class StudentsService {
 
   private authorizationHeader() {
     const token = window.localStorage.getItem(`token@${environment.appName}`);
-    console.log(token);
+    // console.log(token);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return headers;
   }
 
-  constructor(private httpclient: HttpClient)
-   { 
-     this.onDataChanged = new BehaviorSubject([]); 
-     this.onCoursesDataChanged = new BehaviorSubject([]); 
-    }
+  constructor(private httpclient: HttpClient) {
+    this.onDataChanged = new BehaviorSubject([]);
+    this.onCoursesDataChanged = new BehaviorSubject([]);
+  }
 
   resolve(route: ActivatedRouteSnapshot) {
 
@@ -44,18 +43,26 @@ export class StudentsService {
 
   }
   getCourseByID(coursesId: any) {
-    console.log("ubjlbbl");
-    console.log(this.authorizationHeader());
+    // console.log("ubjlbbl");
+    // console.log(this.authorizationHeader());
     return new Promise((resolve, reject) => {
       this.httpclient.get(environment.apiUrl + "/api/courses/" + coursesId, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-        console.log(response);
+        // console.log(response);
         this.onCoursesDataChanged.next(response.data);
         resolve(response.data);
       }, reject);
     });
   }
 
-
+  adStudentCoursesData(students) {
+    console.log(students);
+    // return new Promise((resolve, reject) => {
+    //   this.httpclient.put(environment.apiUrl + "/api/courses/" + students._id, students, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+    //     this.getstudentsDataList();
+    //     resolve(response.data);
+    //   }, reject);
+    // });
+  }
 
 
   getstudentsDataList() {

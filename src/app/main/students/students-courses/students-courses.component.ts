@@ -153,7 +153,8 @@ export class StudentsCoursesComponent implements OnInit {
   }
 
   onADDStudent() {
-    console.log("onADDStudent");
+    // console.log("onADDStudent");
+    this.studentsService.adStudentCoursesData(this.studentsForm.getRawValue());
   }
 
 }
