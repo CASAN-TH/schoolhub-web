@@ -116,14 +116,14 @@
               </mat-form-field>
             </div>
 
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="35" class="pl-20  pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'STUDENTSCOURSE.NATIONALITY' | translate}}</mat-label>
                 <input name="nationality" formControlName="nationality" matInput>
               </mat-form-field>
             </div>
 
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20  pr-16">
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="35" class="pl-20  pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'STUDENTSCOURSE.RELIGION' | translate}}</mat-label>
                 <input name="religion" formControlName="religion" matInput>
@@ -143,7 +143,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="30" class="pl-20 pr-16">
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="40" class="pl-20 pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'STUDENTSCOURSE.ATTENDENCEDATE' | translate}}</mat-label>
                 <input matInput [matDatepicker]="birthdayDatePicker" name="attendencedate"
@@ -153,7 +153,7 @@
               </mat-form-field>
             </div>
 
-            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="50" class="pl-20  pr-16">
+            <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="60" class="pl-20  pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'STUDENTSCOURSE.OLDSCOOL' | translate}}</mat-label>
                 <input name="oldschool" formControlName="oldschool" matInput>
@@ -180,7 +180,7 @@
 
       <div fxLayout="row">
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
-          <button fxFlex="25" mat-stroked-button color="warn" (click)="onCencel()">
+          <button fxFlex="25" mat-stroked-button color="warn" (click)="onClose()">
             CANCEL
           </button>
         </div>

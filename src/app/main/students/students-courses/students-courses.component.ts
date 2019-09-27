@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { StudentsService } from '../students.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import { Location } from '@angular/common';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
@@ -119,23 +119,28 @@ export class StudentsCoursesComponent implements OnInit {
   createCoursesForm(): FormGroup {
     return this.formBuilder.group({
       _id: [this.course._id],
-      student_no: [this.course.student_no],
-      title: [this.course.title],
-      firstname: [this.course.firstname],
-      lastname: [this.course.lastname],
-      citizenid: [this.course.citizenid],
-      birthday: [this.course.birthday],
-      birthmonth: [this.course.birthmonth],
-      birthyear: [this.course.birthyear],
-      sex: [this.course.sex],
-      nationality: [this.course.nationality],
-      religion: [this.course.religion],
-      fathername: [this.course.fathername],
-      mothername: [this.course.mothername],
-      attendencedate: [this.course.attendencedate],
-      oldschool: [this.course.oldschool],
-      oldprovince: [this.course.oldprovince],
-      lastclass: [this.course.lastclass]
+      student_no: [this.course.student_no, Validators.required],
+      title: [this.course.title, Validators.required],
+      firstname: [this.course.firstname, Validators.required],
+      lastname: [this.course.lastname, Validators.required],
+      citizenid: [this.course.citizenid, [
+        Validators.required,
+        Validators.pattern("^[0-9]*$"),
+        Validators.minLength(13),
+        Validators.maxLength(13)
+      ]],
+      birthday: [this.course.birthday, Validators.required],
+      birthmonth: [this.course.birthmonth, Validators.required],
+      birthyear: [this.course.birthyear, Validators.required],
+      sex: [this.course.sex, Validators.required],
+      nationality: [this.course.nationality, Validators.required],
+      religion: [this.course.religion, Validators.required],
+      fathername: [this.course.fathername, Validators.required],
+      mothername: [this.course.mothername, Validators.required],
+      attendencedate: [this.course.attendencedate, Validators.required],
+      oldschool: [this.course.oldschool, Validators.required],
+      oldprovince: [this.course.oldprovince, Validators.required],
+      lastclass: [this.course.lastclass, Validators.required]
     });
   }
 
@@ -143,8 +148,8 @@ export class StudentsCoursesComponent implements OnInit {
     this._location.back();
   }
 
-  onCencel() {
-    console.log("onCencel");
+  onClose() {
+    this._location.back();
   }
 
   onADDStudent() {
