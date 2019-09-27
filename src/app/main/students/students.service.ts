@@ -16,16 +16,15 @@ export class StudentsService {
 
   private authorizationHeader() {
     const token = window.localStorage.getItem(`token@${environment.appName}`);
-    console.log(token);
+    // console.log(token);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return headers;
   }
 
-  constructor(private httpclient: HttpClient)
-   { 
-     this.onDataChanged = new BehaviorSubject([]); 
-     this.onCoursesDataChanged = new BehaviorSubject([]); 
-    }
+  constructor(private httpclient: HttpClient) {
+    this.onDataChanged = new BehaviorSubject([]);
+    this.onCoursesDataChanged = new BehaviorSubject([]);
+  }
 
   resolve(route: ActivatedRouteSnapshot) {
 
@@ -37,25 +36,30 @@ export class StudentsService {
     }
 
     if (this.routeParam.coursesId && this.routeParam.studentsId) {
-      console.log(this.routeParam.coursesId + ":" + this.routeParam.studentsId);
+      // console.log(this.routeParam.coursesId + ":" + this.routeParam.studentsId);
       this.getCourseByID(this.routeParam.coursesId);
     }
 
 
   }
   getCourseByID(coursesId: any) {
-    console.log("ubjlbbl");
-    console.log(this.authorizationHeader());
     return new Promise((resolve, reject) => {
       this.httpclient.get(environment.apiUrl + "/api/courses/" + coursesId, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-        console.log(response);
         this.onCoursesDataChanged.next(response.data);
         resolve(response.data);
       }, reject);
     });
   }
 
-
+  //ตัวที่ทำอยู่ครับ
+  adStudentCoursesData(course) {
+    console.log(course);
+    return new Promise((resolve, reject) => {
+      this.httpclient.put(environment.apiUrl + "/api/courses/" + course._id, course, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+        resolve(response.data);
+      }, reject);
+    });
+  }
 
 
   getstudentsDataList() {

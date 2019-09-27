@@ -31,9 +31,28 @@ export const locale = {
 
         },
         'STUDENTSFORMDIALOG': {
-            'CAUSE':'Cause',
-            'ENDDATEOFAPPROVAL':'Enddate of Approval'
+            'CAUSE': 'Cause',
+            'ENDDATEOFAPPROVAL': 'Enddate of Approval'
 
+        },
+        'STUDENTSCOURSE': {
+            'STUDENT_NO': 'Student No.',
+            'TITLE': 'Title',
+            'FIRSTNAME': 'First Name',
+            'LASTNAME': 'Last Name',
+            'CITIZENID': 'Citizenid',
+            'BIRTHDAY': 'Birthday',
+            'BIRTHMONTH': 'Birthmonth',
+            'BIRTHYEAR': 'Birthyear',
+            'SEX': 'Sex',
+            'NATIONALITY': 'nationality',
+            'RELIGION': 'religion',
+            'FATHERNAME': 'Father Name',
+            'MOTHERNAME': 'Mother Name',
+            'ATTENDENCEDATE': 'Attendencedate',
+            'OLDSCOOL': 'Oldschool',
+            'OLDPROVINCE': 'Oldprovince',
+            'LASTCLASS': 'Lastclass'
         }
     }
 };

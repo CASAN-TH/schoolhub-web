@@ -108,13 +108,5 @@ export class CoursesService {
       }
     })
   }
-
-  // pp1Reprot(_id): Promise<any>{
-  //   return new Promise((resolve, reject) =>{ 
-  //     this.http.get(environment.apiUrl + "api/course/transcriptrepot/" + _id, { headers: this.authorizationHeader() }).subscribe((res: any) => {
-  //       console.log(res);
-  //       // resolve(res);
-  //     })
-  //   })
-  // }
+  
 }
