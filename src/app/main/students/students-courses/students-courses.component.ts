@@ -143,4 +143,12 @@ export class StudentsCoursesComponent implements OnInit {
     this._location.back();
   }
 
+  onCencel() {
+    console.log("onCencel");
+  }
+
+  onADDStudent() {
+    console.log("onADDStudent");
+  }
+
 }

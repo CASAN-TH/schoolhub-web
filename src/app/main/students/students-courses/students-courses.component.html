@@ -79,22 +79,22 @@
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'STUDENTSCOURSE.BIRTHDAY' | translate}}</mat-label>
                 <mat-select name="birthday" formControlName="birthday">
-                    <mat-option *ngFor="let birthday of birthdays" [value]="birthday.value">
-                      {{birthday.viewValue}}
-                    </mat-option>
-  
-                  </mat-select>
+                  <mat-option *ngFor="let birthday of birthdays" [value]="birthday.value">
+                    {{birthday.viewValue}}
+                  </mat-option>
+
+                </mat-select>
               </mat-form-field>
             </div>
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="23" class="pl-20  pr-16">
               <mat-form-field appearance="outline" fxFlex>
                 <mat-label>{{ 'STUDENTSCOURSE.BIRTHMONTH' | translate}}</mat-label>
                 <mat-select name="birthmonth" formControlName="birthmonth">
-                    <mat-option *ngFor="let birthmonth of birthmonths" [value]="birthmonth.value">
-                      {{birthmonth.viewValue}}
-                    </mat-option>
-  
-                  </mat-select>
+                  <mat-option *ngFor="let birthmonth of birthmonths" [value]="birthmonth.value">
+                    {{birthmonth.viewValue}}
+                  </mat-option>
+
+                </mat-select>
               </mat-form-field>
             </div>
             <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="23" class="pl-20  pr-16">
@@ -180,12 +180,13 @@
 
       <div fxLayout="row">
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
-          <button fxFlex="25" mat-stroked-button color="warn">
+          <button fxFlex="25" mat-stroked-button color="warn" (click)="onCencel()">
             CANCEL
           </button>
         </div>
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
-          <button fxFlex="25" mat-stroked-button color="accent" [disabled]="studentsForm.invalid" aria-label="SAVE">
+          <button fxFlex="25" mat-stroked-button color="accent" [disabled]="studentsForm.invalid" aria-label="SAVE"
+            (click)="onADDStudent()">
             ADD
           </button>
         </div>
