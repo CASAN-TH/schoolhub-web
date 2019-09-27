@@ -36,32 +36,29 @@ export class StudentsService {
     }
 
     if (this.routeParam.coursesId && this.routeParam.studentsId) {
-      console.log(this.routeParam.coursesId + ":" + this.routeParam.studentsId);
+      // console.log(this.routeParam.coursesId + ":" + this.routeParam.studentsId);
       this.getCourseByID(this.routeParam.coursesId);
     }
 
 
   }
   getCourseByID(coursesId: any) {
-    // console.log("ubjlbbl");
-    // console.log(this.authorizationHeader());
     return new Promise((resolve, reject) => {
       this.httpclient.get(environment.apiUrl + "/api/courses/" + coursesId, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-        // console.log(response);
         this.onCoursesDataChanged.next(response.data);
         resolve(response.data);
       }, reject);
     });
   }
 
-  adStudentCoursesData(students) {
-    console.log(students);
-    // return new Promise((resolve, reject) => {
-    //   this.httpclient.put(environment.apiUrl + "/api/courses/" + students._id, students, { headers: this.authorizationHeader() }).subscribe((response: any) => {
-    //     this.getstudentsDataList();
-    //     resolve(response.data);
-    //   }, reject);
-    // });
+  //ตัวที่ทำอยู่ครับ
+  adStudentCoursesData(course) {
+    console.log(course);
+    return new Promise((resolve, reject) => {
+      this.httpclient.put(environment.apiUrl + "/api/courses/" + course._id, course, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+        resolve(response.data);
+      }, reject);
+    });
   }
 
 

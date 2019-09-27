@@ -44,7 +44,7 @@ export class StudentsComponent implements OnInit {
 
 
   onAdstudents() {
-    console.log("ssfgrgfs");
+    // console.log("ssfgrgfs");
     this.router.navigate(['/students/' + this.coursegrade[0]._id + '/new']);
   }
 
