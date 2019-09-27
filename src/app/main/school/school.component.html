@@ -29,6 +29,7 @@
 
           <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100" fxFlex.gt-xs="100">
             <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="40" class="pl-20 pr-16">
+              <mat-card class="matcard">
               <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
                 <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                   click to browse file or drop file here
@@ -36,6 +37,7 @@
                     (click)="openFileSelector($event)">
                 </ng-template>
               </ngx-file-drop>
+            </mat-card>
             </div>
             <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="50" fxFlex.gt-xs="50">
               <div fxLayout="row" fxLayoutAlign="center" fxFlex fxFlex.gt-xs="100" class="pl-20 pr-16">
