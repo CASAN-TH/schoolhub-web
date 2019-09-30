@@ -165,14 +165,15 @@ export class StudentsCoursesComponent implements OnInit {
   }
 
   onADDStudent() {
-    this.student.forEach(element => {
-      this.seq = element.seq
+    this.student.forEach(element => {   //การวนลูป ค่าที่อยู่ในตัวแปร this.student
+      this.seq = element.seq            //การให้ค่าseqไปเก็บในตัวแปร seq
     });
-    let seq = (parseInt(this.seq) + 1);
-    this.seq = seq;
-    this.studentsForm.value.seq = this.seq;
-    this.student.push(this.studentsForm.value);
-    this.studentsService.adStudentCoursesData(this.course).then(value => {
+    let seq = (parseInt(this.seq) + 1);   //let การสร้างตัวแปนภายใน parseIntแปลงค่าที่อยู่ในตัวแปล this.seq ให้เป็น Int + 1
+    this.seq = seq;                         //เอาค่าตัวแปร seq มาเก็บใน  this.seq
+    this.studentsForm.value.seq = this.seq;   //เอาค่าจากตัวแปร this.seq ไปเก็บในตัวแปร this.studentsForm.value.seq
+    this.student.push(this.studentsForm.value);  // นำค่า this.studentsForm.value ไป push ใส่ ตัวแปร this.student
+
+    this.studentsService.adStudentCoursesData(this.course).then(value => {  // ส่งค่า this.course ไปยัง method adStudentCoursesData() ที่อยู่ใน studentsService
       this._location.back();
     });
 
