@@ -16,7 +16,8 @@ export class SchoolComponent implements OnInit {
 
  
   schoolsForm: FormGroup;
-  schoollogo ="";
+  schoollogo ="https://image.flaticon.com/icons/svg/2124/2124465.svg";
+  schoollogoshow ="https://image.flaticon.com/icons/svg/201/201591.svg";
   public files: NgxFileDropEntry[] = [];
 
 
@@ -68,7 +69,7 @@ export class SchoolComponent implements OnInit {
           formData.append('filename', file, droppedFile.relativePath)
 
           this.schoolservice.uploadPhoto(formData).then((res : any)=>{
-            this.schoollogo = res.url;
+            this.schoollogoshow = res.url;
           });
  
           /**
@@ -98,12 +99,11 @@ export class SchoolComponent implements OnInit {
 
   onSaveSchool() {
     let data = this.schoolsForm.getRawValue();
-    data.imageUrl = this.schoollogo;
+    data.imageUrl = this.schoollogoshow;
     this.schoolservice.addSchool(data).then(data => {
       this.router.navigate(['']);
     });
   }
-
 
 
 }

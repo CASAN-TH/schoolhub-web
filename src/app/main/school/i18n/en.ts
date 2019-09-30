@@ -14,7 +14,8 @@ export const locale = {
             'DIRECTOR': 'Director',
             'POSITION2': 'Position',
             'ADDSCHOOL': 'Add New School',
-            'SAVEBTN': 'Save'
+            'SAVEBTN': 'Save',
+            'LOGO' : 'drop logo file here or click to browse logo'
         }
     }
 };
