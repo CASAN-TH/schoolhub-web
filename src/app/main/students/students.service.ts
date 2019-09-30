@@ -57,6 +57,7 @@ export class StudentsService {
     return new Promise((resolve, reject) => {
       this.httpclient.put(environment.apiUrl + "/api/courses/" + course._id, course, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         resolve(response.data);
+        console.log(response);
       }, reject);
     });
   }

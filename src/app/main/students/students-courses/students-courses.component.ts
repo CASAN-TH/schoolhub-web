@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students-courses',
@@ -17,7 +18,10 @@ import { locale as thai } from '../i18n/th';
 export class StudentsCoursesComponent implements OnInit {
 
   studentsForm: FormGroup;
+  students: any = [];
+  student: any;
   course: any;
+  seq: any;
 
   titles: Array<any> = [
     { value: 'เด็กชาย', viewValue: 'เด็กชาย' },
@@ -81,18 +85,24 @@ export class StudentsCoursesComponent implements OnInit {
   ];
 
 
+
   constructor(
     private studentsService: StudentsService,
     private _location: Location,
     private formBuilder: FormBuilder,
+    private router: Router,
     private _fuseTranslationLoaderService: FuseTranslationLoaderService) { this._fuseTranslationLoaderService.loadTranslations(english, thai); }
 
   ngOnInit() {
     this.studentsService.onCoursesDataChanged.subscribe((res: any) => {
-      // console.log(res)
+      this.student = res.students;
       this.course = res;
-      if (!this.course) {
-        this.course = {
+
+      this.students = res;
+      if (!this.students) {
+        this.students = {
+          seq: "",
+          student_id: "",
           student_no: "",
           title: "",
           firstname: "",
@@ -112,35 +122,37 @@ export class StudentsCoursesComponent implements OnInit {
           lastclass: ""
         }
       }
+
       this.studentsForm = this.createCoursesForm();
     });
   }
 
   createCoursesForm(): FormGroup {
     return this.formBuilder.group({
-      _id: [this.course._id],
-      student_no: [this.course.student_no, Validators.required],
-      title: [this.course.title, Validators.required],
-      firstname: [this.course.firstname, Validators.required],
-      lastname: [this.course.lastname, Validators.required],
-      citizenid: [this.course.citizenid, [
+      seq: ['111'],
+      student_id: ['test3'],
+      student_no: [this.students.student_no, Validators.required],
+      title: [this.students.title, Validators.required],
+      firstname: [this.students.firstname, Validators.required],
+      lastname: [this.students.lastname, Validators.required],
+      citizenid: [this.students.citizenid, [
         Validators.required,
         Validators.pattern("^[0-9]*$"),
         Validators.minLength(13),
         Validators.maxLength(13)
       ]],
-      birthday: [this.course.birthday, Validators.required],
-      birthmonth: [this.course.birthmonth, Validators.required],
-      birthyear: [this.course.birthyear, Validators.required],
-      sex: [this.course.sex, Validators.required],
-      nationality: [this.course.nationality, Validators.required],
-      religion: [this.course.religion, Validators.required],
-      fathername: [this.course.fathername, Validators.required],
-      mothername: [this.course.mothername, Validators.required],
-      attendencedate: [this.course.attendencedate, Validators.required],
-      oldschool: [this.course.oldschool, Validators.required],
-      oldprovince: [this.course.oldprovince, Validators.required],
-      lastclass: [this.course.lastclass, Validators.required]
+      birthday: [this.students.birthday, Validators.required],
+      birthmonth: [this.students.birthmonth, Validators.required],
+      birthyear: [this.students.birthyear, Validators.required],
+      sex: [this.students.sex, Validators.required],
+      nationality: [this.students.nationality, Validators.required],
+      religion: [this.students.religion, Validators.required],
+      fathername: [this.students.fathername, Validators.required],
+      mothername: [this.students.mothername, Validators.required],
+      attendencedate: [this.students.attendencedate, Validators.required],
+      oldschool: [this.students.oldschool, Validators.required],
+      oldprovince: [this.students.oldprovince, Validators.required],
+      lastclass: [this.students.lastclass, Validators.required]
     });
   }
 
@@ -153,10 +165,17 @@ export class StudentsCoursesComponent implements OnInit {
   }
 
   onADDStudent() {
-    // console.log("onADDStudent");
-    this.studentsService.adStudentCoursesData(this.studentsForm.getRawValue()).then(value => {
+    this.student.forEach(element => {
+      this.seq = element.seq
+    });
+    let seq = (parseInt(this.seq) + 1);
+    this.seq = seq;
+    this.studentsForm.value.seq = this.seq;
+    this.student.push(this.studentsForm.value);
+    this.studentsService.adStudentCoursesData(this.course).then(value => {
       this._location.back();
     });
+
   }
 
 }
