@@ -166,7 +166,7 @@ export class StudentsCoursesComponent implements OnInit {
 
   onADDStudent() {
     this.student.forEach(element => {   //การวนลูป ค่าที่อยู่ในตัวแปร this.student
-      this.seq = element.seq            //การให้ค่าseqไปเก็บในตัวแปร seq
+      this.seq = element.seq            //การให้ค่า element.seq ไปเก็บในตัวแปร this.seq
     });
     let seq = (parseInt(this.seq) + 1);   //let การสร้างตัวแปนภายใน parseIntแปลงค่าที่อยู่ในตัวแปล this.seq ให้เป็น Int + 1
     this.seq = seq;                         //เอาค่าตัวแปร seq มาเก็บใน  this.seq
