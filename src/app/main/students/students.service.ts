@@ -53,11 +53,11 @@ export class StudentsService {
 
   //ตัวที่ทำอยู่ครับ
   adStudentCoursesData(course) {
-    console.log(course);
+    // console.log(course);
     return new Promise((resolve, reject) => {
       this.httpclient.put(environment.apiUrl + "/api/courses/" + course._id, course, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         resolve(response.data);
-        console.log(response);
+        // console.log(response);
       }, reject);
     });
   }
