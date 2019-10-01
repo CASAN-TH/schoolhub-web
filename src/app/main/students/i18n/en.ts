@@ -52,7 +52,9 @@ export const locale = {
             'ATTENDENCEDATE': 'Attendencedate',
             'OLDSCOOL': 'Oldschool',
             'OLDPROVINCE': 'Oldprovince',
-            'LASTCLASS': 'Lastclass'
+            'LASTCLASS': 'Lastclass',
+            'ADD': 'ADD',
+            'CANCEL': 'CANCEL'
         }
     }
 };

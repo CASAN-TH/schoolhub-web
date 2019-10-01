@@ -181,13 +181,13 @@
       <div fxLayout="row">
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
           <button fxFlex="25" mat-stroked-button color="warn" (click)="onClose()">
-            CANCEL
+            {{ 'STUDENTSCOURSE.CANCEL' | translate}}
           </button>
         </div>
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
           <button fxFlex="25" mat-stroked-button color="accent" [disabled]="studentsForm.invalid" aria-label="SAVE"
             (click)="onADDStudent()">
-            ADD
+            {{ 'STUDENTSCOURSE.ADD' | translate}}
           </button>
         </div>
       </div>

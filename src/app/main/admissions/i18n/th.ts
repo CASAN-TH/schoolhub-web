@@ -12,7 +12,10 @@ export const locale = {
             'SEX': 'เพศ',
             'FATHERFULLNAME': 'ชื่อ-สกุล บิดา',
             'MOTHERFULLNAME': 'ชื่อ-สกุล มารดา',
-            'PHONENUMBER': 'เบอร์โทรศัพท์'
+            'PHONENUMBER': 'เบอร์โทรศัพท์',
+            'ADD': 'เพิ่ม',
+            'SAVE': 'บันทึก',
+            'CANCEL': 'ยกเลิก'
         },
         'ADMISSIONSLIST': {
             'IMPORT': 'นำเข้าข้อมูล',

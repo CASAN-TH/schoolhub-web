@@ -53,7 +53,9 @@ export const locale = {
             'ATTENDENCEDATE': 'วันที่เข้าเรียน',
             'OLDSCOOL': 'โรงเรียนเดิม',
             'OLDPROVINCE': 'จังหวัด',
-            'LASTCLASS': 'ชั้นเรียนสุดท้าย'
+            'LASTCLASS': 'ชั้นเรียนสุดท้าย',
+            'ADD': 'เพิ่ม',
+            'CANCEL': 'ยกเลิก'
         }
     }
 };

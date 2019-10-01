@@ -13,6 +13,9 @@ export const locale = {
             'FATHERFULLNAME': 'Father Name',
             'MOTHERFULLNAME':'Mother Name',
             'PHONENUMBER': 'Phone No.',
+            'ADD': 'ADD',
+            'SAVE': 'SAVE',
+            'CANCEL': 'CANCEL'
         },
         'ADMISSIONSLIST': {
             'IMPORT': 'Import',

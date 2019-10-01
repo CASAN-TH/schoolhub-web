@@ -138,18 +138,18 @@
       <div fxLayout="row">
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
           <button fxFlex="25" mat-stroked-button color="warn" (click)="onClose()">
-            CANCEL
+            {{ 'ADMISSIONS.CANCEL' | translate}}
           </button>
         </div>
         <div class="pb-20" fxLayoutAlign="center" fxFlex="50">
           <button fxFlex="25" *ngIf="!admissions._id" mat-stroked-button color="accent"
             [disabled]="admissionsForm.invalid" aria-label="SAVE" (click)="onadmissionsNew()">
-            ADD
+            {{ 'ADMISSIONS.ADD' | translate}}
           </button>
 
           <button fxFlex="25" *ngIf="admissions._id" mat-stroked-button color="accent"
             [disabled]="admissionsForm.invalid" aria-label="SAVE" (click)="onsaveEdit(admissionsForm)">
-            SAVE
+            {{ 'ADMISSIONS.SAVE' | translate}}
           </button>
         </div>
       </div>
