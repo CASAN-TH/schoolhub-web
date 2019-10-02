@@ -11,8 +11,11 @@ import { CoursesService } from '../courses.service';
 export class NewcourseComponent implements OnInit {
 
   fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-  data: any;
+  data: any = [];
   datas: Array<any>;
+  summary: Array<any>;
+
+  displayedColumns: string[] = ['year', 'name', 'basic', 'advance', 'activity', 'students'];
 
   constructor(
     private http: HttpClient,
@@ -22,13 +25,15 @@ export class NewcourseComponent implements OnInit {
   ngOnInit() {
     this.coursesService.onImportDataChanged.subscribe((res: any) => {
       this.data = res;
+      this.summary = res.summary;
       console.log(this.data);
     });
+   
   }
 
   download() {
     // tslint:disable-next-line: max-line-length
-    this.http.get("https://res.cloudinary.com/domizgt2v/raw/upload/v1566254100/excel-template/ImportConsignmentNote_-V1_avclft.xlsx", { responseType: "arraybuffer" })
+    this.http.get("https://res.cloudinary.com/hhpl9pajl/raw/upload/v1569989941/transcriptImport_wtv7j6.xlsx", { responseType: "arraybuffer" })
       .subscribe(response => this.downLoadFile(response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
   }
 
@@ -65,6 +70,14 @@ export class NewcourseComponent implements OnInit {
     }
   }
 
+  onCancle() {
+    console.log("onCancle");
+  }
+
+  onSave() {
+    console.log("onSave");
+  }
+
   ReadDataFromFile(file: any) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -99,7 +112,6 @@ export class NewcourseComponent implements OnInit {
           i++;
         });
         this.coursesService.readFile(JsonData);
-        console.log(JsonData);
         // const json = XLSX.utils.sheet_to_json(
         //   workbook.Sheets[workbook.SheetNames[0]]
         // );
@@ -121,5 +133,6 @@ export class NewcourseComponent implements OnInit {
       };
       oReq.send();
     };
+    
   }
 }
