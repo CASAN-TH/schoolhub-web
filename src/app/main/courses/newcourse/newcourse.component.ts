@@ -98,6 +98,7 @@ export class NewcourseComponent implements OnInit {
           });
           i++;
         });
+        this.coursesService.readFile(JsonData);
         console.log(JsonData);
         // const json = XLSX.utils.sheet_to_json(
         //   workbook.Sheets[workbook.SheetNames[0]]
