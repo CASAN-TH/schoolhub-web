@@ -2,32 +2,44 @@
 <div id="boards" class="fuse-navy" fxLayout="column" fxLayoutAlign="start center" fxFlex fusePerfectScrollbar>
 
   <div class="header pt-44 pt-md-88" fxLayout="column" fxLayoutAlign="center center" fxFlex="0 0 auto"
-       [@animate]="{value:'*',params:{delay:'100ms'}}">
-      <h1>โครงสร้างหลักสูตรการศึกษา</h1>
-      <p>กรุณาเลือกปีการศึกษา หรือ เพิ่มปีการศึกษา</p>
+    [@animate]="{value:'*',params:{delay:'100ms'}}">
+    <h1>โครงสร้างหลักสูตรการศึกษา</h1>
+    <p>กรุณาเลือกปีการศึกษา หรือ เพิ่มปีการศึกษา</p>
   </div>
 
   <!-- BOARD LIST -->
   <div class="board-list" fxFlex="0 0 auto" fxLayout="row wrap" fxLayoutAlign="center center"
-       [@animateStagger]="{value:'50'}">
+    [@animateStagger]="{value:'50'}">
 
-      <div class="board-list-item" *ngFor="let course of courses" 
-      [routerLink]="'/courses/courseslist/read/'+course.year"
-           fxLayout="column" fxLayoutAlign="center center"
-           [@animate]="{value:'*',params:{y:'100%'}}">
-          <mat-icon class="s-56">library_books</mat-icon>
-          <div class="board-name">{{course.year}}</div>
-      </div>
-      <!-- / BOARD -->
+    <div class="board-list-item" *ngFor="let course of courses" [routerLink]="'/courses/courseslist/read/'+course.year"
+      fxLayout="column" fxLayoutAlign="center center" [@animate]="{value:'*',params:{y:'100%'}}">
+      <mat-icon class="s-56">library_books</mat-icon>
+      <div class="board-name">{{course.year}}</div>
+    </div>
+    <!-- / BOARD -->
 
-      <!-- NEW BOARD BUTTON -->
-      <div class="board-list-item add-new-board" fxLayout="column" fxLayoutAlign="center center"
-           (click)="newCourse()"
-           [@animate]="{value:'*',params:{y:'100%'}}">
-          <mat-icon class="s-56">add_circle</mat-icon>
-          <div class="board-name">เพิ่มปีการศึกษา</div>
-      </div>
-      <!-- / NEW BOARD BUTTON -->
+    <!-- NEW BOARD BUTTON -->
+    <div class="board-list-item add-new-board" fxLayout="column" fxLayoutAlign="center center"
+      [@animate]="{value:'*',params:{y:'100%'}}">
+
+      <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon class="s-56">add_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="cloneData()">
+          <mat-icon>file_copy</mat-icon>
+          <span>จากปีก่อนหน้า</span>
+        </button>
+        <button mat-menu-item (click)="importData()">
+          <mat-icon>cloud_upload</mat-icon>
+          <span>Excel</span>
+        </button>
+      </mat-menu>
+
+      <div class="board-name">เพิ่มปีการศึกษา</div>
+
+    </div>
+    <!-- / NEW BOARD BUTTON -->
 
   </div>
   <!-- / BOARD LIST -->

@@ -30,29 +30,41 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.CoursesService.onCoursesChanged.subscribe((res: any) => {
-      var result=_.chain(res).groupBy("year").map(function(v, i) {
+      var result = _.chain(res).groupBy("year").map(function (v, i) {
         return {
           year: i,
         }
       }).value();
 
-      result.forEach((item:any)=>{
-        if(item.year > this.yearmax){
-          this.yearmax =  parseInt(item.year);
+      result.forEach((item: any) => {
+        if (item.year > this.yearmax) {
+          this.yearmax = parseInt(item.year);
         }
       });
-      this.courses = result; 
+      this.courses = result;
     })
   }
 
-  newCourse(){
-    let test = []
-    if(test.length > 0){
-      let Actiontype = 'newyear'
-      this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
-    }else{
-      let Actiontype = 'import'
-      this._router.navigate(['/courses/' + Actiontype]);
-    }
+  // newCourse() {
+  //   let test = []
+  //   if (test.length > 0) {
+  //     let Actiontype = 'newyear'
+  //     this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
+  //   } else {
+  //     let Actiontype = 'import'
+  //     this._router.navigate(['/courses/' + Actiontype]);
+  //   }
+  // }
+
+  cloneData() {
+    console.log("cloneData");
+    let Actiontype = 'newyear'
+    this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
+  }
+
+  importData() {
+    console.log("importData");
+    let Actiontype = 'import'
+    this._router.navigate(['/courses/' + Actiontype]);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as XLSX from "xlsx";
+import { CoursesService } from '../courses.service';
 
 @Component({
   selector: 'app-newcourse',
@@ -8,16 +9,22 @@ import * as XLSX from "xlsx";
   styleUrls: ['./newcourse.component.scss']
 })
 export class NewcourseComponent implements OnInit {
+
   fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
   data: any;
   datas: Array<any>;
 
   
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private coursesService: CoursesService
   ) { }
 
   ngOnInit() {
+    this.coursesService.onImportDataChanged.subscribe((res: any) => {
+      this.data = res;
+      console.log(this.data);
+    });
   }
 
   download() {
@@ -88,9 +95,9 @@ export class NewcourseComponent implements OnInit {
         const workbook = XLSX.read(bstr, { type: "binary" });
         let JsonData = [];
         let i = 0;
-         workbook.SheetNames.forEach(element => {
+        workbook.SheetNames.forEach(element => {
 
-           const json = XLSX.utils.sheet_to_json(
+          const json = XLSX.utils.sheet_to_json(
             workbook.Sheets[workbook.SheetNames[i]]
             // console.log(workbook.getSheet(i).)
           );
@@ -99,8 +106,9 @@ export class NewcourseComponent implements OnInit {
             data: json
           });
           i++;
-         });
-         console.log(JsonData);
+        });
+        this.coursesService.readFile(JsonData);
+        console.log(JsonData);
         // const json = XLSX.utils.sheet_to_json(
         //   workbook.Sheets[workbook.SheetNames[0]]
         // );
