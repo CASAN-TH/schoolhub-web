@@ -46,7 +46,7 @@ export class CoursesService {
     } else if (this.routeParams.actiontype === 'read') {
       this.getCourseYear(this.routeParams.year);
     } else if (this.routeParams.actiontype === 'import') {
-      console.log("Import");
+      // console.log("Import");
     } else {
       this.getCourseYear(this.routeParams.year);
     }
@@ -828,6 +828,8 @@ export class CoursesService {
     };
     return new Promise((resolve, reject) => {
       this.onImportDataChanged.next(mockData.data);
+      resolve(mockData.data);
+      console.log(data);
     });
   }
 

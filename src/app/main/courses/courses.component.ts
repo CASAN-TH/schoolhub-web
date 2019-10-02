@@ -57,13 +57,13 @@ export class CoursesComponent implements OnInit {
   // }
 
   cloneData() {
-    console.log("cloneData");
+    // console.log("cloneData");
     let Actiontype = 'newyear'
     this._router.navigate(['/courses/courseslist/' + Actiontype + '/' + (this.yearmax + 1)]);
   }
 
   importData() {
-    console.log("importData");
+    // console.log("importData");
     let Actiontype = 'import'
     this._router.navigate(['/courses/' + Actiontype]);
   }
