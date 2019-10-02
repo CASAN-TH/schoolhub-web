@@ -11,10 +11,12 @@ import { CoursesService } from '../courses.service';
 export class NewcourseComponent implements OnInit {
 
   fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-  data: any;
+  data: any = [];
   datas: Array<any>;
+  summary: Array<any>;
 
-  
+  displayedColumns: string[] = ['year', 'name', 'basic', 'advance', 'activity', 'students'];
+
   constructor(
     private http: HttpClient,
     private coursesService: CoursesService
@@ -23,8 +25,10 @@ export class NewcourseComponent implements OnInit {
   ngOnInit() {
     this.coursesService.onImportDataChanged.subscribe((res: any) => {
       this.data = res;
+      this.summary = res.summary;
       console.log(this.data);
     });
+   
   }
 
   download() {
@@ -108,7 +112,6 @@ export class NewcourseComponent implements OnInit {
           i++;
         });
         this.coursesService.readFile(JsonData);
-        console.log(JsonData);
         // const json = XLSX.utils.sheet_to_json(
         //   workbook.Sheets[workbook.SheetNames[0]]
         // );

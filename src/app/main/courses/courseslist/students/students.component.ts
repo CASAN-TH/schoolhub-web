@@ -33,6 +33,7 @@ export class StudentsComponent implements OnInit {
       this.coursegrade.forEach(element => {
         this.students = element.students;
       });
+      console.log(this.students);
     })
   }
 
