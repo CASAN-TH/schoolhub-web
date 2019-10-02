@@ -12,6 +12,7 @@ export class NewcourseComponent implements OnInit {
   data: any;
   datas: Array<any>;
 
+  
   constructor(
     private http: HttpClient
   ) { }
@@ -21,7 +22,7 @@ export class NewcourseComponent implements OnInit {
 
   download() {
     // tslint:disable-next-line: max-line-length
-    this.http.get("https://res.cloudinary.com/domizgt2v/raw/upload/v1566254100/excel-template/ImportConsignmentNote_-V1_avclft.xlsx", { responseType: "arraybuffer" })
+    this.http.get("https://res.cloudinary.com/hhpl9pajl/raw/upload/v1569989941/transcriptImport_wtv7j6.xlsx", { responseType: "arraybuffer" })
       .subscribe(response => this.downLoadFile(response, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
   }
 
@@ -56,6 +57,14 @@ export class NewcourseComponent implements OnInit {
     } else {
       console.log("false");
     }
+  }
+
+  onCancle() {
+    console.log("onCancle");
+  }
+
+  onSave() {
+    console.log("onSave");
   }
 
   ReadDataFromFile(file: any) {
@@ -113,5 +122,6 @@ export class NewcourseComponent implements OnInit {
       };
       oReq.send();
     };
+    
   }
 }
