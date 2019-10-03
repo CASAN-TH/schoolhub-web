@@ -1,55 +1,58 @@
 <div fxLayout="column" fxLayout.gt-xs="row wrap" fxFlex="100" fxFlex.gt-xs="100">
-  <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="40" (drop)="drop($event)" (dragover)="allowDrop($event)" class="dropzone">
+  <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="40" (drop)="drop($event)"
+    (dragover)="allowDrop($event)" class="dropzone">
     <label for="file-input">
       <p>
         <mat-icon>backup</mat-icon>
       </p>
-      <p>คุณสามารถลากและปล่อยไฟล์ Excel ในนี้เพื่ออัพโหลด</p>
-      <p>หรือ คลิ๊กเพื่อเลือกไฟล์ Excel จากไดเรกทอรีของท่าน</p>
+      <p>{{ 'NEWCOURSE.DROP' | translate}}</p>
+      <p>{{ 'NEWCOURSE.SELECT' | translate}}</p>
       <input name="detectFiles" id="file-input" type="file" (change)="detectFiles($event)" accept=".xls,.xlsx" />
     </label>
   </div>
   <div fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="40" class="dowload-panal">
     <div style="text-align: center" class="mt-80">
-      <h2>ดาวน์โหลดไฟล์ต้นแบบ</h2>
-      <p>สนับสนุนการใช้งานเฉพาะไฟล์ excel เท่านั้น</p>
-      <button mat-raised-button color="accent" (click)="download()">ดาวน์โหลด</button>
+      <h2>{{ 'NEWCOURSE.DOWNLOADFILE' | translate}}</h2>
+      <p>{{ 'NEWCOURSE.SUPPORT' | translate}}</p>
+      <button mat-raised-button color="accent" (click)="download()">{{ 'NEWCOURSE.DOWNLOAD' | translate}}</button>
     </div>
   </div>
-  <div *ngIf="summary" fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="100" class="dowload-panal" >
+  <div *ngIf="summary" fxLayout="row" fxLayoutAlign="center" fxFlex="100" fxFlex.gt-xs="100" class="dowload-panal">
     <div style="text-align: center">
-      <h2>ตรวจสอบข้อมูลจาก file ที่ท่านอัพโหลด</h2>
+      <h2>{{ 'NEWCOURSE.INVESTIGATE' | translate}}</h2>
       <div>
-        <table mat-table [dataSource]="summary" class="mat-elevation-z8" >
+        <table mat-table [dataSource]="summary" class="mat-elevation-z8">
 
           <ng-container matColumnDef="year">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center"> Year </th>
+            <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{ 'NEWCOURSE.YEAR' | translate}} </th>
             <td mat-cell *matCellDef="let summary" style="text-align: center">{{summary.year}}</td>
           </ng-container>
 
 
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center"> Name </th>
+            <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{ 'NEWCOURSE.NAME' | translate}} </th>
             <td mat-cell *matCellDef="let summary" style="text-align: center"> {{summary.name}} </td>
           </ng-container>
 
           <ng-container matColumnDef="basic">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center"> Basic </th>
+            <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{ 'NEWCOURSE.BASIC' | translate}} </th>
             <td mat-cell *matCellDef="let summary" style="text-align: center"> {{summary.structures.basic}} </td>
           </ng-container>
 
           <ng-container matColumnDef="advance">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center"> Advance </th>
+            <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{ 'NEWCOURSE.ADVANCE' | translate}} </th>
             <td mat-cell *matCellDef="let summary" style="text-align: center"> {{summary.structures.advance}} </td>
           </ng-container>
 
           <ng-container matColumnDef="activity">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center"> Activity </th>
+            <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{ 'NEWCOURSE.ACTIVITY' | translate}}
+            </th>
             <td mat-cell *matCellDef="let summary" style="text-align: center"> {{summary.structures.activity}} </td>
           </ng-container>
 
           <ng-container matColumnDef="students">
-            <th mat-header-cell *matHeaderCellDef style="text-align: center"> Students </th>
+            <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{ 'NEWCOURSE.STUDENTS' | translate}}
+            </th>
             <td mat-cell *matCellDef="let summary" style="text-align: center"> {{summary.students}} </td>
           </ng-container>
 
@@ -57,9 +60,9 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </div>
-      <button mat-raised-button color="warn" class="btn" (click)="onCancle()">ยกเลิก</button>
-      <button mat-raised-button color="accent" (click)="onSave()">บันทึก</button>
+      <button mat-raised-button color="warn" class="btn" (click)="onCancle()"> {{ 'NEWCOURSE.CANCEL' | translate}}
+      </button>
+      <button mat-raised-button color="accent" (click)="onSave()"> {{ 'NEWCOURSE.SAVE' | translate}} </button>
     </div>
   </div>
 </div>
-

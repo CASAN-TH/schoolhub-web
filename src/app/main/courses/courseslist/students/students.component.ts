@@ -5,6 +5,10 @@ import { fuseAnimations } from '@fuse/animations';
 import { Location } from '@angular/common'
 import { environment } from 'environments/environment.hmr';
 
+import { locale as english } from '../../i18n/en';
+import { locale as thai } from '../../i18n/th';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -22,9 +26,10 @@ export class StudentsComponent implements OnInit {
     private CourseService: CoursesService,
     private route: ActivatedRoute,
     private router: Router,
-    private _location: Location
+    private _location: Location,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService
   ) {
-
+    this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
 
   ngOnInit() {

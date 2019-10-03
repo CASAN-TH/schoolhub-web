@@ -4,6 +4,12 @@ import { AuthenService } from 'app/authentication/authen.service';
 import { Location } from '@angular/common';
 import { environment } from 'environments/environment.hmr';
 
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { locale as english } from '../../i18n/en';
+import { locale as thai } from '../../i18n/th';
+
+
+
 @Component({
   selector: 'app-transcript',
   templateUrl: './transcript.component.html',
@@ -16,9 +22,12 @@ export class TranscriptComponent implements OnInit {
 
   constructor(
     private CourseService: CoursesService,
-    private AuthService:  AuthenService,
-    private _location: Location
-  ) { }
+    private AuthService: AuthenService,
+    private _location: Location,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+  ) {
+    this._fuseTranslationLoaderService.loadTranslations(english, thai);
+  }
 
   ngOnInit() {
     this.CourseService.onTranscriptChanged.subscribe((res: any) => {
@@ -27,21 +36,21 @@ export class TranscriptComponent implements OnInit {
     this.school = this.AuthService.school;
   }
 
-  onCancel(){
+  onCancel() {
     this._location.back();
   }
 
-  onSaveTranscript(){
-    this.CourseService.createTranscript(this.student).then((res :any) =>{
-    this._location.back();
+  onSaveTranscript() {
+    this.CourseService.createTranscript(this.student).then((res: any) => {
+      this._location.back();
     });
 
   }
-  goBack(){
+  goBack() {
     this._location.back();
   }
 
-  printtranscript(){
+  printtranscript() {
     window.open(environment.apiUrl + '/api/course/transcriptreport/' + this.student._id);
   }
 }

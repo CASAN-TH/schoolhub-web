@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import * as XLSX from "xlsx";
 import { CoursesService } from '../courses.service';
 
+import { locale as english } from '../i18n/en';
+import { locale as thai } from '../i18n/th';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+
 @Component({
   selector: 'app-newcourse',
   templateUrl: './newcourse.component.html',
@@ -19,8 +23,9 @@ export class NewcourseComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private coursesService: CoursesService
-  ) { }
+    private coursesService: CoursesService,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+  ) { this._fuseTranslationLoaderService.loadTranslations(english, thai); }
 
   ngOnInit() {
     this.coursesService.onImportDataChanged.subscribe((res: any) => {
@@ -28,7 +33,7 @@ export class NewcourseComponent implements OnInit {
       this.summary = res.summary;
       console.log(this.data);
     });
-   
+
   }
 
   download() {
@@ -133,6 +138,6 @@ export class NewcourseComponent implements OnInit {
       };
       oReq.send();
     };
-    
+
   }
 }

@@ -3,8 +3,8 @@
 
   <div class="header pt-44 pt-md-88" fxLayout="column" fxLayoutAlign="center center" fxFlex="0 0 auto"
     [@animate]="{value:'*',params:{delay:'100ms'}}">
-    <h1>โครงสร้างหลักสูตรการศึกษา</h1>
-    <p>กรุณาเลือกปีการศึกษา หรือ เพิ่มปีการศึกษา</p>
+    <h1>{{ 'COURSES.EDUCATIONAL' | translate}}</h1>
+    <p>{{ 'COURSES.PLEASE' | translate}}</p>
   </div>
 
   <!-- BOARD LIST -->
@@ -28,7 +28,7 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="cloneData()">
           <mat-icon>file_copy</mat-icon>
-          <span>จากปีก่อนหน้า</span>
+          <span>{{ 'COURSES.FROM' | translate}}</span>
         </button>
         <button mat-menu-item (click)="importData()">
           <mat-icon>cloud_upload</mat-icon>
@@ -36,7 +36,7 @@
         </button>
       </mat-menu>
 
-      <div class="board-name">เพิ่มปีการศึกษา</div>
+      <div class="board-name">{{ 'COURSES.ADD' | translate}}</div>
 
     </div>
     <!-- / NEW BOARD BUTTON -->

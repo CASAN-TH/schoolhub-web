@@ -2,6 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { locale as english } from '../../../i18n/en';
+import { locale as thai } from '../../../i18n/th';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+
 @Component({
   selector: 'app-subjectdialog',
   templateUrl: './subjectdialog.component.html',
@@ -17,8 +21,9 @@ export class SubjectdialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<SubjectdialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+  ) { this._fuseTranslationLoaderService.loadTranslations(english, thai); }
 
   ngOnInit() {
     this.Actiontype = this.data;

@@ -99,11 +99,12 @@
       </div>
 
       <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="50" fxFlex="50" class="pt-20">
-        <button mat-stroked-button color="warn" (click)="onCancel()">ยกเลิก</button>
+        <button mat-stroked-button color="warn" (click)="onCancel()"> {{ 'TRANSCRIPT.CANCEL' | translate}} </button>
       </div>
 
       <div fxLayoutAlign="center" fxLayout="row" fxFlex.gt-xs="50" fxFlex="50" class="pt-20">
-        <button mat-stroked-button color="accent" (click)="onSaveTranscript()">บันทึก</button>
+        <button mat-stroked-button color="accent" (click)="onSaveTranscript()"> {{ 'TRANSCRIPT.SAVE' | translate}}
+        </button>
       </div>
 
     </div>

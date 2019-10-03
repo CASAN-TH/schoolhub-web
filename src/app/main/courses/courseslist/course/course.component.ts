@@ -5,6 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { SubjectdialogComponent } from './subjectdialog/subjectdialog.component';
 import { Subject } from 'rxjs';
 
+import { locale as english } from '../../i18n/en';
+import { locale as thai } from '../../i18n/th';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -23,8 +27,9 @@ export class CourseComponent implements OnInit {
   constructor(
     private route: Router,
     private CoursesService: CoursesService,
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+  ) { this._fuseTranslationLoaderService.loadTranslations(english, thai); }
 
   ngOnInit() {
     this.CoursesService.onCourseChanged

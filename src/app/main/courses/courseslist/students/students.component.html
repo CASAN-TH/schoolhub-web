@@ -11,9 +11,9 @@
         <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}" (click)="goBack()">
           arrow_back
         </mat-icon>
-        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Students</span>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">{{ 'STUDENTS.STUDENT' | translate}}</span>
       </div>
-
+      
       <div class="search-wrapper  ml-sm-32">
         <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
           <mat-icon>search</mat-icon>
@@ -27,28 +27,28 @@
       <mat-table #table [dataSource]="students" [@animateStagger]="{value:'50'}">
 
         <ng-container matColumnDef="seq">
-          <mat-header-cell *matHeaderCellDef>ลำดับ</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'STUDENTS.NO' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let students; let i = index;">
             <p class="font-weight-600">{{i + 1}}</p>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="student_no">
-          <mat-header-cell class="pl-20" *matHeaderCellDef>รหัสนักเรียน</mat-header-cell>
+          <mat-header-cell class="pl-20" *matHeaderCellDef>{{ 'STUDENTS.STUDENTID' | translate}}</mat-header-cell>
           <mat-cell class="pl-20" *matCellDef="let students">
             <p class="font-weight-600">{{students.student_no}}</p>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef>ชื่อ-สกุล</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'STUDENTS.NAME' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let students">
             {{students.title}} {{students.firstname}} {{students.lastname}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="citizenid">
-          <mat-header-cell *matHeaderCellDef>เลขประจำตัวประชาชน</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>{{ 'STUDENTS.CITIZENID' | translate}}</mat-header-cell>
           <mat-cell *matCellDef="let students">
             <p class="font-weight-600">
               {{students.citizenid}}
@@ -65,11 +65,11 @@
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="EvaluationStudent(students)">
                 <mat-icon>assignment</mat-icon>
-                <span>วัดผลการศึกษา</span>
+                <span>{{ 'STUDENTS.STUDY' | translate}}</span>
               </button>
               <button mat-menu-item (click)="printpp1(students)">
                 <mat-icon>assignment</mat-icon>
-                <span>ใบ ปพ.1</span>
+                <span>{{ 'STUDENTS.PP1' | translate}}</span>
               </button>
             </mat-menu>
           </mat-cell>

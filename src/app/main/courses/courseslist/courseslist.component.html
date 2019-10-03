@@ -5,13 +5,13 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
 
-    
-    <label style="font-size: 20px">ข้อมูลหลักสูตร ประจำปีการศึกษา {{courses[0] ? courses[0].year: ''}}</label>
+
+    <label style="font-size: 20px"> {{ 'COURSESLIST.ACADEMIC' | translate}} {{courses[0] ? courses[0].year: ''}}</label>
 
   </div>
   <mat-tab-group>
 
-    <mat-tab label="ประถมศึกษา">
+    <mat-tab label="{{ 'COURSESLIST.ELEMENTARY' | translate}}">
       <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
         <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20"
           *ngFor="let course of level1 | orderBy: order;">
@@ -21,7 +21,7 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="มัธยมศึกษาตอนต้น">
+    <mat-tab label="{{ 'COURSESLIST.EARLY' | translate}}">
       <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
         <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20"
           *ngFor="let course of level2 | orderBy: order;">
@@ -31,7 +31,7 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="มัธยมศึกษาตอนปลาย">
+    <mat-tab label="{{ 'COURSESLIST.SENIOR' | translate}}">
       <div fxLayout="column" fxLayout.gt-sm="row wrap" fxFlex="100">
         <div fxLayoutAlign="center" fxFlex="100" fxFlex.gt-sm="33" class="p-20"
           *ngFor="let course of level3 | orderBy: order;">
