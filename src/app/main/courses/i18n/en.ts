@@ -20,7 +20,7 @@ export const locale = {
         },
         'STUDENTS': {
             'STUDENT': 'Student',
-            'NO': 'No .',
+            'NO': 'No.',
             'STUDENTID': 'Student ID',
             'NAME': 'Name-Surname',
             'CITIZENID': 'ID card No.',
