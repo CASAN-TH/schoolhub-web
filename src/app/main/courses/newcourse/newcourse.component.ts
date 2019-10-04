@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as XLSX from "xlsx";
 import { CoursesService } from '../courses.service';
+import { Location } from '@angular/common';
 
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
@@ -24,13 +25,14 @@ export class NewcourseComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private coursesService: CoursesService,
+    private _location: Location,
     private _fuseTranslationLoaderService: FuseTranslationLoaderService
   ) { this._fuseTranslationLoaderService.loadTranslations(english, thai); }
 
   ngOnInit() {
     this.coursesService.onImportDataChanged.subscribe((res: any) => {
       this.data = res;
-      this.summary = res.summary;
+      this.summary = res ? res.summary : null;
       console.log(this.data);
     });
 
@@ -76,11 +78,16 @@ export class NewcourseComponent implements OnInit {
   }
 
   onCancle() {
-    console.log("onCancle");
+    // console.log("onCancle");
+    // console.log(this.data);
+    this.coursesService.deleteImportData(this.data._id);
   }
 
   onSave() {
-    console.log("onSave");
+    //console.log("onSave");
+    this.coursesService.importData(this.data).then(res=>{
+      this._location.back();
+    });
   }
 
   ReadDataFromFile(file: any) {
@@ -116,6 +123,7 @@ export class NewcourseComponent implements OnInit {
           });
           i++;
         });
+        
         this.coursesService.readFile(JsonData);
         // const json = XLSX.utils.sheet_to_json(
         //   workbook.Sheets[workbook.SheetNames[0]]
