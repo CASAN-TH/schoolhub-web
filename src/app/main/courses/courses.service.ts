@@ -132,7 +132,7 @@ export class CoursesService {
 
   importData(data: any) {
     return new Promise((resolve, reject) => {
-      this.http.put(environment.apiUrl + "/api/preimport/" + data._id, data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
+      this.http.put(environment.apiUrl + "/api/preimports/" + data._id, data, { headers: this.authorizationHeader() }).subscribe((response: any) => {
         resolve(response.data);
       }, reject);
     });

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as XLSX from "xlsx";
 import { CoursesService } from '../courses.service';
+import { Location } from '@angular/common';
 
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
@@ -24,6 +25,7 @@ export class NewcourseComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private coursesService: CoursesService,
+    private _location: Location,
     private _fuseTranslationLoaderService: FuseTranslationLoaderService
   ) { this._fuseTranslationLoaderService.loadTranslations(english, thai); }
 
@@ -83,7 +85,9 @@ export class NewcourseComponent implements OnInit {
 
   onSave() {
     //console.log("onSave");
-    this.coursesService.importData(this.data);
+    this.coursesService.importData(this.data).then(res=>{
+      this._location.back();
+    });
   }
 
   ReadDataFromFile(file: any) {
