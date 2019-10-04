@@ -82,7 +82,8 @@ export class NewcourseComponent implements OnInit {
   }
 
   onSave() {
-    console.log("onSave");
+    //console.log("onSave");
+    this.coursesService.importData(this.data);
   }
 
   ReadDataFromFile(file: any) {
