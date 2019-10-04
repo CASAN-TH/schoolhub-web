@@ -30,7 +30,7 @@ export class NewcourseComponent implements OnInit {
   ngOnInit() {
     this.coursesService.onImportDataChanged.subscribe((res: any) => {
       this.data = res;
-      this.summary = res.summary;
+      this.summary = res ? res.summary : null;
       console.log(this.data);
     });
 
@@ -76,7 +76,9 @@ export class NewcourseComponent implements OnInit {
   }
 
   onCancle() {
-    console.log("onCancle");
+    // console.log("onCancle");
+    // console.log(this.data);
+    this.coursesService.deleteImportData(this.data._id);
   }
 
   onSave() {
@@ -116,6 +118,7 @@ export class NewcourseComponent implements OnInit {
           });
           i++;
         });
+        
         this.coursesService.readFile(JsonData);
         // const json = XLSX.utils.sheet_to_json(
         //   workbook.Sheets[workbook.SheetNames[0]]
