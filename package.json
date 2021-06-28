@@ -57,7 +57,7 @@
     "ngx-file-drop": "^8.0.7",
     "ngx-order-pipe": "^2.0.4",
     "perfect-scrollbar": "1.4.0",
-    "prismjs": "1.15.0",
+    "prismjs": "1.24.0",
     "rxjs": "6.3.3",
     "rxjs-compat": "6.3.3",
     "web-animations-js": "2.3.1",
